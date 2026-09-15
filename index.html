@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rishik Kolli</title>
+<meta name="description" content="Data engineer and AI systems builder — LookML, cloud data pipelines, and applied ML across healthcare, insurance, and research." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F7F6;
+    --surface: #FFFFFF;
+    --surface-2: #EEF2F0;
+    --ink: #16211E;
+    --ink-soft: #48564F;
+    --ink-faint: #7C8B84;
+    --accent: #0E7C86;
+    --accent-deep: #075661;
+    --accent-tint: #E3F1F1;
+    --amber: #C97A2B;
+    --amber-tint: #F7EADA;
+    --line: #DCE3E0;
+    --shadow: 0 1px 2px rgba(15,30,26,0.04), 0 8px 24px rgba(15,30,26,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #0B1210;
+      --surface: #121B18;
+      --surface-2: #16211D;
+      --ink: #E9EFEC;
+      --ink-soft: #A9BAB3;
+      --ink-faint: #71847C;
+      --accent: #45C7D2;
+      --accent-deep: #7FE0E8;
+      --accent-tint: #163134;
+      --amber: #E3A15C;
+      --amber-tint: #2B2013;
+      --line: #24322C;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #0B1210;
+    --surface: #121B18;
+    --surface-2: #16211D;
+    --ink: #E9EFEC;
+    --ink-soft: #A9BAB3;
+    --ink-faint: #71847C;
+    --accent: #45C7D2;
+    --accent-deep: #7FE0E8;
+    --accent-tint: #163134;
+    --amber: #E3A15C;
+    --amber-tint: #2B2013;
+    --line: #24322C;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 28px rgba(0,0,0,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    padding:0 24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+  a{color:inherit;}
+  .mono{font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;}
+
+  h1,h2,h3{font-family:"Fraunces", ui-serif, Georgia, serif; text-wrap:balance; margin:0; font-weight:600;}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:920px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+    gap:16px;
+  }
+  .nav-mark{
+    font-family:"Fraunces", serif; font-weight:600; font-size:1.05rem;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  .nav-mark .dot{color:var(--accent);}
+  nav.links{display:flex; gap:22px; flex-wrap:wrap;}
+  nav.links a{
+    font-size:0.86rem; color:var(--ink-soft); text-decoration:none;
+    font-family:"IBM Plex Mono", monospace;
+    letter-spacing:0.01em;
+    padding:4px 0; border-bottom:1px solid transparent;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color:var(--ink); border-bottom-color:var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:64px 0 40px; }
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.8rem; color:var(--accent-deep);
+    text-transform:uppercase; letter-spacing:0.12em;
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:""; width:8px; height:8px; border-radius:50%;
+    background:var(--accent); display:inline-block;
+    box-shadow:0 0 0 3px var(--accent-tint);
+  }
+  .hero h1{ font-size:clamp(2.4rem, 6vw, 3.6rem); line-height:1.04; letter-spacing:-0.01em; }
+  .hero .role{
+    font-size:clamp(1.05rem, 2.4vw, 1.3rem);
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin-top:18px;
+    line-height:1.5;
+  }
+  .hero .role strong{ color:var(--ink); font-weight:600; }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    margin-top:26px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.84rem; color:var(--ink-faint);
+  }
+  .hero-meta span{display:flex; align-items:center; gap:7px;}
+
+  .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 18px; border-radius:8px;
+    font-size:0.9rem; font-weight:500; text-decoration:none;
+    border:1px solid var(--line);
+    transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--accent); color:#F5FCFC; border-color:var(--accent); }
+  .btn-primary:hover{ background:var(--accent-deep); border-color:var(--accent-deep); }
+  .btn-ghost{ background:var(--surface); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent-deep); }
+
+  /* ---------- Signal strip ---------- */
+  .signals{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; margin:44px 0 8px;
+  }
+  .signal{
+    background:var(--surface); padding:18px 16px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .signal .num{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:1.5rem; color:var(--accent-deep);
+    font-variant-numeric:tabular-nums;
+  }
+  .signal .label{ font-size:0.78rem; color:var(--ink-faint); line-height:1.35; }
+  @media (max-width:680px){ .signals{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---------- Sections ---------- */
+  section{ padding:72px 0; border-top:1px solid var(--line); }
+  section:first-of-type{ border-top:none; }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:40px; flex-wrap:wrap; }
+  .section-head h2{ font-size:1.7rem; letter-spacing:-0.01em; }
+  .section-num{ font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); font-size:0.82rem; }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{ position:relative; display:flex; flex-direction:column; gap:0; }
+  .role{
+    position:relative;
+    display:grid; grid-template-columns:170px 1fr; gap:28px;
+    padding:28px 0; border-top:1px solid var(--line);
+  }
+  .role:first-child{ border-top:none; padding-top:0; }
+  .role-when{ font-family:"IBM Plex Mono", monospace; font-size:0.82rem; color:var(--ink-faint); padding-top:4px; }
+  .role-when .current{
+    display:inline-block; margin-top:8px; padding:2px 8px; border-radius:999px;
+    background:var(--amber-tint); color:var(--amber); font-size:0.72rem; letter-spacing:0.04em;
+  }
+  .role-title{ font-size:1.12rem; font-weight:600; color:var(--ink); }
+  .role-org{ color:var(--accent-deep); font-weight:500; }
+  .role-loc{ color:var(--ink-faint); font-size:0.86rem; margin-top:2px; }
+  .role ul{ margin:14px 0 0; padding-left:1.15em; color:var(--ink-soft); line-height:1.62; font-size:0.95rem; }
+  .role li{ margin-bottom:6px; }
+  .role li::marker{ color:var(--accent); }
+  @media (max-width:640px){
+    .role{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  /* ---------- Tags ---------- */
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .tag{
+    font-family:"IBM Plex Mono", monospace; font-size:0.76rem;
+    padding:4px 9px; border-radius:6px;
+    background:var(--surface-2); color:var(--ink-soft);
+    border:1px solid var(--line);
+  }
+
+  /* ---------- Project ---------- */
+  .project-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:32px; box-shadow:var(--shadow);
+  }
+  .project-top{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start; }
+  .project-card h3{ font-size:1.3rem; }
+  .project-sub{ color:var(--ink-faint); font-size:0.86rem; margin-top:4px; font-family:"IBM Plex Mono", monospace; }
+  .project-year{ font-family:"IBM Plex Mono", monospace; font-size:0.8rem; color:var(--ink-faint); white-space:nowrap; }
+  .project-card p, .project-card ul{ color:var(--ink-soft); line-height:1.65; font-size:0.96rem; }
+  .project-card ul{ padding-left:1.15em; margin:14px 0 0; }
+  .project-card li::marker{ color:var(--accent); }
+
+  .pipeline{
+    display:flex; align-items:center; gap:0; margin:26px 0 4px;
+    overflow-x:auto; padding-bottom:4px;
+  }
+  .pipeline .stage{
+    font-family:"IBM Plex Mono", monospace; font-size:0.74rem;
+    background:var(--accent-tint); color:var(--accent-deep);
+    padding:7px 12px; border-radius:7px; white-space:nowrap;
+  }
+  .pipeline .arrow{ color:var(--ink-faint); padding:0 10px; font-size:0.9rem; }
+
+  /* ---------- Skills ---------- */
+  .skill-groups{ display:flex; flex-direction:column; gap:22px; }
+  .skill-group{ display:grid; grid-template-columns:190px 1fr; gap:20px; align-items:start; }
+  .skill-group-name{ font-size:0.86rem; color:var(--ink-faint); font-family:"IBM Plex Mono", monospace; padding-top:5px; }
+  @media (max-width:640px){ .skill-group{ grid-template-columns:1fr; gap:8px; } }
+
+  /* ---------- Education ---------- */
+  .edu-card{ padding:26px 0; border-top:1px solid var(--line); }
+  .edu-card:first-child{ border-top:none; }
+  .edu-top{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .edu-degree{ font-weight:600; font-size:1.05rem; }
+  .edu-school{ color:var(--accent-deep); font-weight:500; }
+  .edu-when{ font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); font-size:0.82rem; white-space:nowrap; }
+  .edu-loc{ color:var(--ink-faint); font-size:0.86rem; margin-top:2px; }
+  .coursework-label{ font-size:0.78rem; color:var(--ink-faint); margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.08em; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding:56px 0 72px; }
+  .footer-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:40px 32px; text-align:center; box-shadow:var(--shadow);
+  }
+  .footer-card h2{ font-size:1.6rem; }
+  .footer-card p{ color:var(--ink-soft); margin-top:10px; max-width:44ch; margin-left:auto; margin-right:auto; line-height:1.6; }
+  .footer-links{ display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:26px; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; margin-top:28px;
+    font-family:"IBM Plex Mono", monospace; font-size:0.76rem; color:var(--ink-faint);
+    flex-wrap:wrap; gap:8px;
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{ opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark">Rishik Kolli<span class="dot">.</span></div>
+    <nav class="links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <p class="eyebrow">Brooklyn, NY · Open to new opportunities</p>
+    <h1>Rishik Kolli</h1>
+    <p class="role">
+      <strong>Data engineer and AI systems builder</strong> — I turn raw clinical, financial, and operational
+      data into the models, pipelines, and dashboards leadership actually trusts, and I'm now extending
+      that same rigor into applied LLM systems at NYU.
+    </p>
+    <div class="hero-meta">
+      <span>📍 Brooklyn, NY</span>
+      <span>✉️ rishikkolli@gmail.com</span>
+      <span>🎓 M.S. Computer Science (AI), NYU — 2026</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:rishikkolli@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/rishikkolli/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/rishikkolli" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="section-num mono">04 roles · 2022 – present</span>
+    </div>
+    <div class="timeline">
+
+      <div class="role reveal">
+        <div class="role-when">
+          Jun 2024 — Present
+          <div class="current">CURRENT</div>
+        </div>
+        <div>
+          <div class="role-title">Associate Product Data Engineer</div>
+          <div class="role-org">CommonSpirit Health</div>
+          <div class="role-loc">Phoenix, AZ (Remote)</div>
+          <ul>
+            <li>Gather and document requirements from clinical, finance, and operations stakeholders to define datasets for enterprise analytics.</li>
+            <li>Designed relational data models to support Tableau, Qlik, and Looker dashboards used by leadership across 27 hospitals.</li>
+            <li>Migrated workflows from SAS to MySQL via BigQuery, improving data consistency, accessibility, and refresh reliability.</li>
+            <li>Serve as liaison between users and development teams, validating outputs and ensuring analytics solutions meet requirements.</li>
+            <li>Lead user acceptance testing for datasets and dashboards, coordinating feedback sessions and iterating on stakeholder input.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">MySQL</span><span class="tag">Tableau</span><span class="tag">Qlik</span><span class="tag">Looker</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-when">Aug 2022 — May 2024</div>
+        <div>
+          <div class="role-title">React Native Developer &amp; Software Team Lead</div>
+          <div class="role-org">DocYou Enterprises LLC</div>
+          <div class="role-loc">Phoenix, AZ</div>
+          <ul>
+            <li>Architected and implemented a multi-tier web and mobile platform using React Native, PHP, and Firebase, supporting secure resident procedure logging and ACGME accreditation workflows at production scale.</li>
+            <li>Designed and maintained backend services and RESTful APIs for structured clinical data ingestion, validation, and persistence, enabling reliable cross-platform access and extensibility.</li>
+            <li>Built data visualization and analytics modules with D3.js and Plotly surfacing operational metrics and longitudinal trends for supervisors managing ~20 residents per medical residential program.</li>
+            <li>Led core system design decisions around authentication, data modeling, and cloud deployment, delivering an architecture that secured $16,500 in funding for enterprise security and hospital system integration.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">React Native</span><span class="tag">PHP</span><span class="tag">Firebase</span><span class="tag">REST APIs</span><span class="tag">D3.js</span><span class="tag">Plotly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-when">May 2023 — Jul 2023</div>
+        <div>
+          <div class="role-title">Data Science Research Intern</div>
+          <div class="role-org">CSAA Insurance Group, a AAA Insurer</div>
+          <div class="role-loc">Glendale, AZ</div>
+          <ul>
+            <li>Developed unconstrained loss models (ULM) to improve predictability of frequency and severity across CSAA's 40,861 zip codes using AWS SageMaker.</li>
+            <li>Aggregated neighboring zip code features from external Highway Loss Data Institute (HLDI) data, covering 80% of the U.S. private passenger market, improving model performance 2.31% over internal claims data alone.</li>
+            <li>Won 1st place in an internal innovation showcase for smart home telematics reducing water severity in Northern California home claims — 38% / $800M of company-wide net paid losses.</li>
+            <li>Communicated analytical findings and recommendations to technical and non-technical stakeholders.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AWS SageMaker</span><span class="tag">Predictive Modeling</span><span class="tag">Python</span><span class="tag">🏆 1st Place — Innovation Showcase</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-when">May 2022 — Dec 2022</div>
+        <div>
+          <div class="role-title">Cloud Software Engineer Intern</div>
+          <div class="role-org">State Farm</div>
+          <div class="role-loc">Tempe, AZ</div>
+          <ul>
+            <li>Engineered cloud-native data migration pipelines using AWS Lambda, S3, and event-driven architectures to move large-scale enterprise data from on-prem systems to distributed cloud storage.</li>
+            <li>Implemented event-driven automation that cut data transfer latency 40%, enabling real-time on-prem to cloud synchronization.</li>
+            <li>Designed secure, resilient storage architecture with encryption, versioning, and access controls, reducing unauthorized access 20% and improving recovery speed.</li>
+            <li>Collaborated in agile DevOps teams owning CI/CD deployment cycles and infrastructure configuration.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">Event-Driven</span><span class="tag">CI/CD</span><span class="tag">DevOps</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-num mono">research &amp; build</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top">
+        <div>
+          <h3>ExtendDDG</h3>
+          <div class="project-sub">Big Data Engineering — New York University</div>
+        </div>
+        <div class="project-year mono">Aug – Dec 2025</div>
+      </div>
+      <p>Extending NYU's AutoDDG framework for context-aware dataset metadata generation — a benchmarking
+      pipeline that scores LLM-generated dataset descriptions against the tabular data and documentation
+      they're meant to describe.</p>
+      <div class="pipeline">
+        <span class="stage">Ingestion</span><span class="arrow">→</span>
+        <span class="stage">Classification</span><span class="arrow">→</span>
+        <span class="stage">Summarization</span><span class="arrow">→</span>
+        <span class="stage">Metadata alignment</span><span class="arrow">→</span>
+        <span class="stage">BERTScore benchmarking</span>
+      </div>
+      <ul>
+        <li>Architected the benchmarking pipeline for LLM-generated dataset descriptions, integrating tabular data and documentation.</li>
+        <li>Designed and deployed custom evaluation metrics — semantic similarity scoring (BERTScore), redundancy detection, embedding alignment, and length-normalized completeness scoring.</li>
+        <li>Integrated codebook parsing and documentation profiling modules to augment data-driven semantic inference, reducing semantic ambiguity by more than 90% in coded datasets.</li>
+        <li>Developed a reproducible experimentation framework generating quantitative performance comparisons across models.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">LLM Evaluation</span><span class="tag">BERTScore</span><span class="tag">Python</span><span class="tag">Agentic Pipelines</span><span class="tag">Reproducible Experiments</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>Waytrove</h3>
+          <div class="project-sub">NYU Capstone</div>
+        </div>
+        <div class="project-year mono">Aug – Dec 2025</div>
+      </div>
+      <p>A location-aware mobile app that reduces navigation fatigue by unifying route planning, local
+      discovery, and activity tracking into a single platform — generating personalized routes and
+      aggregating third-party data securely at scale.</p>
+      <div class="pipeline">
+        <span class="stage">React Native client</span><span class="arrow">→</span>
+        <span class="stage">Django REST API</span><span class="arrow">→</span>
+        <span class="stage">JWT auth</span><span class="arrow">→</span>
+        <span class="stage">PostgreSQL</span><span class="arrow">→</span>
+        <span class="stage">Mapbox / Google Places</span>
+      </div>
+      <ul>
+        <li>Designed a client–server architecture with React Native and a Django REST API backend, integrating JWT-based authentication, PostgreSQL storage, and external services (Mapbox, Google Places) through secure API proxying.</li>
+        <li>Implemented clean service and controller boundaries with structured request/response validation and automated unit and integration testing for API contracts and authentication flows.</li>
+        <li>Delivered a cloud-ready, distributed backend with secure API orchestration and reliable data handling, aligned with Java/Spring enterprise RESTful and transaction-style system design.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">React Native</span><span class="tag">Django REST</span><span class="tag">PostgreSQL</span><span class="tag">JWT Auth</span><span class="tag">Mapbox</span><span class="tag">Google Places</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <span class="section-num mono">stack</span>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group reveal">
+        <div class="skill-group-name">Languages</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">R</span>
+          <span class="tag">Java</span><span class="tag">C / C++</span><span class="tag">JavaScript</span><span class="tag">Spring</span>
+          <span class="tag">React Native</span><span class="tag">React</span><span class="tag">Django</span>
+          <span class="tag">MATLAB</span><span class="tag">SAS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-name">Cloud &amp; Data Platforms</div>
+        <div class="tags">
+          <span class="tag">Azure</span>
+          <span class="tag">GCP · Looker Core/Studio</span><span class="tag">GCP · BigQuery</span><span class="tag">GCP · Dataflow</span><span class="tag">GCP · GCS</span>
+          <span class="tag">AWS · Lambda</span><span class="tag">AWS · S3</span><span class="tag">AWS · SageMaker</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-name">Data Engineering &amp; BI</div>
+        <div class="tags">
+          <span class="tag">Apache Airflow</span><span class="tag">Dimensional Modeling</span><span class="tag">ETL / ELT</span>
+          <span class="tag">Data Warehousing</span><span class="tag">Tableau</span><span class="tag">Qlik</span><span class="tag">Looker</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-name">Certifications</div>
+        <div class="tags">
+          <span class="tag">GCP Associate Cloud Engineer</span>
+          <span class="tag">GCP Professional Data Engineer</span>
+          <span class="tag">AWS Certified Cloud Practitioner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <h2>Education</h2>
+      <span class="section-num mono">02 degrees</span>
+    </div>
+
+    <div class="edu-card reveal">
+      <div class="edu-top">
+        <div>
+          <div class="edu-degree">M.S. in Computer Science, AI Concentration</div>
+          <div class="edu-school">New York University</div>
+          <div class="edu-loc">Brooklyn, NY</div>
+        </div>
+        <div class="edu-when">2025 — 2026</div>
+      </div>
+
+      <div class="coursework-label">Coursework</div>
+      <div class="tags">
+        <span class="tag">Machine Learning</span><span class="tag">Big Data</span>
+        <span class="tag">Deep Learning</span><span class="tag">Generative AI Engineering</span>
+      </div>
+    </div>
+
+    <div class="edu-card reveal">
+      <div class="edu-top">
+        <div>
+          <div class="edu-degree">B.S. Computer Science — Minor in Data Science &amp; Real Estate</div>
+          <div class="edu-school">Arizona State University</div>
+          <div class="edu-loc">Tempe, AZ</div>
+        </div>
+        <div class="edu-when">2020 — 2024</div>
+      </div>
+
+      <div class="coursework-label">Coursework — Computer Science</div>
+      <div class="tags">
+        <span class="tag">Data Structures &amp; Algorithms</span><span class="tag">Operating Systems</span>
+        <span class="tag">Theory of Computation</span><span class="tag">Distributed Software Development</span>
+        <span class="tag">Programming Languages</span><span class="tag">Database Management</span>
+        <span class="tag">Human-Computer Interaction</span><span class="tag">Web Dev with JS &amp; APIs</span>
+        <span class="tag">Responsive Web Design</span><span class="tag">Swift / Mobile Dev</span>
+      </div>
+
+      <div class="coursework-label">Coursework — Data Science</div>
+      <div class="tags">
+        <span class="tag">Machine Learning</span><span class="tag">Applied Regression</span>
+        <span class="tag">Linear Algebra</span><span class="tag">Applied Statistics</span>
+        <span class="tag">Statistical Model Inference</span><span class="tag">Data in R &amp; Python</span>
+      </div>
+
+      <div class="coursework-label">Coursework — Real Estate</div>
+      <div class="tags">
+        <span class="tag">Appraisal</span><span class="tag">Real Estate Law</span>
+        <span class="tag">Investments</span><span class="tag">International Real Estate</span>
+        <span class="tag">Business Process Management</span>
+      </div>
+
+      <div class="coursework-label">Organizations</div>
+      <div class="tags">
+        <span class="tag">Barrett, The Honors College</span><span class="tag">Machine Learning Club at ASU</span>
+        <span class="tag">EPICS &amp; EPICS High</span><span class="tag">Fulton Ambassadors</span>
+        <span class="tag">New Venture Group</span><span class="tag">NAE Grand Challenges Scholars</span>
+        <span class="tag">W.P. Carey Founders Lab</span><span class="tag">BLAST</span>
+        <span class="tag">Barrett Mentorship Program</span><span class="tag">SunHacks</span>
+        <span class="tag">Business Technology &amp; Analytics Assoc.</span><span class="tag">Refugee LINK</span>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-card reveal">
+      <h2>Let's build something.</h2>
+      <p>Open to data engineering, analytics engineering, and applied AI roles — always happy to talk
+      pipelines, LookML, or LLM evaluation over email.</p>
+      <div class="footer-links">
+        <a class="btn btn-primary" href="mailto:rishikkolli@gmail.com">rishikkolli@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/rishikkolli/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/rishikkolli" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Rishik Kolli — Brooklyn, NY</span>
+      <span>Built with care, not a template.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  if (window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+</script>
+
+</body>
+</html>
