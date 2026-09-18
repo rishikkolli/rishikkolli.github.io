@@ -7,10 +7,12 @@
 <meta name="description" content="Data engineer and AI systems builder — LookML, cloud data pipelines, and applied ML across healthcare, insurance, and research." />
 <script>
   (function(){
+    var theme = 'dark';
     try {
       var saved = localStorage.getItem('theme');
-      if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+      if (saved === 'dark' || saved === 'light') { theme = saved; }
     } catch(e){}
+    document.documentElement.setAttribute('data-theme', theme);
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -282,6 +284,32 @@
   .edu-when{ font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); font-size:0.82rem; white-space:nowrap; }
   .edu-loc{ color:var(--ink-faint); font-size:0.86rem; margin-top:2px; }
   .coursework-label{ font-size:0.78rem; color:var(--ink-faint); margin:16px 0 8px; text-transform:uppercase; letter-spacing:0.08em; }
+
+  .diploma-link{
+    display:inline-flex; align-items:center; gap:5px; margin-top:12px;
+    background:none; border:none; padding:0; cursor:pointer;
+    font-family:"IBM Plex Mono", monospace; font-size:0.8rem;
+    color:var(--accent-deep); border-bottom:1px solid transparent;
+  }
+  .diploma-link:hover{ border-bottom-color:var(--accent-deep); }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox-overlay{
+    position:fixed; inset:0; background:rgba(6,10,9,0.82); backdrop-filter:blur(3px);
+    display:flex; align-items:center; justify-content:center; padding:32px;
+    z-index:100; opacity:0; pointer-events:none; transition:opacity 0.2s ease;
+  }
+  .lightbox-overlay.open{ opacity:1; pointer-events:auto; }
+  .lightbox-overlay img{
+    max-width:min(920px, 100%); max-height:88vh; width:100%; height:auto;
+    border-radius:10px; box-shadow:0 24px 64px rgba(0,0,0,0.5); display:block;
+  }
+  .lightbox-close{
+    position:absolute; top:20px; right:24px; width:40px; height:40px; border-radius:50%;
+    background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.3);
+    font-size:1.4rem; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,0.22); }
 
   /* ---------- Footer ---------- */
   footer{ padding:56px 0 72px; }
@@ -823,6 +851,7 @@
             <div class="edu-degree">B.S. Computer Science — Minor in Data Science &amp; Real Estate</div>
             <div class="edu-school">Arizona State University</div>
             <div class="edu-loc">Tempe, AZ</div>
+            <button type="button" class="diploma-link" id="diplomaTrigger">🎓 View diploma ↗</button>
           </div>
         </div>
         <div class="edu-when">2020 — 2024</div>
@@ -880,6 +909,11 @@
     </div>
   </footer>
 
+</div>
+
+<div class="lightbox-overlay" id="diplomaLightbox" role="dialog" aria-modal="true" aria-label="ASU diploma">
+  <button type="button" class="lightbox-close" id="diplomaClose" aria-label="Close">×</button>
+  <img src="assets/asu-diploma.jpg" alt="Rishik Kolli's Arizona State University Bachelor of Science in Computer Science diploma, Summa Cum Laude, Ira A. Fulton Schools of Engineering / Barrett, The Honors College">
 </div>
 
 <script>
@@ -945,6 +979,20 @@
       }).catch(function(){});
     });
   });
+
+  // Diploma lightbox
+  (function(){
+    var trigger = document.getElementById('diplomaTrigger');
+    var overlay = document.getElementById('diplomaLightbox');
+    var closeBtn = document.getElementById('diplomaClose');
+    if (!trigger || !overlay || !closeBtn) return;
+    function open(){ overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    trigger.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
 </script>
 
 </body>
