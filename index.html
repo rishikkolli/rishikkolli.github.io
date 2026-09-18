@@ -242,6 +242,22 @@
   .edu-card{ padding:26px 0; border-top:1px solid var(--line); }
   .edu-card:first-child{ border-top:none; }
   .edu-top{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .edu-heading{ display:flex; gap:14px; align-items:flex-start; }
+  .edu-logo{
+    flex:none; width:46px; height:46px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:0.68rem;
+    letter-spacing:0.03em;
+    border:1px solid rgba(0,0,0,0.08); box-shadow:var(--shadow);
+  }
+  .edu-logo-nyu{ background:#57068C; color:#F2E6FA; }
+  .edu-logo-asu{ background:#8C1D40; color:#FFC627; position:relative; overflow:hidden; }
+  .edu-logo-asu::after{
+    content:""; position:absolute; right:-10px; bottom:-10px;
+    width:26px; height:26px; background:#FFC627; opacity:0.9;
+    clip-path:polygon(100% 0, 0 100%, 100% 100%);
+  }
+  .edu-logo-asu span{ position:relative; z-index:1; }
   .edu-degree{ font-weight:600; font-size:1.05rem; }
   .edu-school{ color:var(--accent-deep); font-weight:500; }
   .edu-when{ font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); font-size:0.82rem; white-space:nowrap; }
@@ -312,7 +328,7 @@
   <section id="experience">
     <div class="section-head">
       <h2>Experience</h2>
-      <span class="section-num mono">04 roles · 2022 – present</span>
+      <span class="section-num mono">06 roles · 2021 – present</span>
     </div>
     <div class="timeline">
 
@@ -334,6 +350,24 @@
           </ul>
           <div class="tags">
             <span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">MySQL</span><span class="tag">Tableau</span><span class="tag">Qlik</span><span class="tag">Looker</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-when">May 2024 — Jul 2024</div>
+        <div>
+          <div class="role-title">Operations Analyst</div>
+          <div class="role-org">Center for Accelerating Operational Efficiency (CAOE)</div>
+          <div class="role-loc">Tempe, AZ</div>
+          <ul>
+            <li>Developed a stochastic simulation model in Arena to address bottlenecks in U.S. Customs and Border Control operations at Phoenix Sky Harbor, resulting in reduced wait times and improved throughput.</li>
+            <li>Applied operational research techniques to enhance TSA staffing efficiency, identifying optimal strategies for resource allocation during peak travel times.</li>
+            <li>Designed an award-winning app leveraging machine learning to forecast TSA security wait times, earning 1st place in a hackathon focused on improving passenger experience and operational efficiency.</li>
+            <li>Utilized simulation modeling to redistribute passenger flow, optimizing resource usage and decreasing wait times at airport security checkpoints.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Arena Simulation</span><span class="tag">Operations Research</span><span class="tag">Machine Learning</span><span class="tag">🏆 1st Place — Hackathon</span>
           </div>
         </div>
       </div>
@@ -388,6 +422,33 @@
           </ul>
           <div class="tags">
             <span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">Event-Driven</span><span class="tag">CI/CD</span><span class="tag">DevOps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal">
+        <div class="role-when">Aug 2021 — May 2022</div>
+        <div>
+          <div class="role-title">Teaching Assistant — CSE 310 (Data Structures &amp; Algorithms) &amp; FSE 404 (Community Service Engineering)</div>
+          <div class="role-org">Ira A. Fulton Schools of Engineering, Arizona State University</div>
+          <div class="role-loc">Tempe, AZ</div>
+          <ul>
+            <li>Assisted 150 undergraduate students by organizing 3 review sessions and hosting weekly office hours to answer questions.</li>
+            <li>Conducted informative skill sessions on SQL, R, and Python for 35 different research teams, enabling efficient analysis, extraction, cleaning, and presentation of key findings from extensive datasets or hardware prototypes transmitting data.</li>
+            <li>Led freshman teams in navigating the engineering design process and finalizing the development of MVP prototypes.</li>
+          </ul>
+
+          <div class="role-title" style="margin-top:22px;">Section Leader — ASU 101</div>
+          <div class="role-loc" style="margin-top:2px;">Aug 2021 — Dec 2021</div>
+          <ul>
+            <li>Mentored freshman students with managing coursework and building a strong balance between academics and extra-curricular activities to stay engaged with the community.</li>
+            <li>Collaborated with computer science faculty members to prepare for classroom activities and lead engineering lectures.</li>
+            <li>Met with each student once a semester to develop their personal two-year plan and academic goals.</li>
+            <li>Assisted students with settling into their classes and finding opportunities to get engaged outside of classes through clubs, sports, and organizations.</li>
+          </ul>
+
+          <div class="tags">
+            <span class="tag">SQL</span><span class="tag">R</span><span class="tag">Python</span><span class="tag">Mentorship</span><span class="tag">Curriculum Support</span>
           </div>
         </div>
       </div>
@@ -457,6 +518,136 @@
         <span class="tag">React Native</span><span class="tag">Django REST</span><span class="tag">PostgreSQL</span><span class="tag">JWT Auth</span><span class="tag">Mapbox</span><span class="tag">Google Places</span>
       </div>
     </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>ProDefense — Malware Classification Capstone</h3>
+          <div class="project-sub">Data Scientist · Computer Science Capstone, Arizona State University</div>
+        </div>
+        <div class="project-year mono">Aug 2023 – May 2024</div>
+      </div>
+      <p>A malware family classifier built by reverse-engineering binaries pulled from public repositories,
+      turning static-analysis artifacts into features for a tuned Random Forest model.</p>
+      <div class="pipeline">
+        <span class="stage">Binary acquisition</span><span class="arrow">→</span>
+        <span class="stage">Reverse engineering</span><span class="arrow">→</span>
+        <span class="stage">Feature engineering</span><span class="arrow">→</span>
+        <span class="stage">One-hot encoding</span><span class="arrow">→</span>
+        <span class="stage">Random Forest</span>
+      </div>
+      <ul>
+        <li>Extracted and engineered features by reverse-engineering malware binaries, focusing on common operating system functions and modules like KERNEL32.dll and specific function names.</li>
+        <li>Applied one-hot encoding to non-numeric fields such as MD5 hashes and function imports, enabling the machine learning model to process categorical data.</li>
+        <li>Optimized the Random Forest model by tuning hyperparameters like min_samples_split and random_state, leading to significant improvements in classification accuracy.</li>
+        <li>Achieved high classification accuracy, with a 98.3% F1 score when excluding hash features, and further enhanced it to 99.6% by increasing the sample size through dataset augmentation.</li>
+        <li>Acquired and reverse-engineered malware samples from repositories like Malware Bazaar, identifying key features such as hash values, file sizes, and function imports.</li>
+        <li>Extracted function and module data from binary samples, focusing on distinguishing characteristics between malware families like SmokeLoader and ZeusBot.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Reverse Engineering</span><span class="tag">Random Forest</span><span class="tag">Feature Engineering</span><span class="tag">Python</span><span class="tag">Malware Analysis</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>ASA Datafest — Video Flagging System</h3>
+          <div class="project-sub">American Statistical Association Datafest Competition</div>
+        </div>
+        <div class="project-year mono">Apr 2024</div>
+      </div>
+      <p>An anomaly-detection system for flagging ineffective instructional video content, built in a
+      48-hour competition against 30 teams from 3 Arizona universities.</p>
+      <ul>
+        <li>Utilized K-means clustering techniques, anomaly detection models, and baseline criteria to create a video flagging system that identifies ineffective video content versus effective learning techniques among students, informing teachers about content revisions.</li>
+        <li>Won the competition and "Best Insights" award among 30 teams and 3 universities competing in Arizona for performance of Isolation Forest models and recommending ways to update content in future versions of the interactive course.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">K-Means Clustering</span><span class="tag">Isolation Forest</span><span class="tag">Anomaly Detection</span><span class="tag">🏆 Winner — Best Insights</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>Washington Nationals Predictive Regression</h3>
+          <div class="project-sub">Independent Research Project</div>
+        </div>
+        <div class="project-year mono">Feb – Mar 2024</div>
+      </div>
+      <p>A regression study predicting MLB team win totals from 27 batting, fielding, and standings-based
+      features spanning 1998–2023.</p>
+      <ul>
+        <li>Initiated a project to predict the number of wins between 1998–2023 by looking at 27 features based on batting performance.</li>
+        <li>Employed multiple regression analysis with SAS to strategically narrow down analysis to fielding percentages and finish rankings, estimating wins through correlation analysis, regularization techniques, and overcoming multicollinearity issues.</li>
+        <li>Achieved a highly predictive model with an adjusted R-squared value of 0.81, offering future performance optimization insights.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">SAS</span><span class="tag">Multiple Regression</span><span class="tag">Regularization</span><span class="tag">Statistical Modeling</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>Consult for America</h3>
+          <div class="project-sub">University of Pennsylvania Business Case Competition</div>
+        </div>
+        <div class="project-year mono">Apr 2023</div>
+      </div>
+      <p>A finalist case proposal reimagining a Capital One digital card program around sustainability-linked
+      rewards, presented to corporate strategy directors.</p>
+      <ul>
+        <li>Proposed a new digital card system that accounts for 65% of Capital One's total net revenue with a benefits program for product categories promoting environmentally conscious spending and rewarding sustainable spending habits.</li>
+        <li>Selected as one of nine finalist teams from 170 teams across the United States to present to corporate strategy directors.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Business Strategy</span><span class="tag">Case Competition</span><span class="tag">🏆 Top 9 of 170 Teams</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>Mink Social</h3>
+          <div class="project-sub">Co-Founder &amp; Honors Thesis · W.P. Carey Founder's Lab</div>
+        </div>
+        <div class="project-year mono">Aug 2022 – Mar 2023</div>
+      </div>
+      <p>A startup helping podcasters edit and promote long-form audio by automating the conversion of
+      episodes into shareable social clips.</p>
+      <ul>
+        <li>Co-founded Mink Social, a startup committed to empowering podcasters by offering them a comprehensive suite of tools for editing and promoting their content on various social media platforms.</li>
+        <li>Identified and addressed the specific challenge faced by podcasters in effectively marketing their long-form audio content online, leading to the development of a unique solution that automates backend editing and transforms content into easily shareable clips.</li>
+        <li>Implemented a strategic business model with a focus on three key market segments: entry-level podcasters, established podcasters, and enterprise podcasting, catering to the diverse needs of the podcasting community.</li>
+        <li>Pioneered the concept of a social media promotion and editing platform exclusively dedicated to podcasts, positioning Mink Social as a trailblazer in the industry and setting it apart from competitors.</li>
+        <li>Led cross-functional teams in executing the vision for Mink Social, driving innovation and growth to establish the company as a leading player in the podcasting tools and services domain.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Startup</span><span class="tag">Product Strategy</span><span class="tag">Honors Thesis</span><span class="tag">Content Automation</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
+          <h3>iGEM — Wiki &amp; Filter Prototyping</h3>
+          <div class="project-sub">International Genetically Engineered Machine, Arizona State University</div>
+        </div>
+        <div class="project-year mono">May – Nov 2022</div>
+      </div>
+      <p>A bronze medal-winning synthetic biology project developing arsenic water filtration prototypes,
+      with an interactive web presence documenting the team's work.</p>
+      <ul>
+        <li>Won a bronze medal as a team at an international synthetic biology competition for addressing water scarcity and advancing water filtration systems, specifically for arsenic filtration, which accounts for 17% of water contamination sites in Arizona.</li>
+        <li>Programmed an interactive webpage to display the proof of concept and various iterations of filtration models.</li>
+        <li>Utilized a Python web crawler to extract data and define photobioreactor and filtration system physical parameters.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Web Crawling</span><span class="tag">Synthetic Biology</span><span class="tag">🥉 Bronze Medal — iGEM</span>
+      </div>
+    </div>
   </section>
 
   <section id="skills">
@@ -503,15 +694,17 @@
   <section id="education">
     <div class="section-head">
       <h2>Education</h2>
-      <span class="section-num mono">02 degrees</span>
     </div>
 
     <div class="edu-card reveal">
       <div class="edu-top">
-        <div>
-          <div class="edu-degree">M.S. in Computer Science, AI Concentration</div>
-          <div class="edu-school">New York University</div>
-          <div class="edu-loc">Brooklyn, NY</div>
+        <div class="edu-heading">
+          <div class="edu-logo edu-logo-nyu" aria-hidden="true">NYU</div>
+          <div>
+            <div class="edu-degree">M.S. in Computer Science, AI Concentration</div>
+            <div class="edu-school">New York University</div>
+            <div class="edu-loc">Brooklyn, NY</div>
+          </div>
         </div>
         <div class="edu-when">2025 — 2026</div>
       </div>
@@ -527,10 +720,13 @@
 
     <div class="edu-card reveal">
       <div class="edu-top">
-        <div>
-          <div class="edu-degree">B.S. Computer Science — Minor in Data Science &amp; Real Estate</div>
-          <div class="edu-school">Arizona State University</div>
-          <div class="edu-loc">Tempe, AZ</div>
+        <div class="edu-heading">
+          <div class="edu-logo edu-logo-asu" aria-hidden="true"><span>ASU</span></div>
+          <div>
+            <div class="edu-degree">B.S. Computer Science — Minor in Data Science &amp; Real Estate</div>
+            <div class="edu-school">Arizona State University</div>
+            <div class="edu-loc">Tempe, AZ</div>
+          </div>
         </div>
         <div class="edu-when">2020 — 2024</div>
       </div>
