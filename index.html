@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rishik Kolli</title>
 <meta name="description" content="Data engineer and AI systems builder — LookML, cloud data pipelines, and applied ML across healthcare, insurance, and research." />
+<script>
+  (function(){
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+    } catch(e){}
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -199,6 +207,33 @@
     .role{ grid-template-columns:1fr; gap:8px; }
   }
 
+  /* ---------- Brand marks ---------- */
+  .heading-row{ display:flex; gap:14px; align-items:flex-start; }
+  .brand-mark{
+    flex:none; width:44px; height:44px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:0.62rem;
+    letter-spacing:0.02em; text-align:center; line-height:1.1;
+    border:1px solid rgba(0,0,0,0.08); box-shadow:var(--shadow);
+    position:relative; overflow:hidden;
+  }
+  .brand-mark span{ position:relative; z-index:1; }
+  .mark-nyu{ background:#57068C; color:#F2E6FA; }
+  .mark-asu{ background:#8C1D40; color:#FFC627; }
+  .mark-asu::after{
+    content:""; position:absolute; right:-10px; bottom:-10px;
+    width:26px; height:26px; background:#FFC627; opacity:0.9;
+    clip-path:polygon(100% 0, 0 100%, 100% 100%);
+  }
+  .mark-commonspirit{ background:linear-gradient(135deg,#1B3A6B,#2F6FA6); color:#EAF3FC; }
+  .mark-caoe{ background:#2B3A42; color:#9FD8D0; font-size:0.56rem; }
+  .mark-docyou{ background:#0E7C6B; color:#E6FBF5; }
+  .mark-csaa{ background:#0B2545; color:#FF6A5E; font-size:0.56rem; }
+  .mark-statefarm{ background:#D52B1E; color:#FFFFFF; }
+  .mark-statefarm::before{
+    content:""; position:absolute; inset:6px; border:1.5px solid rgba(255,255,255,0.55); border-radius:50%;
+  }
+
   /* ---------- Tags ---------- */
   .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
   .tag{
@@ -242,22 +277,6 @@
   .edu-card{ padding:26px 0; border-top:1px solid var(--line); }
   .edu-card:first-child{ border-top:none; }
   .edu-top{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-  .edu-heading{ display:flex; gap:14px; align-items:flex-start; }
-  .edu-logo{
-    flex:none; width:46px; height:46px; border-radius:11px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:0.68rem;
-    letter-spacing:0.03em;
-    border:1px solid rgba(0,0,0,0.08); box-shadow:var(--shadow);
-  }
-  .edu-logo-nyu{ background:#57068C; color:#F2E6FA; }
-  .edu-logo-asu{ background:#8C1D40; color:#FFC627; position:relative; overflow:hidden; }
-  .edu-logo-asu::after{
-    content:""; position:absolute; right:-10px; bottom:-10px;
-    width:26px; height:26px; background:#FFC627; opacity:0.9;
-    clip-path:polygon(100% 0, 0 100%, 100% 100%);
-  }
-  .edu-logo-asu span{ position:relative; z-index:1; }
   .edu-degree{ font-weight:600; font-size:1.05rem; }
   .edu-school{ color:var(--accent-deep); font-weight:500; }
   .edu-when{ font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); font-size:0.82rem; white-space:nowrap; }
@@ -279,6 +298,47 @@
     flex-wrap:wrap; gap:8px;
   }
 
+  /* ---------- Scroll progress ---------- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--accent), var(--accent-deep));
+    z-index:50; pointer-events:none;
+  }
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:8px; flex:none;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    cursor:pointer; font-size:1rem; line-height:1;
+    transition:border-color 0.15s ease, transform 0.15s ease;
+  }
+  .theme-toggle:hover{ border-color:var(--accent); transform:translateY(-1px); }
+
+  /* ---------- Back to top ---------- */
+  .to-top{
+    position:fixed; right:22px; bottom:22px; z-index:40;
+    width:42px; height:42px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent); color:#F5FCFC; border:none;
+    box-shadow:var(--shadow); cursor:pointer; font-size:1.15rem;
+    opacity:0; pointer-events:none; transform:translateY(8px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+  }
+  .to-top.show{ opacity:1; pointer-events:auto; transform:none; }
+  .to-top:hover{ background:var(--accent-deep); }
+
+  /* ---------- Copy button ---------- */
+  .copy-btn{
+    display:inline-flex; align-items:center;
+    background:none; border:none; cursor:pointer; padding:0 0 0 2px;
+    color:inherit; font-size:0.9em; opacity:0.6;
+    transition:opacity 0.15s ease;
+  }
+  .copy-btn:hover{ opacity:1; }
+  .copy-btn .copy-label{ margin-left:6px; font-size:0.75rem; color:var(--accent-deep); opacity:0; transition:opacity 0.15s ease; }
+  .copy-btn.copied .copy-label{ opacity:1; }
+
   /* ---------- Reveal ---------- */
   .reveal{ opacity:1; transform:none; }
   @media (prefers-reduced-motion: no-preference){
@@ -288,6 +348,8 @@
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <header class="nav">
   <div class="nav-inner">
@@ -299,8 +361,11 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
   </div>
 </header>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" title="Back to top">↑</button>
 
 <div class="wrap">
 
@@ -314,7 +379,9 @@
     </p>
     <div class="hero-meta">
       <span>📍 Brooklyn, NY</span>
-      <span>✉️ rishikkolli@gmail.com</span>
+      <span>✉️ rishikkolli@gmail.com
+        <button class="copy-btn" data-copy="rishikkolli@gmail.com" type="button" aria-label="Copy email address" title="Copy email">⧉<span class="copy-label">Copied</span></button>
+      </span>
       <span>🎓 M.S. Computer Science (AI), NYU — 2026</span>
     </div>
     <div class="cta-row">
@@ -338,9 +405,14 @@
           <div class="current">CURRENT</div>
         </div>
         <div>
-          <div class="role-title">Associate Product Data Engineer</div>
-          <div class="role-org">CommonSpirit Health</div>
-          <div class="role-loc">Phoenix, AZ (Remote)</div>
+          <div class="heading-row">
+            <div class="brand-mark mark-commonspirit" aria-hidden="true"><span>CSH</span></div>
+            <div>
+              <div class="role-title">Associate Product Data Engineer</div>
+              <div class="role-org">CommonSpirit Health</div>
+              <div class="role-loc">Phoenix, AZ (Remote)</div>
+            </div>
+          </div>
           <ul>
             <li>Gather and document requirements from clinical, finance, and operations stakeholders to define datasets for enterprise analytics.</li>
             <li>Designed relational data models to support Tableau, Qlik, and Looker dashboards used by leadership across 27 hospitals.</li>
@@ -357,9 +429,14 @@
       <div class="role reveal">
         <div class="role-when">May 2024 — Jul 2024</div>
         <div>
-          <div class="role-title">Operations Analyst</div>
-          <div class="role-org">Center for Accelerating Operational Efficiency (CAOE)</div>
-          <div class="role-loc">Tempe, AZ</div>
+          <div class="heading-row">
+            <div class="brand-mark mark-caoe" aria-hidden="true"><span>CAOE</span></div>
+            <div>
+              <div class="role-title">Operations Analyst</div>
+              <div class="role-org">Center for Accelerating Operational Efficiency (CAOE)</div>
+              <div class="role-loc">Tempe, AZ</div>
+            </div>
+          </div>
           <ul>
             <li>Developed a stochastic simulation model in Arena to address bottlenecks in U.S. Customs and Border Control operations at Phoenix Sky Harbor, resulting in reduced wait times and improved throughput.</li>
             <li>Applied operational research techniques to enhance TSA staffing efficiency, identifying optimal strategies for resource allocation during peak travel times.</li>
@@ -375,9 +452,14 @@
       <div class="role reveal">
         <div class="role-when">Aug 2022 — May 2024</div>
         <div>
-          <div class="role-title">React Native Developer &amp; Software Team Lead</div>
-          <div class="role-org">DocYou Enterprises LLC</div>
-          <div class="role-loc">Phoenix, AZ</div>
+          <div class="heading-row">
+            <div class="brand-mark mark-docyou" aria-hidden="true"><span>DY</span></div>
+            <div>
+              <div class="role-title">React Native Developer &amp; Software Team Lead</div>
+              <div class="role-org">DocYou Enterprises LLC</div>
+              <div class="role-loc">Phoenix, AZ</div>
+            </div>
+          </div>
           <ul>
             <li>Architected and implemented a multi-tier web and mobile platform using React Native, PHP, and Firebase, supporting secure resident procedure logging and ACGME accreditation workflows at production scale.</li>
             <li>Designed and maintained backend services and RESTful APIs for structured clinical data ingestion, validation, and persistence, enabling reliable cross-platform access and extensibility.</li>
@@ -393,9 +475,14 @@
       <div class="role reveal">
         <div class="role-when">May 2023 — Jul 2023</div>
         <div>
-          <div class="role-title">Data Science Research Intern</div>
-          <div class="role-org">CSAA Insurance Group, a AAA Insurer</div>
-          <div class="role-loc">Glendale, AZ</div>
+          <div class="heading-row">
+            <div class="brand-mark mark-csaa" aria-hidden="true"><span>CSAA</span></div>
+            <div>
+              <div class="role-title">Data Science Research Intern</div>
+              <div class="role-org">CSAA Insurance Group, a AAA Insurer</div>
+              <div class="role-loc">Glendale, AZ</div>
+            </div>
+          </div>
           <ul>
             <li>Developed unconstrained loss models (ULM) to improve predictability of frequency and severity across CSAA's 40,861 zip codes using AWS SageMaker.</li>
             <li>Aggregated neighboring zip code features from external Highway Loss Data Institute (HLDI) data, covering 80% of the U.S. private passenger market, improving model performance 2.31% over internal claims data alone.</li>
@@ -411,9 +498,14 @@
       <div class="role reveal">
         <div class="role-when">May 2022 — Dec 2022</div>
         <div>
-          <div class="role-title">Cloud Software Engineer Intern</div>
-          <div class="role-org">State Farm</div>
-          <div class="role-loc">Tempe, AZ</div>
+          <div class="heading-row">
+            <div class="brand-mark mark-statefarm" aria-hidden="true"><span>SF</span></div>
+            <div>
+              <div class="role-title">Cloud Software Engineer Intern</div>
+              <div class="role-org">State Farm</div>
+              <div class="role-loc">Tempe, AZ</div>
+            </div>
+          </div>
           <ul>
             <li>Engineered cloud-native data migration pipelines using AWS Lambda, S3, and event-driven architectures to move large-scale enterprise data from on-prem systems to distributed cloud storage.</li>
             <li>Implemented event-driven automation that cut data transfer latency 40%, enabling real-time on-prem to cloud synchronization.</li>
@@ -429,9 +521,14 @@
       <div class="role reveal">
         <div class="role-when">Aug 2021 — May 2022</div>
         <div>
-          <div class="role-title">Teaching Assistant — CSE 310 (Data Structures &amp; Algorithms) &amp; FSE 404 (Community Service Engineering)</div>
-          <div class="role-org">Ira A. Fulton Schools of Engineering, Arizona State University</div>
-          <div class="role-loc">Tempe, AZ</div>
+          <div class="heading-row">
+            <div class="brand-mark mark-asu" aria-hidden="true"><span>ASU</span></div>
+            <div>
+              <div class="role-title">Teaching Assistant — CSE 310 (Data Structures &amp; Algorithms) &amp; FSE 404 (Community Service Engineering)</div>
+              <div class="role-org">Ira A. Fulton Schools of Engineering, Arizona State University</div>
+              <div class="role-loc">Tempe, AZ</div>
+            </div>
+          </div>
           <ul>
             <li>Assisted 150 undergraduate students by organizing 3 review sessions and hosting weekly office hours to answer questions.</li>
             <li>Conducted informative skill sessions on SQL, R, and Python for 35 different research teams, enabling efficient analysis, extraction, cleaning, and presentation of key findings from extensive datasets or hardware prototypes transmitting data.</li>
@@ -698,8 +795,8 @@
 
     <div class="edu-card reveal">
       <div class="edu-top">
-        <div class="edu-heading">
-          <div class="edu-logo edu-logo-nyu" aria-hidden="true">NYU</div>
+        <div class="heading-row">
+          <div class="brand-mark mark-nyu" aria-hidden="true"><span>NYU</span></div>
           <div>
             <div class="edu-degree">M.S. in Computer Science, AI Concentration</div>
             <div class="edu-school">New York University</div>
@@ -720,8 +817,8 @@
 
     <div class="edu-card reveal">
       <div class="edu-top">
-        <div class="edu-heading">
-          <div class="edu-logo edu-logo-asu" aria-hidden="true"><span>ASU</span></div>
+        <div class="heading-row">
+          <div class="brand-mark mark-asu" aria-hidden="true"><span>ASU</span></div>
           <div>
             <div class="edu-degree">B.S. Computer Science — Minor in Data Science &amp; Real Estate</div>
             <div class="edu-school">Arizona State University</div>
@@ -794,6 +891,60 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   }
+
+  // Theme toggle
+  (function(){
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    function isDark(){
+      var explicit = root.getAttribute('data-theme');
+      if (explicit === 'dark') return true;
+      if (explicit === 'light') return false;
+      return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    function syncIcon(){ btn.textContent = isDark() ? '☀️' : '🌙'; }
+    syncIcon();
+    btn.addEventListener('click', function(){
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch(e){}
+      syncIcon();
+    });
+  })();
+
+  // Scroll progress + back to top
+  (function(){
+    var bar = document.getElementById('scrollProgress');
+    var toTop = document.getElementById('toTop');
+    function onScroll(){
+      var doc = document.documentElement;
+      var scrollTop = doc.scrollTop || document.body.scrollTop;
+      var height = doc.scrollHeight - doc.clientHeight;
+      var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      if (bar) bar.style.width = pct + '%';
+      if (toTop) toTop.classList.toggle('show', scrollTop > 480);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    if (toTop) {
+      toTop.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    }
+  })();
+
+  // Copy-to-clipboard buttons
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy');
+      if (!(navigator.clipboard && navigator.clipboard.writeText)) return;
+      navigator.clipboard.writeText(text).then(function(){
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.classList.remove('copied'); }, 1500);
+      }).catch(function(){});
+    });
+  });
 </script>
 
 </body>
