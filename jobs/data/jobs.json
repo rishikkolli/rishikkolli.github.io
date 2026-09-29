@@ -1,15 +1,15 @@
 {
- "generatedAt": "2026-09-29T02:26:28.460Z",
+ "generatedAt": "2026-09-29T03:28:30.395Z",
  "stats": {
   "companies": 64,
   "companiesOk": 64,
-  "fetched": 12253,
-  "relevant": 606,
+  "fetched": 12259,
+  "relevant": 607,
   "filteredOut": {
-   "title": 9304,
+   "title": 9306,
    "level": 2014,
    "employment": 5,
-   "location": 308,
+   "location": 311,
    "sponsorship": 6
   }
  },
@@ -614,10 +614,10 @@
   {
    "id": "microservices",
    "count": 200,
-   "pct": 33,
+   "pct": 32.9,
    "prof": 0,
    "status": "missing",
-   "priority": 33
+   "priority": 32.9
   },
   {
    "id": "observability",
@@ -629,8 +629,8 @@
   },
   {
    "id": "llm",
-   "count": 223,
-   "pct": 36.8,
+   "count": 224,
+   "pct": 36.9,
    "prof": 2,
    "status": "sharpen",
    "priority": 22.1
@@ -638,10 +638,10 @@
   {
    "id": "go",
    "count": 118,
-   "pct": 19.5,
+   "pct": 19.4,
    "prof": 0,
    "status": "missing",
-   "priority": 19.5
+   "priority": 19.4
   },
   {
    "id": "typescript",
@@ -670,10 +670,10 @@
   {
    "id": "python",
    "count": 311,
-   "pct": 51.3,
+   "pct": 51.2,
    "prof": 4,
    "status": "maintain",
-   "priority": 10.3
+   "priority": 10.2
   },
   {
    "id": "airflow",
@@ -692,19 +692,19 @@
    "priority": 10.2
   },
   {
-   "id": "kafka",
-   "count": 61,
-   "pct": 10.1,
-   "prof": 0,
-   "status": "missing",
-   "priority": 10.1
-  },
-  {
    "id": "stats",
    "count": 151,
    "pct": 24.9,
    "prof": 3,
    "status": "sharpen",
+   "priority": 10
+  },
+  {
+   "id": "kafka",
+   "count": 61,
+   "pct": 10,
+   "prof": 0,
+   "status": "missing",
    "priority": 10
   },
   {
@@ -753,7 +753,7 @@
    "pct": 20.1,
    "prof": 3,
    "status": "sharpen",
-   "priority": 8.1
+   "priority": 8
   },
   {
    "id": "spark",
@@ -766,7 +766,7 @@
   {
    "id": "etl",
    "count": 101,
-   "pct": 16.7,
+   "pct": 16.6,
    "prof": 3,
    "status": "sharpen",
    "priority": 6.7
@@ -774,7 +774,7 @@
   {
    "id": "java",
    "count": 67,
-   "pct": 11.1,
+   "pct": 11,
    "prof": 2,
    "status": "sharpen",
    "priority": 6.6
@@ -806,7 +806,7 @@
   {
    "id": "cicd",
    "count": 64,
-   "pct": 10.6,
+   "pct": 10.5,
    "prof": 2,
    "status": "sharpen",
    "priority": 6.3
@@ -833,7 +833,7 @@
    "pct": 7.6,
    "prof": 2,
    "status": "sharpen",
-   "priority": 4.6
+   "priority": 4.5
   },
   {
    "id": "sql",
