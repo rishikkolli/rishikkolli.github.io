@@ -1,69 +1,453 @@
 {
-  "_comment": "Employers with a public track record of H-1B filings whose job boards expose a public, key-less API. 'ats' is greenhouse | lever | ashby; 'token' is the board slug; 'type' picks the interview template in interview.json. Defense/ITAR-heavy employers are left out; postings that say they can't sponsor are filtered out by the fetch script.",
+  "_comment": "Employers with a public track record of H-1B filings whose job boards expose a public, key-less API. 'ats' is greenhouse | lever | ashby; 'token' is the board slug; 'type' picks the interview template in interview.json. Defense/ITAR-heavy employers are left out; postings that say they can't sponsor are filtered out by the fetch script. 'domain' is used to download the company's icon into logos/.",
   "companies": [
-    { "name": "Stripe", "ats": "greenhouse", "token": "stripe", "type": "fintech" },
-    { "name": "Databricks", "ats": "greenhouse", "token": "databricks", "type": "data-infra" },
-    { "name": "Airbnb", "ats": "greenhouse", "token": "airbnb", "type": "bigtech" },
-    { "name": "Figma", "ats": "greenhouse", "token": "figma", "type": "consumer" },
-    { "name": "Datadog", "ats": "greenhouse", "token": "datadog", "type": "data-infra" },
-    { "name": "Robinhood", "ats": "greenhouse", "token": "robinhood", "type": "fintech" },
-    { "name": "Coinbase", "ats": "greenhouse", "token": "coinbase", "type": "fintech" },
-    { "name": "Discord", "ats": "greenhouse", "token": "discord", "type": "consumer" },
-    { "name": "Dropbox", "ats": "greenhouse", "token": "dropbox", "type": "bigtech" },
-    { "name": "Pinterest", "ats": "greenhouse", "token": "pinterest", "type": "bigtech" },
-    { "name": "Lyft", "ats": "greenhouse", "token": "lyft", "type": "bigtech" },
-    { "name": "Instacart", "ats": "greenhouse", "token": "instacart", "type": "consumer" },
-    { "name": "Reddit", "ats": "greenhouse", "token": "reddit", "type": "consumer" },
-    { "name": "Asana", "ats": "greenhouse", "token": "asana", "type": "consumer" },
-    { "name": "Brex", "ats": "greenhouse", "token": "brex", "type": "fintech" },
-    { "name": "Affirm", "ats": "greenhouse", "token": "affirm", "type": "fintech" },
-    { "name": "Gusto", "ats": "greenhouse", "token": "gusto", "type": "fintech" },
-    { "name": "Twilio", "ats": "greenhouse", "token": "twilio", "type": "data-infra" },
-    { "name": "Cloudflare", "ats": "greenhouse", "token": "cloudflare", "type": "data-infra" },
-    { "name": "MongoDB", "ats": "greenhouse", "token": "mongodb", "type": "data-infra" },
-    { "name": "Elastic", "ats": "greenhouse", "token": "elastic", "type": "data-infra" },
-    { "name": "Samsara", "ats": "greenhouse", "token": "samsara", "type": "data-infra" },
-    { "name": "Anthropic", "ats": "greenhouse", "token": "anthropic", "type": "ai-lab" },
-    { "name": "Scale AI", "ats": "greenhouse", "token": "scaleai", "type": "ai-lab" },
-    { "name": "DoorDash", "ats": "greenhouse", "token": "doordashusa", "type": "bigtech" },
-    { "name": "Squarespace", "ats": "greenhouse", "token": "squarespace", "type": "consumer" },
-    { "name": "Peloton", "ats": "greenhouse", "token": "peloton", "type": "consumer" },
-    { "name": "Duolingo", "ats": "greenhouse", "token": "duolingo", "type": "consumer" },
-    { "name": "GitLab", "ats": "greenhouse", "token": "gitlab", "type": "data-infra" },
-    { "name": "Okta", "ats": "greenhouse", "token": "okta", "type": "data-infra" },
-    { "name": "Flatiron Health", "ats": "greenhouse", "token": "flatironhealth", "type": "healthtech" },
-    { "name": "Oscar Health", "ats": "greenhouse", "token": "oscar", "type": "healthtech" },
-    { "name": "Zocdoc", "ats": "greenhouse", "token": "zocdoc", "type": "healthtech" },
-    { "name": "Betterment", "ats": "greenhouse", "token": "betterment", "type": "fintech" },
-    { "name": "Block", "ats": "greenhouse", "token": "block", "type": "fintech" },
-    { "name": "Chime", "ats": "greenhouse", "token": "chime", "type": "fintech" },
-    { "name": "SoFi", "ats": "greenhouse", "token": "sofi", "type": "fintech" },
-    { "name": "Carta", "ats": "greenhouse", "token": "carta", "type": "fintech" },
-    { "name": "Toast", "ats": "greenhouse", "token": "toast", "type": "fintech" },
-    { "name": "Twitch", "ats": "greenhouse", "token": "twitch", "type": "consumer" },
-    { "name": "Waymo", "ats": "greenhouse", "token": "waymo", "type": "bigtech" },
-    { "name": "Roblox", "ats": "greenhouse", "token": "roblox", "type": "consumer" },
-    { "name": "Vercel", "ats": "greenhouse", "token": "vercel", "type": "data-infra" },
-    { "name": "Fivetran", "ats": "greenhouse", "token": "fivetran", "type": "data-infra" },
-    { "name": "Starburst", "ats": "greenhouse", "token": "starburst", "type": "data-infra" },
-    { "name": "Cockroach Labs", "ats": "greenhouse", "token": "cockroachlabs", "type": "data-infra" },
-    { "name": "Webflow", "ats": "greenhouse", "token": "webflow", "type": "consumer" },
-    { "name": "Jane Street", "ats": "greenhouse", "token": "janestreet", "type": "quant" },
-    { "name": "Point72", "ats": "greenhouse", "token": "point72", "type": "quant" },
-    { "name": "Spotify", "ats": "lever", "token": "spotify", "type": "bigtech" },
-    { "name": "Wealthfront", "ats": "lever", "token": "wealthfront", "type": "fintech" },
-    { "name": "Zoox", "ats": "lever", "token": "zoox", "type": "bigtech" },
-    { "name": "OpenAI", "ats": "ashby", "token": "openai", "type": "ai-lab" },
-    { "name": "Ramp", "ats": "ashby", "token": "ramp", "type": "fintech" },
-    { "name": "Notion", "ats": "ashby", "token": "notion", "type": "consumer" },
-    { "name": "Cohere", "ats": "ashby", "token": "cohere", "type": "ai-lab" },
-    { "name": "Perplexity", "ats": "ashby", "token": "perplexity", "type": "ai-lab" },
-    { "name": "Confluent", "ats": "ashby", "token": "confluent", "type": "data-infra" },
-    { "name": "Linear", "ats": "ashby", "token": "linear", "type": "consumer" },
-    { "name": "Vanta", "ats": "ashby", "token": "vanta", "type": "data-infra" },
-    { "name": "Replit", "ats": "ashby", "token": "replit", "type": "ai-lab" },
-    { "name": "Modal", "ats": "ashby", "token": "modal", "type": "data-infra" },
-    { "name": "Sentry", "ats": "ashby", "token": "sentry", "type": "data-infra" },
-    { "name": "Supabase", "ats": "ashby", "token": "supabase", "type": "data-infra" }
+    {
+      "name": "Stripe",
+      "ats": "greenhouse",
+      "token": "stripe",
+      "type": "fintech",
+      "domain": "stripe.com"
+    },
+    {
+      "name": "Databricks",
+      "ats": "greenhouse",
+      "token": "databricks",
+      "type": "data-infra",
+      "domain": "databricks.com"
+    },
+    {
+      "name": "Airbnb",
+      "ats": "greenhouse",
+      "token": "airbnb",
+      "type": "bigtech",
+      "domain": "airbnb.com"
+    },
+    {
+      "name": "Figma",
+      "ats": "greenhouse",
+      "token": "figma",
+      "type": "consumer",
+      "domain": "figma.com"
+    },
+    {
+      "name": "Datadog",
+      "ats": "greenhouse",
+      "token": "datadog",
+      "type": "data-infra",
+      "domain": "datadoghq.com"
+    },
+    {
+      "name": "Robinhood",
+      "ats": "greenhouse",
+      "token": "robinhood",
+      "type": "fintech",
+      "domain": "robinhood.com"
+    },
+    {
+      "name": "Coinbase",
+      "ats": "greenhouse",
+      "token": "coinbase",
+      "type": "fintech",
+      "domain": "coinbase.com"
+    },
+    {
+      "name": "Discord",
+      "ats": "greenhouse",
+      "token": "discord",
+      "type": "consumer",
+      "domain": "discord.com"
+    },
+    {
+      "name": "Dropbox",
+      "ats": "greenhouse",
+      "token": "dropbox",
+      "type": "bigtech",
+      "domain": "dropbox.com"
+    },
+    {
+      "name": "Pinterest",
+      "ats": "greenhouse",
+      "token": "pinterest",
+      "type": "bigtech",
+      "domain": "pinterest.com"
+    },
+    {
+      "name": "Lyft",
+      "ats": "greenhouse",
+      "token": "lyft",
+      "type": "bigtech",
+      "domain": "lyft.com"
+    },
+    {
+      "name": "Instacart",
+      "ats": "greenhouse",
+      "token": "instacart",
+      "type": "consumer",
+      "domain": "instacart.com"
+    },
+    {
+      "name": "Reddit",
+      "ats": "greenhouse",
+      "token": "reddit",
+      "type": "consumer",
+      "domain": "reddit.com"
+    },
+    {
+      "name": "Asana",
+      "ats": "greenhouse",
+      "token": "asana",
+      "type": "consumer",
+      "domain": "asana.com"
+    },
+    {
+      "name": "Brex",
+      "ats": "greenhouse",
+      "token": "brex",
+      "type": "fintech",
+      "domain": "brex.com"
+    },
+    {
+      "name": "Affirm",
+      "ats": "greenhouse",
+      "token": "affirm",
+      "type": "fintech",
+      "domain": "affirm.com"
+    },
+    {
+      "name": "Gusto",
+      "ats": "greenhouse",
+      "token": "gusto",
+      "type": "fintech",
+      "domain": "gusto.com"
+    },
+    {
+      "name": "Twilio",
+      "ats": "greenhouse",
+      "token": "twilio",
+      "type": "data-infra",
+      "domain": "twilio.com"
+    },
+    {
+      "name": "Cloudflare",
+      "ats": "greenhouse",
+      "token": "cloudflare",
+      "type": "data-infra",
+      "domain": "cloudflare.com"
+    },
+    {
+      "name": "MongoDB",
+      "ats": "greenhouse",
+      "token": "mongodb",
+      "type": "data-infra",
+      "domain": "mongodb.com"
+    },
+    {
+      "name": "Elastic",
+      "ats": "greenhouse",
+      "token": "elastic",
+      "type": "data-infra",
+      "domain": "elastic.co"
+    },
+    {
+      "name": "Samsara",
+      "ats": "greenhouse",
+      "token": "samsara",
+      "type": "data-infra",
+      "domain": "samsara.com"
+    },
+    {
+      "name": "Anthropic",
+      "ats": "greenhouse",
+      "token": "anthropic",
+      "type": "ai-lab",
+      "domain": "anthropic.com"
+    },
+    {
+      "name": "Scale AI",
+      "ats": "greenhouse",
+      "token": "scaleai",
+      "type": "ai-lab",
+      "domain": "scale.com"
+    },
+    {
+      "name": "DoorDash",
+      "ats": "greenhouse",
+      "token": "doordashusa",
+      "type": "bigtech",
+      "domain": "doordash.com"
+    },
+    {
+      "name": "Squarespace",
+      "ats": "greenhouse",
+      "token": "squarespace",
+      "type": "consumer",
+      "domain": "squarespace.com"
+    },
+    {
+      "name": "Peloton",
+      "ats": "greenhouse",
+      "token": "peloton",
+      "type": "consumer",
+      "domain": "onepeloton.com"
+    },
+    {
+      "name": "Duolingo",
+      "ats": "greenhouse",
+      "token": "duolingo",
+      "type": "consumer",
+      "domain": "duolingo.com"
+    },
+    {
+      "name": "GitLab",
+      "ats": "greenhouse",
+      "token": "gitlab",
+      "type": "data-infra",
+      "domain": "gitlab.com"
+    },
+    {
+      "name": "Okta",
+      "ats": "greenhouse",
+      "token": "okta",
+      "type": "data-infra",
+      "domain": "okta.com"
+    },
+    {
+      "name": "Flatiron Health",
+      "ats": "greenhouse",
+      "token": "flatironhealth",
+      "type": "healthtech",
+      "domain": "flatiron.com"
+    },
+    {
+      "name": "Oscar Health",
+      "ats": "greenhouse",
+      "token": "oscar",
+      "type": "healthtech",
+      "domain": "hioscar.com"
+    },
+    {
+      "name": "Zocdoc",
+      "ats": "greenhouse",
+      "token": "zocdoc",
+      "type": "healthtech",
+      "domain": "zocdoc.com"
+    },
+    {
+      "name": "Betterment",
+      "ats": "greenhouse",
+      "token": "betterment",
+      "type": "fintech",
+      "domain": "betterment.com"
+    },
+    {
+      "name": "Block",
+      "ats": "greenhouse",
+      "token": "block",
+      "type": "fintech",
+      "domain": "block.xyz"
+    },
+    {
+      "name": "Chime",
+      "ats": "greenhouse",
+      "token": "chime",
+      "type": "fintech",
+      "domain": "chime.com"
+    },
+    {
+      "name": "SoFi",
+      "ats": "greenhouse",
+      "token": "sofi",
+      "type": "fintech",
+      "domain": "sofi.com"
+    },
+    {
+      "name": "Carta",
+      "ats": "greenhouse",
+      "token": "carta",
+      "type": "fintech",
+      "domain": "carta.com"
+    },
+    {
+      "name": "Toast",
+      "ats": "greenhouse",
+      "token": "toast",
+      "type": "fintech",
+      "domain": "toasttab.com"
+    },
+    {
+      "name": "Twitch",
+      "ats": "greenhouse",
+      "token": "twitch",
+      "type": "consumer",
+      "domain": "twitch.tv"
+    },
+    {
+      "name": "Waymo",
+      "ats": "greenhouse",
+      "token": "waymo",
+      "type": "bigtech",
+      "domain": "waymo.com"
+    },
+    {
+      "name": "Roblox",
+      "ats": "greenhouse",
+      "token": "roblox",
+      "type": "consumer",
+      "domain": "roblox.com"
+    },
+    {
+      "name": "Vercel",
+      "ats": "greenhouse",
+      "token": "vercel",
+      "type": "data-infra",
+      "domain": "vercel.com"
+    },
+    {
+      "name": "Fivetran",
+      "ats": "greenhouse",
+      "token": "fivetran",
+      "type": "data-infra",
+      "domain": "fivetran.com"
+    },
+    {
+      "name": "Starburst",
+      "ats": "greenhouse",
+      "token": "starburst",
+      "type": "data-infra",
+      "domain": "starburst.io"
+    },
+    {
+      "name": "Cockroach Labs",
+      "ats": "greenhouse",
+      "token": "cockroachlabs",
+      "type": "data-infra",
+      "domain": "cockroachlabs.com"
+    },
+    {
+      "name": "Webflow",
+      "ats": "greenhouse",
+      "token": "webflow",
+      "type": "consumer",
+      "domain": "webflow.com"
+    },
+    {
+      "name": "Jane Street",
+      "ats": "greenhouse",
+      "token": "janestreet",
+      "type": "quant",
+      "domain": "janestreet.com"
+    },
+    {
+      "name": "Point72",
+      "ats": "greenhouse",
+      "token": "point72",
+      "type": "quant",
+      "domain": "point72.com"
+    },
+    {
+      "name": "Spotify",
+      "ats": "lever",
+      "token": "spotify",
+      "type": "bigtech",
+      "domain": "spotify.com"
+    },
+    {
+      "name": "Wealthfront",
+      "ats": "lever",
+      "token": "wealthfront",
+      "type": "fintech",
+      "domain": "wealthfront.com"
+    },
+    {
+      "name": "Zoox",
+      "ats": "lever",
+      "token": "zoox",
+      "type": "bigtech",
+      "domain": "zoox.com"
+    },
+    {
+      "name": "OpenAI",
+      "ats": "ashby",
+      "token": "openai",
+      "type": "ai-lab",
+      "domain": "openai.com"
+    },
+    {
+      "name": "Ramp",
+      "ats": "ashby",
+      "token": "ramp",
+      "type": "fintech",
+      "domain": "ramp.com"
+    },
+    {
+      "name": "Notion",
+      "ats": "ashby",
+      "token": "notion",
+      "type": "consumer",
+      "domain": "notion.so"
+    },
+    {
+      "name": "Cohere",
+      "ats": "ashby",
+      "token": "cohere",
+      "type": "ai-lab",
+      "domain": "cohere.com"
+    },
+    {
+      "name": "Perplexity",
+      "ats": "ashby",
+      "token": "perplexity",
+      "type": "ai-lab",
+      "domain": "perplexity.ai"
+    },
+    {
+      "name": "Confluent",
+      "ats": "ashby",
+      "token": "confluent",
+      "type": "data-infra",
+      "domain": "confluent.io"
+    },
+    {
+      "name": "Linear",
+      "ats": "ashby",
+      "token": "linear",
+      "type": "consumer",
+      "domain": "linear.app"
+    },
+    {
+      "name": "Vanta",
+      "ats": "ashby",
+      "token": "vanta",
+      "type": "data-infra",
+      "domain": "vanta.com"
+    },
+    {
+      "name": "Replit",
+      "ats": "ashby",
+      "token": "replit",
+      "type": "ai-lab",
+      "domain": "replit.com"
+    },
+    {
+      "name": "Modal",
+      "ats": "ashby",
+      "token": "modal",
+      "type": "data-infra",
+      "domain": "modal.com"
+    },
+    {
+      "name": "Sentry",
+      "ats": "ashby",
+      "token": "sentry",
+      "type": "data-infra",
+      "domain": "sentry.io"
+    },
+    {
+      "name": "Supabase",
+      "ats": "ashby",
+      "token": "supabase",
+      "type": "data-infra",
+      "domain": "supabase.com"
+    }
   ]
 }

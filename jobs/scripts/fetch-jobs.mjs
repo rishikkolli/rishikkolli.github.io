@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Pulls postings from public Greenhouse / Lever / Ashby job-board APIs, keeps the
 // full-time, sponsorship-compatible roles in target cities, scores them against
-// config/profile.json, and writes data/jobs.json for the static page.
+// config/profile.json, and writes data/jobs.enc.json (encrypted) for the static page.
 // No dependencies; needs Node 18+ (global fetch).
 
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { webcrypto as crypto } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,6 +15,30 @@ const MAX_PER_COMPANY = 3;
 const FETCH_TIMEOUT_MS = 20000;
 const MAX_RESPONSE_BYTES = 40 * 1024 * 1024;
 const CONCURRENCY = 6;
+
+const PBKDF2_ITERATIONS = 600000;
+
+// The page is public, so the results are published encrypted: AES-256-GCM with a key
+// derived from JOBS_PASSWORD (a GitHub Actions secret) via PBKDF2-SHA256. The browser
+// derives the same key from the typed password and decrypts locally.
+async function encrypt(obj, password) {
+  const enc = new TextEncoder();
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const base = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name: 'PBKDF2', hash: 'SHA-256', salt, iterations: PBKDF2_ITERATIONS },
+    base, { name: 'AES-GCM', length: 256 }, false, ['encrypt']);
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(JSON.stringify(obj))));
+  const b64 = u => Buffer.from(u).toString('base64');
+  return {
+    v: 1,
+    generatedAt: obj.generatedAt,
+    kdf: { name: 'PBKDF2', hash: 'SHA-256', iterations: PBKDF2_ITERATIONS, salt: b64(salt) },
+    cipher: { name: 'AES-GCM', iv: b64(iv) },
+    ct: b64(ct),
+  };
+}
 
 const readJson = async (rel) => JSON.parse(await readFile(join(ROOT, rel), 'utf8'));
 
@@ -214,6 +239,9 @@ async function main() {
   const excludeRes = profile.excludeTitle.map(t => new RegExp(`(?<![A-Za-z0-9])${escapeRe(t)}(?![A-Za-z0-9])`, 'i'));
   const prof = id => Math.max(0, Math.min(5, Number(profile.skills[id]) || 0));
 
+  let logos = {};
+  try { logos = JSON.parse(await readFile(join(ROOT, 'logos/manifest.json'), 'utf8')); } catch {}
+
   const errors = [];
   const perCompany = await pool(companies, CONCURRENCY, async c => {
     const ep = ENDPOINTS[c.ats];
@@ -221,7 +249,7 @@ async function main() {
     const [url, normalize] = ep(c);
     try {
       const rows = normalize(c, await fetchJson(url));
-      return rows.map(r => ({ ...r, company: c.name, companyType: c.type }));
+      return rows.map(r => ({ ...r, company: c.name, companyType: c.type, token: c.token }));
     } catch (e) {
       errors.push(`${c.name}: ${e.message}`);
       return [];
@@ -291,6 +319,7 @@ async function main() {
       title: r.title,
       company: r.j.company,
       companyType: r.j.companyType,
+      logo: /^[a-z0-9-]+\.(png|svg|ico|jpg|webp)$/.test(logos[r.j.token] || '') ? logos[r.j.token] : null,
       family: r.fam.id,
       location: cleanText(r.j.location, 160),
       cities: r.loc.cities,
@@ -325,8 +354,9 @@ async function main() {
   const seenPath = join(ROOT, 'data/seen.json');
   let seen = {};
   try { seen = JSON.parse(await readFile(seenPath, 'utf8')); } catch {}
-  const firstRun = Object.keys(seen).length === 0;
   const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  // No history from an earlier day means everything is "new"; don't badge it all
+  const firstRun = !Object.values(seen).some(d => d < today);
   for (const s of scored) if (!seen[s.id]) seen[s.id] = today;
   const cutoff = new Date(Date.now() - 60 * 864e5).toISOString().slice(0, 10);
   for (const k of Object.keys(seen)) if (seen[k] < cutoff) delete seen[k];
@@ -350,8 +380,14 @@ async function main() {
     console.error(`Refusing to overwrite data: fetched=${all.length} relevant=${relevant.length}`, errors);
     process.exit(1);
   }
+  const password = process.env.JOBS_PASSWORD;
+  if (!password) {
+    console.error('JOBS_PASSWORD is not set; refusing to publish unencrypted results.');
+    process.exit(1);
+  }
   await mkdir(join(ROOT, 'data'), { recursive: true });
-  await writeFile(join(ROOT, 'data/jobs.json'), JSON.stringify(out, null, 1) + '\n');
+  await writeFile(join(ROOT, 'data/jobs.enc.json'), JSON.stringify(await encrypt(out, password)) + '\n');
+  await rm(join(ROOT, 'data/jobs.json'), { force: true }); // never leave plaintext behind
   await writeFile(seenPath, JSON.stringify(seen) + '\n');
   console.log(`fetched ${all.length} postings from ${out.stats.companiesOk}/${companies.length} boards; ${relevant.length} relevant; wrote top ${top.length}`);
   console.log('filtered out:', reasons);

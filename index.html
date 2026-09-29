@@ -124,6 +124,9 @@
     display:flex; align-items:center; gap:10px;
     margin-bottom:18px;
   }
+  /* reads as plain text; only a hover/focus hint gives it away */
+  .quiet-link{ color:inherit; text-decoration:none; border-bottom:1px dotted transparent; transition:border-color 0.2s ease; }
+  .quiet-link:hover, .quiet-link:focus-visible{ border-bottom-color:currentColor; outline:none; }
   .eyebrow::before{
     content:""; width:8px; height:8px; border-radius:50%;
     background:var(--accent); display:inline-block;
@@ -286,7 +289,7 @@
     flex:none; height:46px; border-radius:8px; background:#FFFFFF; border:1px solid rgba(0,0,0,0.06);
     display:flex; align-items:center; justify-content:center; padding:6px 10px; margin-bottom:4px;
   }
-  .ht-plaque img{ max-height:32px; max-width:100%; object-fit:contain; display:block; -webkit-user-drag:none; }
+  .ht-plaque img{ width:100%; height:100%; object-fit:contain; display:block; -webkit-user-drag:none; }
   .ht-when{ font-family:"IBM Plex Mono", monospace; font-size:0.72rem; color:var(--accent-deep); letter-spacing:0.02em; }
   .ht-title{ font-weight:600; font-size:0.93rem; line-height:1.3; color:var(--ink); }
   .ht-org{ font-size:0.8rem; color:var(--ink-faint); }
@@ -313,30 +316,14 @@
   /* ---------- Brand marks ---------- */
   .heading-row{ display:flex; gap:14px; align-items:flex-start; }
   .brand-mark{
-    flex:none; width:44px; height:44px; border-radius:11px;
+    flex:none; width:64px; height:44px; border-radius:10px;
     display:flex; align-items:center; justify-content:center;
-    font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:0.62rem;
-    letter-spacing:0.02em; text-align:center; line-height:1.1;
+    background:#FFFFFF; padding:5px 7px;
     border:1px solid rgba(0,0,0,0.08); box-shadow:var(--shadow);
-    position:relative; overflow:hidden;
   }
-  .brand-mark span{ position:relative; z-index:1; }
-  .mark-nyu{ background:#57068C; color:#F2E6FA; }
-  .mark-asu{ background:#8C1D40; color:#FFC627; }
-  .mark-asu::after{
-    content:""; position:absolute; right:-10px; bottom:-10px;
-    width:26px; height:26px; background:#FFC627; opacity:0.9;
-    clip-path:polygon(100% 0, 0 100%, 100% 100%);
-  }
-  .mark-commonspirit{ background:linear-gradient(135deg,#1B3A6B,#2F6FA6); color:#EAF3FC; }
-  .mark-caoe{ background:#2B3A42; color:#9FD8D0; font-size:0.56rem; }
-  .mark-docyou{ background:#FFFFFF; width:auto; padding:0 7px; }
-  .mark-docyou img{ height:22px; width:auto; display:block; position:relative; z-index:1; }
-  .mark-csaa{ background:#0B2545; color:#FF6A5E; font-size:0.56rem; }
-  .mark-statefarm{ background:#D52B1E; color:#FFFFFF; }
-  .mark-statefarm::before{
-    content:""; position:absolute; inset:6px; border:1.5px solid rgba(255,255,255,0.55); border-radius:50%;
-  }
+  /* any logo, any aspect ratio: scale down to fit the box without cropping */
+  .brand-mark img{ width:100%; height:100%; object-fit:contain; display:block; }
+  @media (max-width:640px){ .brand-mark{ width:56px; height:40px; } }
 
   /* ---------- Tags ---------- */
   .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
@@ -503,7 +490,7 @@
 <div class="wrap">
 
   <section class="hero" style="border-top:none;">
-    <p class="eyebrow">Brooklyn, NY · Open to new opportunities</p>
+    <p class="eyebrow">Brooklyn, NY · <a class="quiet-link" href="jobs/">Open to new opportunities</a></p>
     <h1>Rishik Kolli</h1>
     <p class="role">
       <strong>Data engineer and AI systems builder</strong> — I turn raw clinical, financial, and operational
@@ -631,7 +618,7 @@
         </div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-commonspirit" aria-hidden="true"><span>CSH</span></div>
+            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/commonspirit-mark.png" alt=""></div>
             <div>
               <div class="role-title">Associate Product Data Engineer</div>
               <div class="role-org">CommonSpirit Health</div>
@@ -656,7 +643,7 @@
         <div class="role-when">May 2024 — Jul 2024</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-caoe" aria-hidden="true"><span>CAOE</span></div>
+            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/asu.png" alt=""></div>
             <div>
               <div class="role-title">Operations Analyst</div>
               <div class="role-org">Center for Accelerating Operational Efficiency (CAOE)</div>
@@ -679,7 +666,7 @@
         <div class="role-when">Aug 2022 — May 2024</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-docyou" aria-hidden="true"><img src="assets/logos/docyou.png" alt=""></div>
+            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/docyou.png" alt=""></div>
             <div>
               <div class="role-title">React Native Developer &amp; Software Team Lead</div>
               <div class="role-org">DocYou Enterprises LLC</div>
@@ -702,7 +689,7 @@
         <div class="role-when">May 2023 — Jul 2023</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-csaa" aria-hidden="true"><span>CSAA</span></div>
+            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/csaa-mark.png" alt=""></div>
             <div>
               <div class="role-title">Data Science Research Intern</div>
               <div class="role-org">CSAA Insurance Group, a AAA Insurer</div>
@@ -725,7 +712,7 @@
         <div class="role-when">May 2022 — Dec 2022</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-statefarm" aria-hidden="true"><span>SF</span></div>
+            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/statefarm-mark.png" alt=""></div>
             <div>
               <div class="role-title">Cloud Software Engineer Intern</div>
               <div class="role-org">State Farm</div>
@@ -748,7 +735,7 @@
         <div class="role-when">Aug 2021 — May 2022</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-asu" aria-hidden="true"><span>ASU</span></div>
+            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/asu.png" alt=""></div>
             <div>
               <div class="role-title">Teaching Assistant — CSE 310 (Data Structures &amp; Algorithms) &amp; FSE 404 (Community Service Engineering)</div>
               <div class="role-org">Ira A. Fulton Schools of Engineering, Arizona State University</div>
@@ -1027,7 +1014,7 @@
     <div class="edu-card reveal">
       <div class="edu-top">
         <div class="heading-row">
-          <div class="brand-mark mark-nyu" aria-hidden="true"><span>NYU</span></div>
+          <div class="brand-mark" aria-hidden="true"><img src="assets/logos/nyu.svg" alt=""></div>
           <div>
             <div class="edu-degree">M.S. in Computer Science, AI Concentration</div>
             <div class="edu-school">New York University</div>
@@ -1049,7 +1036,7 @@
     <div class="edu-card reveal">
       <div class="edu-top">
         <div class="heading-row">
-          <div class="brand-mark mark-asu" aria-hidden="true"><span>ASU</span></div>
+          <div class="brand-mark" aria-hidden="true"><img src="assets/logos/asu.png" alt=""></div>
           <div>
             <div class="edu-degree">B.S. Computer Science — Minor in Data Science &amp; Real Estate</div>
             <div class="edu-school">Arizona State University</div>

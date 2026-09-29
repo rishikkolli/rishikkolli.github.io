@@ -32,14 +32,20 @@ jobs:
         run: |
           hour=$(TZ=America/New_York date +%-H)
           today=$(TZ=America/New_York date +%F)
-          last=$(node -e "try{const d=require('./jobs/data/jobs.json');console.log(new Date(d.generatedAt).toLocaleDateString('en-CA',{timeZone:'America/New_York'}))}catch{console.log('')}")
+          last=$(node -e "try{const d=require('./jobs/data/jobs.enc.json');console.log(new Date(d.generatedAt).toLocaleDateString('en-CA',{timeZone:'America/New_York'}))}catch{console.log('')}")
           if [ "$hour" -lt 7 ] || [ "$last" = "$today" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "Skipping: ET hour=$hour, last refresh=$last"
           fi
 
+      - name: Download logos for any new companies
+        if: steps.guard.outputs.skip != 'true'
+        run: node jobs/scripts/fetch-logos.mjs || echo "logo fetch failed; continuing"
+
       - name: Fetch and score postings
         if: steps.guard.outputs.skip != 'true'
+        env:
+          JOBS_PASSWORD: ${{ secrets.JOBS_PASSWORD }}
         run: node jobs/scripts/fetch-jobs.mjs
 
       - name: Commit refreshed data
@@ -47,7 +53,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add jobs/data/jobs.json jobs/data/seen.json
+          git add -A jobs/data jobs/logos
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0

@@ -14,7 +14,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="locked">
+<div class="lock" id="lock">
+  <form class="lock-card" id="lockForm" autocomplete="off">
+    <p class="eyebrow">Private</p>
+    <h1>Job Radar</h1>
+    <p class="lock-note">Enter the password to decrypt today&rsquo;s results.</p>
+    <label class="visually-hidden" for="lockPass">Password</label>
+    <input id="lockPass" type="password" required autocomplete="current-password" spellcheck="false" autofocus />
+    <button class="apply" id="lockBtn" type="submit">Unlock</button>
+    <p class="lock-err" id="lockErr" role="alert" hidden></p>
+    <a class="lock-back" href="../">&larr; back to portfolio</a>
+  </form>
+</div>
 <header class="top">
   <div class="wrap top-inner">
     <a class="brand" href="../">Rishik Kolli<span>.</span></a>

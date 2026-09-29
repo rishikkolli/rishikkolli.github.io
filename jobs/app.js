@@ -66,12 +66,76 @@
     });
   }
 
-  Promise.all([getJson('data/jobs.json'), getJson('config/skills-catalog.json'), getJson('config/interview.json')])
-    .then(function (res) { render(res[0], res[1], res[2]); })
-    .catch(function (err) {
-      var box = el('p', { class: 'load-error', text: 'Could not load today’s data (' + err.message + '). Try again in a minute.' });
-      document.getElementById('jobList').appendChild(el('li', null, [box]));
+  // ---------- unlock: derive the key from the password and decrypt in the browser ----------
+  var SESSION_KEY = 'jobRadarKey';
+  function b64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
+  function deriveKey(password, payload) {
+    var enc = new TextEncoder();
+    return crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']).then(function (base) {
+      return crypto.subtle.deriveKey(
+        { name: 'PBKDF2', hash: payload.kdf.hash, salt: b64(payload.kdf.salt), iterations: payload.kdf.iterations },
+        base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
     });
+  }
+  function decrypt(key, payload) {
+    return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(payload.cipher.iv) }, key, b64(payload.ct)).then(function (buf) {
+      return JSON.parse(new TextDecoder().decode(buf));
+    });
+  }
+
+  var lockForm = document.getElementById('lockForm');
+  var lockPass = document.getElementById('lockPass');
+  var lockBtn = document.getElementById('lockBtn');
+  var lockErr = document.getElementById('lockErr');
+  function showErr(msg) { lockErr.textContent = msg; lockErr.hidden = false; }
+
+  var payloadP = getJson('data/jobs.enc.json');
+  var configP = Promise.all([getJson('config/skills-catalog.json'), getJson('config/interview.json')]);
+
+  function open(data) {
+    return configP.then(function (cfg) {
+      document.body.classList.remove('locked');
+      render(data, cfg[0], cfg[1]);
+    });
+  }
+
+  // Same-tab convenience: reuse the derived key (never the password) until the tab closes.
+  // The salt changes on every refresh, so a stale key simply fails and we ask again.
+  payloadP.then(function (payload) {
+    var saved = null;
+    try { saved = sessionStorage.getItem(SESSION_KEY); } catch (e) {}
+    if (!saved) return;
+    return crypto.subtle.importKey('raw', b64(saved), 'AES-GCM', false, ['decrypt'])
+      .then(function (key) { return decrypt(key, payload); })
+      .then(open)
+      .catch(function () { try { sessionStorage.removeItem(SESSION_KEY); } catch (e) {} });
+  }).catch(function () {});
+
+  lockForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    lockErr.hidden = true;
+    if (!window.crypto || !crypto.subtle) { showErr('This browser can\u2019t decrypt the data (needs HTTPS and a modern browser).'); return; }
+    lockBtn.disabled = true;
+    lockBtn.textContent = 'Unlocking\u2026';
+    var pw = lockPass.value;
+    payloadP.then(function (payload) {
+      return deriveKey(pw, payload).then(function (key) {
+        return decrypt(key, payload).then(function (data) {
+          crypto.subtle.exportKey('raw', key).then(function (raw) {
+            try { sessionStorage.setItem(SESSION_KEY, btoa(String.fromCharCode.apply(null, new Uint8Array(raw)))); } catch (err) {}
+          });
+          lockPass.value = '';
+          return open(data);
+        }, function () { throw new Error('bad-password'); });
+      });
+    }).catch(function (err) {
+      showErr(err && err.message === 'bad-password' ? 'Wrong password.' : 'Could not load today\u2019s data. Try again in a minute.');
+      lockPass.select();
+    }).then(function () {
+      lockBtn.disabled = false;
+      lockBtn.textContent = 'Unlock';
+    });
+  });
 
   function render(data, catalogFile, interview) {
     var catalog = {};
@@ -170,10 +234,29 @@
 
       return el('li', { class: 'job' }, [
         ring,
-        el('div', null, [el('h3', { text: j.title }), el('div', { class: 'job-co', text: j.company }), meta, tags]),
+        el('div', null, [
+          el('div', { class: 'job-head' }, [
+            logoBox(j),
+            el('div', null, [el('h3', { text: j.title }), el('div', { class: 'job-co', text: j.company })])
+          ]),
+          meta, tags
+        ]),
         actions,
         prepDetails(j)
       ]);
+    }
+
+    function logoBox(j) {
+      var box = el('div', { class: 'co-logo', 'aria-hidden': 'true' });
+      // manifest file names are validated server-side; re-check before building the path
+      if (j.logo && /^[a-z0-9-]+\.(png|svg|ico|jpg|webp)$/.test(j.logo)) {
+        var img = el('img', { src: 'logos/' + j.logo, alt: '', loading: 'lazy', decoding: 'async' });
+        img.addEventListener('error', function () { box.textContent = j.company.charAt(0); });
+        box.appendChild(img);
+      } else {
+        box.textContent = (j.company || '?').charAt(0);
+      }
+      return box;
     }
 
     function prepDetails(j) {
