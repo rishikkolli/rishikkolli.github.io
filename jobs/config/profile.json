@@ -1,7 +1,7 @@
 {
   "_comment": "Edit freely. 'skills' maps a skill id from skills-catalog.json to a self-rating 0-5 (0 = never used, 3 = shipped it at work, 5 = could teach it / pass a deep interview on it). Ratings are deliberately conservative so listed-but-rusty skills still surface as upskill targets. Anything not listed counts as 0.",
   "name": "Rishik Kolli",
-  "summary": "M.S. CS (AI) at NYU (2026), ~2 years of data engineering at CommonSpirit Health plus SWE/cloud/DS internships. Needs H-1B sponsorship; targeting full-time roles.",
+  "summary": "M.S. CS (AI) at NYU (expected Dec 2026), ~2 years of data engineering at CommonSpirit Health plus SWE/cloud/DS internships. Needs H-1B sponsorship; targeting full-time roles.",
   "needsSponsorship": true,
   "employment": "full-time",
   "locations": [

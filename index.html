@@ -287,8 +287,6 @@
     display:flex; align-items:center; justify-content:center; padding:6px 10px; margin-bottom:4px;
   }
   .ht-plaque img{ max-height:32px; max-width:100%; object-fit:contain; display:block; -webkit-user-drag:none; }
-  .ht-plaque .brand-mark{ width:32px; height:32px; border-radius:8px; box-shadow:none; font-size:0.56rem; }
-  .ht-plaque .ht-wordmark{ font-family:"IBM Plex Sans", sans-serif; font-weight:600; font-size:0.9rem; color:#0E7C6B; margin-left:8px; }
   .ht-when{ font-family:"IBM Plex Mono", monospace; font-size:0.72rem; color:var(--accent-deep); letter-spacing:0.02em; }
   .ht-title{ font-weight:600; font-size:0.93rem; line-height:1.3; color:var(--ink); }
   .ht-org{ font-size:0.8rem; color:var(--ink-faint); }
@@ -332,7 +330,8 @@
   }
   .mark-commonspirit{ background:linear-gradient(135deg,#1B3A6B,#2F6FA6); color:#EAF3FC; }
   .mark-caoe{ background:#2B3A42; color:#9FD8D0; font-size:0.56rem; }
-  .mark-docyou{ background:#0E7C6B; color:#E6FBF5; }
+  .mark-docyou{ background:#FFFFFF; width:auto; padding:0 7px; }
+  .mark-docyou img{ height:22px; width:auto; display:block; position:relative; z-index:1; }
   .mark-csaa{ background:#0B2545; color:#FF6A5E; font-size:0.56rem; }
   .mark-statefarm{ background:#D52B1E; color:#FFFFFF; }
   .mark-statefarm::before{
@@ -516,7 +515,7 @@
       <span>✉️ rishikkolli@gmail.com
         <button class="copy-btn" data-copy="rishikkolli@gmail.com" type="button" aria-label="Copy email address" title="Copy email">⧉<span class="copy-label">Copied</span></button>
       </span>
-      <span>🎓 M.S. Computer Science (AI), NYU — 2026</span>
+      <span>🎓 M.S. Computer Science (AI), NYU — Dec 2026</span>
     </div>
     <div class="cta-row">
       <a class="btn btn-primary" href="mailto:rishikkolli@gmail.com">Email me</a>
@@ -566,7 +565,7 @@
           <li class="ht-event up">
             <span class="ht-dot" aria-hidden="true"></span><span class="ht-stem" aria-hidden="true"></span>
             <a class="ht-card" href="#role-docyou">
-              <div class="ht-plaque"><div class="brand-mark mark-docyou" aria-hidden="true"><span>DY</span></div><span class="ht-wordmark">DocYou</span></div>
+              <div class="ht-plaque"><img src="assets/logos/docyou.png" alt="DocYou"></div>
               <div class="ht-when">Aug 2022 — May 2024</div>
               <div class="ht-title">React Native Developer &amp; Team Lead</div>
               <div class="ht-org">DocYou Enterprises</div>
@@ -617,7 +616,7 @@
           <li class="ht-year" aria-hidden="true"><span>2026</span></li>
           <li class="ht-mile up">
             <span class="ht-diamond" aria-hidden="true"></span>
-            <div class="ht-flag"><strong>2026</strong>M.S. expected — seeking full-time roles</div>
+            <div class="ht-flag"><strong>DEC 2026</strong>M.S. expected — seeking full-time roles</div>
           </li>
         </ol>
       </div>
@@ -680,7 +679,7 @@
         <div class="role-when">Aug 2022 — May 2024</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark mark-docyou" aria-hidden="true"><span>DY</span></div>
+            <div class="brand-mark mark-docyou" aria-hidden="true"><img src="assets/logos/docyou.png" alt=""></div>
             <div>
               <div class="role-title">React Native Developer &amp; Software Team Lead</div>
               <div class="role-org">DocYou Enterprises LLC</div>
@@ -1035,7 +1034,7 @@
             <div class="edu-loc">Brooklyn, NY</div>
           </div>
         </div>
-        <div class="edu-when">2025 — 2026</div>
+        <div class="edu-when">Aug 2025 — Dec 2026 (expected)</div>
       </div>
 
       <div class="coursework-label">Coursework</div>
