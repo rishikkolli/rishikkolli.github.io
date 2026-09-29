@@ -1,0 +1,57 @@
+name: Refresh job board
+
+on:
+  schedule:
+    # 7:00 AM America/New_York is 11:00 UTC in summer (EDT) and 12:00 UTC in winter (EST).
+    # Both slots fire; the guard step below makes only the first one at/after 7 AM ET do work.
+    - cron: '0 11 * * *'
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: job-board-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Only run once per day, at or after 7 AM ET
+        id: guard
+        if: github.event_name == 'schedule'
+        run: |
+          hour=$(TZ=America/New_York date +%-H)
+          today=$(TZ=America/New_York date +%F)
+          last=$(node -e "try{const d=require('./jobs/data/jobs.json');console.log(new Date(d.generatedAt).toLocaleDateString('en-CA',{timeZone:'America/New_York'}))}catch{console.log('')}")
+          if [ "$hour" -lt 7 ] || [ "$last" = "$today" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Skipping: ET hour=$hour, last refresh=$last"
+          fi
+
+      - name: Fetch and score postings
+        if: steps.guard.outputs.skip != 'true'
+        run: node jobs/scripts/fetch-jobs.mjs
+
+      - name: Commit refreshed data
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jobs/data/jobs.json jobs/data/seen.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Refresh job board data ($(TZ=America/New_York date +%F))"
+          git pull --rebase origin main
+          git push origin HEAD:main

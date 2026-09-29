@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Job Radar · Rishik Kolli</title>
+<meta name="description" content="Daily-refreshed full-time roles at H-1B-sponsoring employers, scored against Rishik Kolli's experience, with skill-gap analysis." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
+<meta name="color-scheme" content="dark" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="../">Rishik Kolli<span>.</span></a>
+    <nav class="top-links">
+      <a href="#upskill">Upskill</a>
+      <a href="#matches">Matches</a>
+      <a href="#method">Method</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Job Radar · full-time · H-1B-friendly employers</p>
+    <h1>20 best-fit roles, refreshed every morning.</h1>
+    <p class="lede">Scanned daily at 7:00 AM ET across public job boards of companies with a track record of sponsoring visas,
+      filtered to NYC, SF, LA, San Diego, Philadelphia, Jersey City, Seattle, Boston, DC, Miami, Austin and US-remote,
+      then scored against my experience.</p>
+    <div class="stats" id="stats" aria-live="polite">
+      <div class="stat"><span class="num" data-stat="updated">—</span><span class="label">last refresh</span></div>
+      <div class="stat"><span class="num" data-stat="fetched">—</span><span class="label">postings scanned</span></div>
+      <div class="stat"><span class="num" data-stat="relevant">—</span><span class="label">relevant to my profile</span></div>
+      <div class="stat"><span class="num" data-stat="sponsor">—</span><span class="label">dropped: "can't sponsor"</span></div>
+    </div>
+  </section>
+
+  <section id="upskill" class="panel upskill">
+    <div class="section-head">
+      <div>
+        <p class="kicker">Priority #1</p>
+        <h2>What to upskill on next</h2>
+      </div>
+      <p class="section-note">Ranked by <strong>how often relevant postings ask for a skill</strong> × <strong>how far I am from mastery</strong>.
+        Skills already on my resume still show up here until they're rated 5/5, because listed is not the same as interview-ready.</p>
+    </div>
+    <div class="legend">
+      <span class="chip missing">Missing — not on my resume</span>
+      <span class="chip sharpen">Sharpen — listed, not interview-ready</span>
+      <span class="chip maintain">Maintain — strong, keep current</span>
+    </div>
+    <ol class="skill-grid" id="skillGrid"></ol>
+    <button class="ghost-btn" id="skillMore" type="button" hidden>Show all in-demand skills</button>
+    <div class="skill-table-wrap" id="skillTableWrap" hidden>
+      <table class="skill-table">
+        <thead><tr><th scope="col">Skill</th><th scope="col">In postings</th><th scope="col">My level</th><th scope="col">Status</th><th scope="col">Priority</th></tr></thead>
+        <tbody id="skillTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="matches" class="matches">
+    <div class="section-head">
+      <div>
+        <p class="kicker">Today</p>
+        <h2>Top matches</h2>
+      </div>
+      <p class="section-note">Match % blends skill overlap with my self-ratings, role fit, and years required. Tags show where each posting overlaps with, or goes past, what I have.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter matches">
+      <div class="seg" id="famFilter">
+        <button type="button" data-fam="all" aria-pressed="true">All</button>
+        <button type="button" data-fam="data-eng" aria-pressed="false">Data Eng</button>
+        <button type="button" data-fam="ml-eng" aria-pressed="false">ML / AI</button>
+        <button type="button" data-fam="swe" aria-pressed="false">SWE</button>
+        <button type="button" data-fam="data-sci" aria-pressed="false">Data Science</button>
+      </div>
+      <label class="select">
+        <span class="visually-hidden">City</span>
+        <select id="cityFilter"><option value="all">All locations</option></select>
+      </label>
+      <label class="select">
+        <span class="visually-hidden">Sort</span>
+        <select id="sortBy">
+          <option value="match">Sort: best match</option>
+          <option value="new">Sort: newest</option>
+        </select>
+      </label>
+    </div>
+    <p class="empty" id="emptyState" hidden>No matches for this filter today.</p>
+    <ol class="job-list" id="jobList"></ol>
+  </section>
+
+  <section id="method" class="panel method">
+    <h2>How this works</h2>
+    <ul>
+      <li><strong>Sources:</strong> public, key-less Greenhouse, Lever and Ashby job-board APIs for employers with a public track record of H-1B filings. A GitHub Action fetches them daily at 7:00 AM ET and commits the result, so the page is static and hosted free on GitHub Pages.</li>
+      <li><strong>Filters:</strong> full-time only; early-career to mid-level titles (senior, staff, principal, manager, intern and contract roles excluded); target cities or US-remote; postings that say they cannot sponsor, require citizenship, or require a security clearance are removed.</li>
+      <li><strong>Sponsorship:</strong> "Sponsorship mentioned" means the posting text explicitly mentions visa sponsorship. "Not stated" is common and not a no, but confirm with the recruiter on the first call.</li>
+      <li><strong>Interview notes</strong> are typical loops for that kind of company, drawn from public candidate reports, not insider info. Always check recent reports and ask the recruiter.</li>
+      <li><strong>Data handling:</strong> all posting text is treated as untrusted. It's stripped of HTML on fetch and only ever rendered as plain text, links must be https, and a strict Content-Security-Policy blocks inline and third-party scripts.</li>
+    </ul>
+    <p class="errors" id="errors" hidden></p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span>Built by Rishik Kolli · <a href="../">portfolio</a></span>
+  <span id="footUpdated"></span>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1125 @@
+{
+  "_comment": "Skills scanned across every relevant posting. 'terms' match case-insensitively on word boundaries; 'caseTerms' match case-sensitively (for ambiguous short names like Go or R). 'resources' are free. 'project' is a portfolio build that proves the skill.",
+  "skills": [
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "Languages",
+      "terms": [
+        "python"
+      ],
+      "resources": [
+        {
+          "title": "Official Python Tutorial",
+          "url": "https://docs.python.org/3/tutorial/"
+        },
+        {
+          "title": "Real Python (free articles)",
+          "url": "https://realpython.com/"
+        }
+      ],
+      "project": "Package a reusable CLI (typer + pytest + GitHub Actions) that validates CSV schemas and publish it to PyPI."
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "category": "Data",
+      "terms": [
+        "sql"
+      ],
+      "resources": [
+        {
+          "title": "SQLBolt (interactive)",
+          "url": "https://sqlbolt.com/"
+        },
+        {
+          "title": "Mode SQL Tutorial (advanced: window functions)",
+          "url": "https://mode.com/sql-tutorial/"
+        },
+        {
+          "title": "DataLemur SQL interview questions",
+          "url": "https://datalemur.com/"
+        }
+      ],
+      "project": "Solve 50 DataLemur/LeetCode SQL problems and write up the 10 hardest (window functions, gaps-and-islands, recursive CTEs) in a repo."
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "category": "Languages",
+      "terms": [
+        "java",
+        "jvm",
+        "spring boot"
+      ],
+      "resources": [
+        {
+          "title": "dev.java Learn",
+          "url": "https://dev.java/learn/"
+        },
+        {
+          "title": "Spring Guides",
+          "url": "https://spring.io/guides"
+        }
+      ],
+      "project": "Build a Spring Boot REST service with Postgres, Flyway migrations, integration tests (Testcontainers) and a Dockerfile."
+    },
+    {
+      "id": "scala",
+      "name": "Scala",
+      "category": "Languages",
+      "terms": [
+        "scala"
+      ],
+      "resources": [
+        {
+          "title": "Tour of Scala",
+          "url": "https://docs.scala-lang.org/tour/tour-of-scala.html"
+        }
+      ],
+      "project": "Port one PySpark job to Scala Spark and benchmark both on the same dataset."
+    },
+    {
+      "id": "go",
+      "name": "Go",
+      "category": "Languages",
+      "terms": [
+        "golang"
+      ],
+      "caseTerms": [
+        "Go"
+      ],
+      "resources": [
+        {
+          "title": "A Tour of Go",
+          "url": "https://go.dev/tour/"
+        },
+        {
+          "title": "Go by Example",
+          "url": "https://gobyexample.com/"
+        }
+      ],
+      "project": "Write a concurrent web crawler / rate-limited API gateway in Go with goroutines, context cancellation and benchmarks."
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": "Languages",
+      "terms": [
+        "typescript"
+      ],
+      "resources": [
+        {
+          "title": "TypeScript Handbook",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+        }
+      ],
+      "project": "Rewrite a small JS project in strict TypeScript with zod-validated API types end to end."
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "category": "Languages",
+      "terms": [
+        "javascript",
+        "ecmascript"
+      ],
+      "resources": [
+        {
+          "title": "javascript.info",
+          "url": "https://javascript.info/"
+        },
+        {
+          "title": "MDN JavaScript Guide",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+        }
+      ],
+      "project": "Ship a dependency-free interactive dashboard (like this job board) with accessible, tested vanilla JS."
+    },
+    {
+      "id": "cpp",
+      "name": "C / C++",
+      "category": "Languages",
+      "terms": [
+        "c++",
+        "cpp"
+      ],
+      "resources": [
+        {
+          "title": "LearnCpp.com",
+          "url": "https://www.learncpp.com/"
+        }
+      ],
+      "project": "Implement an LRU cache and a thread pool in modern C++ (C++17/20) with unit tests and a benchmark."
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "category": "Languages",
+      "terms": [
+        "rust"
+      ],
+      "resources": [
+        {
+          "title": "The Rust Book",
+          "url": "https://doc.rust-lang.org/book/"
+        }
+      ],
+      "project": "Write a fast log parser CLI in Rust and compare it against a Python version."
+    },
+    {
+      "id": "r",
+      "name": "R",
+      "category": "Languages",
+      "terms": [
+        "rstudio",
+        "tidyverse",
+        "ggplot2"
+      ],
+      "caseTerms": [
+        "R"
+      ],
+      "resources": [
+        {
+          "title": "R for Data Science (2e)",
+          "url": "https://r4ds.hadley.nz/"
+        }
+      ],
+      "project": "Publish a Quarto report analyzing a public health dataset with tidyverse and ggplot2."
+    },
+    {
+      "id": "spark",
+      "name": "Apache Spark",
+      "category": "Data",
+      "terms": [
+        "spark",
+        "pyspark",
+        "spark sql"
+      ],
+      "resources": [
+        {
+          "title": "Spark Quick Start",
+          "url": "https://spark.apache.org/docs/latest/quick-start.html"
+        },
+        {
+          "title": "Databricks Free Edition",
+          "url": "https://www.databricks.com/learn/free-edition"
+        },
+        {
+          "title": "DataTalksClub DE Zoomcamp (batch module)",
+          "url": "https://github.com/DataTalksClub/data-engineering-zoomcamp"
+        }
+      ],
+      "project": "Process NYC TLC trip data (tens of GB) with PySpark: partitioning, broadcast joins, skew handling; document the Spark UI before/after tuning."
+    },
+    {
+      "id": "kafka",
+      "name": "Kafka / Streaming",
+      "category": "Data",
+      "terms": [
+        "kafka",
+        "kinesis",
+        "pub/sub",
+        "pubsub",
+        "streaming",
+        "event streaming",
+        "flink",
+        "spark streaming"
+      ],
+      "resources": [
+        {
+          "title": "Confluent Developer courses",
+          "url": "https://developer.confluent.io/courses/"
+        },
+        {
+          "title": "Apache Flink: Try Flink",
+          "url": "https://nightlies.apache.org/flink/flink-docs-stable/docs/try-flink/local_installation/"
+        }
+      ],
+      "project": "Stream a live public feed (e.g. Wikimedia recent changes) through Kafka into Postgres/ClickHouse with exactly-once semantics and a live dashboard."
+    },
+    {
+      "id": "airflow",
+      "name": "Airflow / Orchestration",
+      "category": "Data",
+      "terms": [
+        "airflow",
+        "dagster",
+        "prefect",
+        "orchestration"
+      ],
+      "resources": [
+        {
+          "title": "Airflow Tutorial",
+          "url": "https://airflow.apache.org/docs/apache-airflow/stable/tutorial/fundamentals.html"
+        },
+        {
+          "title": "Dagster University (free)",
+          "url": "https://courses.dagster.io/"
+        }
+      ],
+      "project": "Orchestrate a daily ELT pipeline in Airflow or Dagster with retries, SLAs, backfills and data-quality checks."
+    },
+    {
+      "id": "dbt",
+      "name": "dbt",
+      "category": "Data",
+      "terms": [
+        "dbt"
+      ],
+      "resources": [
+        {
+          "title": "dbt Fundamentals (free course)",
+          "url": "https://learn.getdbt.com/courses/dbt-fundamentals"
+        }
+      ],
+      "project": "Model a public dataset in dbt (staging → marts), with tests, docs site, and incremental models on BigQuery or DuckDB."
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "category": "Data",
+      "terms": [
+        "snowflake"
+      ],
+      "resources": [
+        {
+          "title": "Snowflake Quickstarts",
+          "url": "https://quickstarts.snowflake.com/"
+        }
+      ],
+      "project": "Load data via Snowpipe, build a star schema, and compare cost/performance of warehouse sizes (30-day trial)."
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks / Lakehouse",
+      "category": "Data",
+      "terms": [
+        "databricks",
+        "delta lake",
+        "lakehouse",
+        "iceberg",
+        "apache iceberg",
+        "hudi"
+      ],
+      "resources": [
+        {
+          "title": "Databricks Free Edition",
+          "url": "https://www.databricks.com/learn/free-edition"
+        },
+        {
+          "title": "Apache Iceberg docs",
+          "url": "https://iceberg.apache.org/docs/latest/"
+        }
+      ],
+      "project": "Build a medallion (bronze/silver/gold) lakehouse on Delta or Iceberg with time travel and schema evolution demos."
+    },
+    {
+      "id": "bigquery",
+      "name": "BigQuery",
+      "category": "Data",
+      "terms": [
+        "bigquery"
+      ],
+      "resources": [
+        {
+          "title": "BigQuery Sandbox (free)",
+          "url": "https://cloud.google.com/bigquery/docs/sandbox"
+        }
+      ],
+      "project": "Partition/cluster a large public dataset in BigQuery and document query cost reductions."
+    },
+    {
+      "id": "dataflow",
+      "name": "Beam / Dataflow",
+      "category": "Data",
+      "terms": [
+        "dataflow",
+        "apache beam"
+      ],
+      "resources": [
+        {
+          "title": "Apache Beam Tour",
+          "url": "https://tour.beam.apache.org/"
+        }
+      ],
+      "project": "Write a Beam pipeline that runs locally and on Dataflow with windowed aggregations."
+    },
+    {
+      "id": "etl",
+      "name": "ETL / ELT Pipelines",
+      "category": "Data",
+      "terms": [
+        "etl",
+        "elt",
+        "data pipeline",
+        "data pipelines",
+        "data ingestion"
+      ],
+      "resources": [
+        {
+          "title": "DataTalksClub DE Zoomcamp",
+          "url": "https://github.com/DataTalksClub/data-engineering-zoomcamp"
+        }
+      ],
+      "project": "End-to-end pipeline: API → object storage → warehouse → dashboard, with idempotent loads and alerting."
+    },
+    {
+      "id": "data-modeling",
+      "name": "Data Modeling",
+      "category": "Data",
+      "terms": [
+        "data modeling",
+        "data modelling",
+        "dimensional modeling",
+        "star schema",
+        "kimball"
+      ],
+      "resources": [
+        {
+          "title": "dbt: How we structure projects",
+          "url": "https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview"
+        }
+      ],
+      "project": "Design and document a dimensional model (ERD + SCD type 2 dimension) for an e-commerce dataset."
+    },
+    {
+      "id": "data-warehouse",
+      "name": "Data Warehousing",
+      "category": "Data",
+      "terms": [
+        "data warehouse",
+        "data warehousing",
+        "redshift",
+        "clickhouse",
+        "olap"
+      ],
+      "resources": [
+        {
+          "title": "ClickHouse Academy (free)",
+          "url": "https://clickhouse.com/learn"
+        }
+      ],
+      "project": "Benchmark the same analytical queries on Postgres vs. DuckDB vs. ClickHouse and explain the results (columnar storage, vectorization)."
+    },
+    {
+      "id": "postgres",
+      "name": "PostgreSQL / RDBMS",
+      "category": "Data",
+      "terms": [
+        "postgres",
+        "postgresql",
+        "mysql",
+        "relational database",
+        "rdbms"
+      ],
+      "resources": [
+        {
+          "title": "PostgreSQL Tutorial",
+          "url": "https://www.postgresqltutorial.com/"
+        },
+        {
+          "title": "Use The Index, Luke (indexing)",
+          "url": "https://use-the-index-luke.com/"
+        }
+      ],
+      "project": "Tune a slow query workload: EXPLAIN ANALYZE, indexes, partitioning; write up the before/after."
+    },
+    {
+      "id": "nosql",
+      "name": "NoSQL (Mongo, DynamoDB, Cassandra)",
+      "category": "Data",
+      "terms": [
+        "nosql",
+        "mongodb",
+        "dynamodb",
+        "cassandra",
+        "bigtable"
+      ],
+      "resources": [
+        {
+          "title": "MongoDB University (free)",
+          "url": "https://learn.mongodb.com/"
+        },
+        {
+          "title": "The DynamoDB Book concepts (Alex DeBrie blog)",
+          "url": "https://www.alexdebrie.com/posts/dynamodb-single-table/"
+        }
+      ],
+      "project": "Model the same app in Postgres and DynamoDB single-table design; compare access patterns."
+    },
+    {
+      "id": "redis",
+      "name": "Redis / Caching",
+      "category": "Backend",
+      "terms": [
+        "redis",
+        "memcached"
+      ],
+      "resources": [
+        {
+          "title": "Redis University (free)",
+          "url": "https://university.redis.io/"
+        }
+      ],
+      "project": "Add a cache-aside layer with TTLs and a rate limiter to an API; measure p95 latency."
+    },
+    {
+      "id": "pandas",
+      "name": "pandas / NumPy",
+      "category": "Data",
+      "terms": [
+        "pandas",
+        "numpy",
+        "polars"
+      ],
+      "resources": [
+        {
+          "title": "pandas Getting Started",
+          "url": "https://pandas.pydata.org/docs/getting_started/index.html"
+        },
+        {
+          "title": "Polars User Guide",
+          "url": "https://docs.pola.rs/"
+        }
+      ],
+      "project": "Rewrite a slow pandas job in Polars and profile memory/time."
+    },
+    {
+      "id": "bi",
+      "name": "BI / Dashboards",
+      "category": "Data",
+      "terms": [
+        "tableau",
+        "looker",
+        "power bi",
+        "qlik",
+        "superset",
+        "dashboards"
+      ],
+      "resources": [
+        {
+          "title": "Tableau Public (free)",
+          "url": "https://public.tableau.com/"
+        }
+      ],
+      "project": "Publish an interactive dashboard on Tableau Public backed by your own pipeline."
+    },
+    {
+      "id": "aws",
+      "name": "AWS",
+      "category": "Cloud",
+      "terms": [
+        "aws",
+        "amazon web services",
+        "s3",
+        "lambda",
+        "ec2",
+        "emr",
+        "glue",
+        "redshift"
+      ],
+      "resources": [
+        {
+          "title": "AWS Skill Builder (free tier)",
+          "url": "https://skillbuilder.aws/"
+        }
+      ],
+      "project": "Deploy a serverless ingestion pipeline (S3 → Lambda → Glue/Athena) entirely in Terraform."
+    },
+    {
+      "id": "gcp",
+      "name": "Google Cloud",
+      "category": "Cloud",
+      "terms": [
+        "gcp",
+        "google cloud"
+      ],
+      "resources": [
+        {
+          "title": "Google Cloud Skills Boost",
+          "url": "https://www.cloudskillsboost.google/"
+        }
+      ],
+      "project": "Deploy a Cloud Run API + Pub/Sub + BigQuery pipeline with Terraform and CI."
+    },
+    {
+      "id": "azure",
+      "name": "Azure",
+      "category": "Cloud",
+      "terms": [
+        "azure"
+      ],
+      "resources": [
+        {
+          "title": "Microsoft Learn: Azure",
+          "url": "https://learn.microsoft.com/en-us/training/azure/"
+        }
+      ],
+      "project": "Recreate one of your GCP pipelines on Azure (Data Factory + Synapse/Fabric) and compare."
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "category": "Infrastructure",
+      "terms": [
+        "docker",
+        "containerization",
+        "containerized"
+      ],
+      "resources": [
+        {
+          "title": "Docker Get Started",
+          "url": "https://docs.docker.com/get-started/"
+        }
+      ],
+      "project": "Containerize a multi-service app with docker compose, multi-stage builds, and health checks."
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "category": "Infrastructure",
+      "terms": [
+        "kubernetes",
+        "k8s",
+        "helm",
+        "eks",
+        "gke"
+      ],
+      "resources": [
+        {
+          "title": "Kubernetes Basics",
+          "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/"
+        },
+        {
+          "title": "Kubernetes the Hard Way",
+          "url": "https://github.com/kelseyhightower/kubernetes-the-hard-way"
+        }
+      ],
+      "project": "Run your API on a local kind/minikube cluster with Helm, HPA autoscaling, and a load test."
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform / IaC",
+      "category": "Infrastructure",
+      "terms": [
+        "terraform",
+        "infrastructure as code",
+        "iac",
+        "pulumi",
+        "cloudformation"
+      ],
+      "resources": [
+        {
+          "title": "HashiCorp Terraform tutorials",
+          "url": "https://developer.hashicorp.com/terraform/tutorials"
+        }
+      ],
+      "project": "Put every cloud resource from one of your projects under Terraform with remote state and plan-on-PR CI."
+    },
+    {
+      "id": "cicd",
+      "name": "CI/CD",
+      "category": "Infrastructure",
+      "terms": [
+        "ci/cd",
+        "continuous integration",
+        "continuous delivery",
+        "github actions",
+        "jenkins",
+        "circleci"
+      ],
+      "resources": [
+        {
+          "title": "GitHub Actions docs",
+          "url": "https://docs.github.com/en/actions"
+        }
+      ],
+      "project": "Add lint, test, build, and deploy stages with required checks to one of your repos."
+    },
+    {
+      "id": "linux",
+      "name": "Linux / Shell",
+      "category": "Infrastructure",
+      "terms": [
+        "linux",
+        "unix",
+        "bash",
+        "shell scripting"
+      ],
+      "resources": [
+        {
+          "title": "Linux Journey",
+          "url": "https://linuxjourney.com/"
+        },
+        {
+          "title": "MIT Missing Semester",
+          "url": "https://missing.csail.mit.edu/"
+        }
+      ],
+      "project": "Automate your dev environment setup with a dotfiles repo and shell scripts."
+    },
+    {
+      "id": "observability",
+      "name": "Observability",
+      "category": "Infrastructure",
+      "terms": [
+        "observability",
+        "prometheus",
+        "grafana",
+        "opentelemetry",
+        "monitoring and alerting",
+        "slos"
+      ],
+      "resources": [
+        {
+          "title": "OpenTelemetry docs",
+          "url": "https://opentelemetry.io/docs/"
+        },
+        {
+          "title": "Google SRE Book (free)",
+          "url": "https://sre.google/sre-book/table-of-contents/"
+        }
+      ],
+      "project": "Instrument an API with OpenTelemetry traces + Prometheus metrics and build a Grafana dashboard with SLO alerts."
+    },
+    {
+      "id": "rest",
+      "name": "REST APIs",
+      "category": "Backend",
+      "terms": [
+        "restful",
+        "rest api",
+        "rest apis",
+        "api design",
+        "web services"
+      ],
+      "resources": [
+        {
+          "title": "Microsoft API design best practices",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
+        }
+      ],
+      "project": "Design and document (OpenAPI) a versioned REST API with pagination, idempotency keys and auth."
+    },
+    {
+      "id": "graphql",
+      "name": "GraphQL / gRPC",
+      "category": "Backend",
+      "terms": [
+        "graphql",
+        "grpc",
+        "protobuf",
+        "protocol buffers"
+      ],
+      "resources": [
+        {
+          "title": "GraphQL Learn",
+          "url": "https://graphql.org/learn/"
+        },
+        {
+          "title": "gRPC Quick Start",
+          "url": "https://grpc.io/docs/languages/python/quickstart/"
+        }
+      ],
+      "project": "Expose the same service over REST, GraphQL, and gRPC and compare payloads/latency."
+    },
+    {
+      "id": "node",
+      "name": "Node.js",
+      "category": "Backend",
+      "terms": [
+        "node.js",
+        "nodejs",
+        "express.js"
+      ],
+      "resources": [
+        {
+          "title": "Node.js Learn",
+          "url": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+        }
+      ],
+      "project": "Build a Node/TypeScript API with Fastify, Postgres, and integration tests."
+    },
+    {
+      "id": "django",
+      "name": "Django / Flask / FastAPI",
+      "category": "Backend",
+      "terms": [
+        "django",
+        "flask",
+        "fastapi"
+      ],
+      "resources": [
+        {
+          "title": "FastAPI Tutorial",
+          "url": "https://fastapi.tiangolo.com/tutorial/"
+        },
+        {
+          "title": "Django Tutorial",
+          "url": "https://docs.djangoproject.com/en/stable/intro/tutorial01/"
+        }
+      ],
+      "project": "Ship a FastAPI service with async Postgres, background jobs, and auth, deployed to a free tier."
+    },
+    {
+      "id": "microservices",
+      "name": "Distributed Systems",
+      "category": "Backend",
+      "terms": [
+        "distributed systems",
+        "microservices",
+        "distributed computing",
+        "concurrency",
+        "fault tolerance",
+        "fault-tolerant"
+      ],
+      "resources": [
+        {
+          "title": "MIT 6.5840 Distributed Systems (labs)",
+          "url": "https://pdos.csail.mit.edu/6.824/"
+        },
+        {
+          "title": "microservices.io patterns",
+          "url": "https://microservices.io/patterns/"
+        }
+      ],
+      "project": "Complete the MIT 6.5840 Raft lab and write up the design."
+    },
+    {
+      "id": "system-design",
+      "name": "System Design",
+      "category": "Fundamentals",
+      "terms": [
+        "system design",
+        "systems design",
+        "design scalable",
+        "large-scale systems",
+        "large scale systems",
+        "scalable systems"
+      ],
+      "resources": [
+        {
+          "title": "System Design Primer",
+          "url": "https://github.com/donnemartin/system-design-primer"
+        },
+        {
+          "title": "ByteByteGo free newsletter archive",
+          "url": "https://blog.bytebytego.com/"
+        }
+      ],
+      "project": "Write design docs for 3 classic systems (URL shortener, news feed, rate limiter) and build one of them."
+    },
+    {
+      "id": "dsa",
+      "name": "Data Structures & Algorithms",
+      "category": "Fundamentals",
+      "terms": [
+        "data structures",
+        "algorithms",
+        "computer science fundamentals",
+        "cs fundamentals"
+      ],
+      "resources": [
+        {
+          "title": "NeetCode Roadmap (free)",
+          "url": "https://neetcode.io/roadmap"
+        },
+        {
+          "title": "Tech Interview Handbook",
+          "url": "https://www.techinterviewhandbook.org/"
+        }
+      ],
+      "project": "Grind the NeetCode 150 and keep a repo of pattern notes (sliding window, graphs, DP)."
+    },
+    {
+      "id": "testing",
+      "name": "Testing & Code Quality",
+      "category": "Fundamentals",
+      "terms": [
+        "unit testing",
+        "unit tests",
+        "automated testing",
+        "test-driven",
+        "tdd",
+        "pytest",
+        "integration tests"
+      ],
+      "resources": [
+        {
+          "title": "pytest docs",
+          "url": "https://docs.pytest.org/en/stable/getting-started.html"
+        }
+      ],
+      "project": "Bring a project to 85%+ coverage with property-based tests (Hypothesis) and data-quality tests (Great Expectations)."
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "Fundamentals",
+      "terms": [
+        "git",
+        "version control"
+      ],
+      "resources": [
+        {
+          "title": "Pro Git (free book)",
+          "url": "https://git-scm.com/book/en/v2"
+        }
+      ],
+      "project": "Contribute a merged PR to an open-source data tool (dbt, Airflow, Polars)."
+    },
+    {
+      "id": "ml",
+      "name": "Machine Learning",
+      "category": "ML / AI",
+      "terms": [
+        "machine learning",
+        "scikit-learn",
+        "sklearn",
+        "xgboost",
+        "predictive modeling",
+        "recommendation systems",
+        "recommender systems"
+      ],
+      "resources": [
+        {
+          "title": "Google ML Crash Course",
+          "url": "https://developers.google.com/machine-learning/crash-course"
+        },
+        {
+          "title": "fast.ai Practical Deep Learning",
+          "url": "https://course.fast.ai/"
+        }
+      ],
+      "project": "Train, evaluate, and serve a model (e.g. churn or ranking) behind an API with offline metrics and a model card."
+    },
+    {
+      "id": "deep-learning",
+      "name": "PyTorch / Deep Learning",
+      "category": "ML / AI",
+      "terms": [
+        "pytorch",
+        "tensorflow",
+        "deep learning",
+        "neural networks",
+        "jax"
+      ],
+      "resources": [
+        {
+          "title": "PyTorch Tutorials",
+          "url": "https://pytorch.org/tutorials/"
+        },
+        {
+          "title": "Karpathy: Neural Networks Zero to Hero",
+          "url": "https://karpathy.ai/zero-to-hero.html"
+        }
+      ],
+      "project": "Implement and train a small transformer from scratch (nanoGPT-style) and write up what you learned."
+    },
+    {
+      "id": "llm",
+      "name": "LLMs / GenAI",
+      "category": "ML / AI",
+      "terms": [
+        "llm",
+        "llms",
+        "large language model",
+        "large language models",
+        "generative ai",
+        "genai",
+        "gen ai",
+        "prompt engineering",
+        "fine-tuning",
+        "fine tuning",
+        "ai agents",
+        "agentic"
+      ],
+      "resources": [
+        {
+          "title": "Hugging Face LLM Course",
+          "url": "https://huggingface.co/learn/llm-course"
+        },
+        {
+          "title": "Anthropic courses (GitHub)",
+          "url": "https://github.com/anthropics/courses"
+        }
+      ],
+      "project": "Extend ExtendDDG: add an LLM-as-judge eval harness with cost/latency tracking and publish results."
+    },
+    {
+      "id": "rag",
+      "name": "RAG / Vector Search",
+      "category": "ML / AI",
+      "terms": [
+        "rag",
+        "retrieval augmented",
+        "retrieval-augmented",
+        "vector database",
+        "embeddings",
+        "semantic search",
+        "pinecone",
+        "pgvector"
+      ],
+      "resources": [
+        {
+          "title": "Pinecone Learn",
+          "url": "https://www.pinecone.io/learn/"
+        },
+        {
+          "title": "Hugging Face Open-Source AI Cookbook",
+          "url": "https://huggingface.co/learn/cookbook/index"
+        }
+      ],
+      "project": "Build a RAG app over dataset codebooks with pgvector, hybrid search, and a retrieval-quality eval set."
+    },
+    {
+      "id": "mlops",
+      "name": "MLOps",
+      "category": "ML / AI",
+      "terms": [
+        "mlops",
+        "mlflow",
+        "kubeflow",
+        "model serving",
+        "feature store",
+        "model deployment"
+      ],
+      "resources": [
+        {
+          "title": "DataTalksClub MLOps Zoomcamp",
+          "url": "https://github.com/DataTalksClub/mlops-zoomcamp"
+        },
+        {
+          "title": "Made With ML",
+          "url": "https://madewithml.com/"
+        }
+      ],
+      "project": "Add experiment tracking (MLflow), a model registry, and automated retraining to one of your ML projects."
+    },
+    {
+      "id": "sagemaker",
+      "name": "SageMaker / Vertex AI",
+      "category": "ML / AI",
+      "terms": [
+        "sagemaker",
+        "vertex ai",
+        "bedrock"
+      ],
+      "resources": [
+        {
+          "title": "AWS Skill Builder: SageMaker",
+          "url": "https://skillbuilder.aws/"
+        }
+      ],
+      "project": "Deploy a model endpoint on SageMaker or Vertex AI with autoscaling and a cost write-up."
+    },
+    {
+      "id": "stats",
+      "name": "Statistics / Experimentation",
+      "category": "ML / AI",
+      "terms": [
+        "statistics",
+        "statistical",
+        "a/b testing",
+        "ab testing",
+        "experimentation",
+        "hypothesis testing",
+        "causal inference"
+      ],
+      "resources": [
+        {
+          "title": "Khan Academy Statistics",
+          "url": "https://www.khanacademy.org/math/statistics-probability"
+        },
+        {
+          "title": "Seeing Theory (visual stats)",
+          "url": "https://seeing-theory.brown.edu/"
+        }
+      ],
+      "project": "Analyze a public A/B test dataset: power analysis, CUPED variance reduction, and a written readout."
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "Frontend",
+      "terms": [
+        "react",
+        "reactjs",
+        "react.js",
+        "next.js",
+        "nextjs"
+      ],
+      "resources": [
+        {
+          "title": "react.dev Learn",
+          "url": "https://react.dev/learn"
+        }
+      ],
+      "project": "Build a Next.js front end for one of your data projects with server components and charts."
+    },
+    {
+      "id": "react-native",
+      "name": "React Native / Mobile",
+      "category": "Frontend",
+      "terms": [
+        "react native",
+        "ios development",
+        "android development",
+        "mobile development",
+        "swift",
+        "kotlin"
+      ],
+      "resources": [
+        {
+          "title": "React Native docs",
+          "url": "https://reactnative.dev/docs/getting-started"
+        }
+      ],
+      "project": "Publish a small Expo app (e.g. Waytrove companion) to TestFlight / internal testing."
+    },
+    {
+      "id": "firebase",
+      "name": "Firebase",
+      "category": "Backend",
+      "terms": [
+        "firebase",
+        "firestore"
+      ],
+      "resources": [
+        {
+          "title": "Firebase codelabs",
+          "url": "https://firebase.google.com/codelabs"
+        }
+      ],
+      "project": "Add Firebase Auth + Firestore security rules with emulator-based tests to a mobile app."
+    },
+    {
+      "id": "security",
+      "name": "Security / Privacy",
+      "category": "Fundamentals",
+      "terms": [
+        "application security",
+        "data privacy",
+        "hipaa",
+        "soc 2",
+        "soc2",
+        "gdpr",
+        "encryption",
+        "oauth",
+        "iam"
+      ],
+      "resources": [
+        {
+          "title": "OWASP Top 10",
+          "url": "https://owasp.org/www-project-top-ten/"
+        },
+        {
+          "title": "PortSwigger Web Security Academy",
+          "url": "https://portswigger.net/web-security"
+        }
+      ],
+      "project": "Threat-model one of your apps, add OAuth + least-privilege IAM, and document a HIPAA-style data-handling policy."
+    }
+  ]
+}

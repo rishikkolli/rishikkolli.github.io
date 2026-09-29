@@ -1,0 +1,95 @@
+{
+  "_comment": "Typical interview loops by company type, plus rounds added for the role's focus. These are general patterns from public candidate reports, not guarantees; always confirm the process with the recruiter and check recent Glassdoor/Blind reports (linked on each card).",
+  "types": {
+    "bigtech": {
+      "label": "Large tech company",
+      "timeline": "4–8 weeks",
+      "rounds": [
+        "Recruiter screen (30 min): background, visa status, timeline, level",
+        "Technical phone screen (45–60 min): 1–2 coding problems in a shared editor",
+        "Onsite / virtual loop (4–5 × 45 min): 2 coding, 1 system design, 1 behavioral, plus a role-specific round",
+        "Team matching and hiring committee review"
+      ],
+      "tips": ["Expect LeetCode-medium coding under time pressure; talk through tradeoffs out loud.", "Behavioral rounds weigh ownership and impact; quantify results."]
+    },
+    "fintech": {
+      "label": "Fintech",
+      "timeline": "3–6 weeks",
+      "rounds": [
+        "Recruiter screen (30 min)",
+        "Technical screen (60 min): practical coding (often parsing, APIs or data transforms) rather than pure puzzles",
+        "Virtual onsite (4 × 60 min): coding/bug-fix in a realistic codebase, system design (payments, ledgers, idempotency), integration exercise, behavioral",
+        "Hiring manager conversation"
+      ],
+      "tips": ["Correctness and edge cases matter more than cleverness: think money, retries, idempotency.", "Be ready to discuss data consistency and auditability."]
+    },
+    "data-infra": {
+      "label": "Data / infrastructure / developer-tools company",
+      "timeline": "3–6 weeks",
+      "rounds": [
+        "Recruiter screen (30 min)",
+        "Technical screen (60 min): coding, sometimes with a systems or concurrency angle",
+        "Onsite (4–5 rounds): coding, distributed systems / architecture design, deep dive on a past project, behavioral, sometimes a take-home or pairing session",
+        "Hiring manager / values interview"
+      ],
+      "tips": ["Know your own projects cold: expect 'why this design, what broke, what would you change'.", "Brush up on storage formats, partitioning, consistency, and failure handling."]
+    },
+    "ai-lab": {
+      "label": "AI lab / AI-native company",
+      "timeline": "3–8 weeks",
+      "rounds": [
+        "Recruiter screen (30 min): motivation and mission fit",
+        "Technical screen or online assessment (60–90 min): practical coding, often multi-part and progressively harder",
+        "Virtual onsite (4–6 rounds): coding, system design, ML/LLM fundamentals or eval design, project deep dive, culture/values",
+        "Reference checks"
+      ],
+      "tips": ["Expect questions on LLM evaluation, failure modes and safety; ExtendDDG is a strong story here.", "Practical, production-quality code beats puzzle tricks."]
+    },
+    "consumer": {
+      "label": "Consumer / product company",
+      "timeline": "3–6 weeks",
+      "rounds": [
+        "Recruiter screen (30 min)",
+        "Technical screen (45–60 min): coding",
+        "Onsite (4 rounds): coding, system design, product sense / collaboration, behavioral",
+        "Hiring manager chat"
+      ],
+      "tips": ["Tie technical decisions to user and business impact.", "Have a point of view on the company's product."]
+    },
+    "healthtech": {
+      "label": "Health tech",
+      "timeline": "3–6 weeks",
+      "rounds": [
+        "Recruiter screen (30 min)",
+        "Technical screen (60 min): coding or SQL, sometimes a take-home",
+        "Onsite (3–5 rounds): coding, data/system design with privacy constraints, domain discussion, behavioral",
+        "Hiring manager / cross-functional interview"
+      ],
+      "tips": ["Your CommonSpirit experience (27 hospitals, clinical stakeholders) is a direct advantage; lead with it.", "Mention HIPAA-aware data handling and data-quality safeguards."]
+    },
+    "quant": {
+      "label": "Quant trading / investment firm",
+      "timeline": "4–10 weeks",
+      "rounds": [
+        "Recruiter screen",
+        "Online assessment or technical phone screen: algorithms, probability or mental math",
+        "Multiple technical rounds (3–6): coding in depth, data structures, probability/statistics, systems",
+        "Final round with senior engineers / partners"
+      ],
+      "tips": ["Expect a high bar on algorithms and probability.", "Precision and clear reasoning matter more than speed."]
+    }
+  },
+  "focus": {
+    "data-eng": ["SQL round: window functions, joins, deduplication, gaps-and-islands", "Data pipeline / modeling design: batch vs. streaming, idempotency, backfills, schema evolution, data quality"],
+    "ml-eng": ["ML fundamentals: bias/variance, metrics, feature leakage, evaluation", "ML system design: training + serving pipeline, monitoring and drift, or an LLM/RAG evaluation design"],
+    "swe": ["DSA coding: arrays/hashing, graphs, trees, intervals", "System design: APIs, data storage, caching, scaling"],
+    "data-sci": ["Statistics & experimentation: A/B test design, power, pitfalls", "Product analytics case plus SQL/Python exercise"]
+  },
+  "stories": [
+    { "title": "Automated reporting pipeline", "use": "Ownership, impact, technical depth", "detail": "32-script idempotent Python pipeline generating 6 Google Slides decks (376+ slides) across 5 regions, eliminating manual monthly assembly." },
+    { "title": "SAS → BigQuery/MySQL migration", "use": "Ambiguity, reliability, stakeholder management", "detail": "Migrated workflows off SAS, improving consistency and refresh reliability for dashboards used across 27 hospitals." },
+    { "title": "ExtendDDG", "use": "LLM systems, evaluation, teamwork", "detail": "Codebook parsing + documentation profiling for LLM dataset descriptions; built the BERTScore-based benchmarking pipeline." },
+    { "title": "State Farm event-driven migration", "use": "Cloud architecture, measurable results", "detail": "Event-driven AWS Lambda/S3 pipelines that cut transfer latency 40%." },
+    { "title": "DocYou team lead", "use": "Leadership, conflict, shipping under constraints", "detail": "Led the React Native/Firebase platform whose architecture secured $16.5K in funding." }
+  ]
+}
