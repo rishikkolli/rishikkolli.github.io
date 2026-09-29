@@ -324,6 +324,8 @@
   /* any logo, any aspect ratio: scale down to fit the box without cropping */
   .brand-mark img{ width:100%; height:100%; object-fit:contain; display:block; }
   @media (max-width:640px){ .brand-mark{ width:56px; height:40px; } }
+  /* logos that ship on a solid dark square: match the box to it so the edges disappear */
+  .brand-mark.logo-dark, .ht-plaque.logo-dark{ background:#35363A; border-color:rgba(255,255,255,0.08); padding:2px; }
 
   /* ---------- Tags ---------- */
   .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
@@ -574,7 +576,7 @@
           <li class="ht-event up">
             <span class="ht-dot" aria-hidden="true"></span><span class="ht-stem" aria-hidden="true"></span>
             <a class="ht-card" href="#role-caoe">
-              <div class="ht-plaque"><img src="assets/logos/asu.png" alt="Arizona State University — CAOE"></div>
+              <div class="ht-plaque logo-dark"><img src="assets/logos/caoe.png" alt="Center for Accelerating Operational Efficiency (CAOE)"></div>
               <div class="ht-when">May 2024 — Jul 2024</div>
               <div class="ht-title">Operations Analyst</div>
               <div class="ht-org">CAOE · Arizona State University</div>
@@ -643,7 +645,7 @@
         <div class="role-when">May 2024 — Jul 2024</div>
         <div>
           <div class="heading-row">
-            <div class="brand-mark" aria-hidden="true"><img src="assets/logos/asu.png" alt=""></div>
+            <div class="brand-mark logo-dark" aria-hidden="true"><img src="assets/logos/caoe.png" alt=""></div>
             <div>
               <div class="role-title">Operations Analyst</div>
               <div class="role-org">Center for Accelerating Operational Efficiency (CAOE)</div>
