@@ -208,6 +208,7 @@
   .role ul{ margin:14px 0 0; padding-left:1.15em; color:var(--ink-soft); line-height:1.62; font-size:0.95rem; }
   .role li{ margin-bottom:6px; }
   .role li::marker{ color:var(--accent); }
+  .role li code{ white-space:nowrap; font-family:"IBM Plex Mono", monospace; font-size:0.86em; padding:1px 5px; border-radius:4px; background:var(--accent-tint); color:var(--accent-deep); }
   @media (max-width:640px){
     .role{ grid-template-columns:1fr; gap:8px; }
   }
@@ -631,12 +632,14 @@
             <li>Gather and document requirements from clinical, finance, and operations stakeholders to define datasets for enterprise analytics.</li>
             <li>Designed relational data models to support Tableau, Qlik, and Looker dashboards used by leadership across 27 hospitals.</li>
             <li>Engineered an end-to-end automated reporting pipeline in Python (Pandas, Pillow) integrated with the Google BigQuery, Slides, and Drive APIs that transforms raw financial, HR, and service-line profitability data into 6 production Google Slides decks totaling 376+ slides across 5 regions and 24 management markets, eliminating manual monthly slide assembly by auto-rendering data tables, KPI tiles, and trend charts as images and precisely placing them on live decks via a 32-script, idempotent, deterministic-objectId refresh architecture with built-in data-integrity safeguards, verification tooling, and full onboarding/technical documentation.</li>
+            <li>Built and deployed an end-to-end Python/Airflow automation that replaced a fully manual, error-prone monthly refresh process requiring dozens of ordered clicks through the Google Cloud Composer UI across 8 hospital operational dashboards (Clinical Engineering, Environmental Services, Food &amp; Nutrition Services, IT, Pharmacy, People, Lab, and a corporate dashboard). Designed a three-phase dependency-ordered pipeline (raw/DM refine stages → dataset-date configuration → WIP-to-LIVE publish) spanning 30+ distinct Airflow DAG processes, with self-service gcloud authentication, configurable per-run timeouts with graceful skip-not-fail handling for long-running jobs, and a <code>--only</code>/<code>--dry-run</code> interface enabling targeted single-product or full-fleet refreshes — cutting a historically multi-hour, click-by-click manual process down to a single unattended script run.</li>
+            <li>Diagnosed and resolved multiple latent data-integrity defects in a production BigQuery/Airflow analytics pipeline that were silently corrupting or staling live operational dashboards, including process-name mismatches between internal routing tables causing DAG failures, a cross-project BigQuery permission gap blocking several refine jobs (resolved via a verified stored-procedure workaround), and a dashboard-staleness defect where published “LIVE” views failed to reflect current underlying data despite successful pipeline runs. Root-caused each issue through direct BigQuery/Airflow log investigation, verified fixes against live production data, and converted the findings into a persistent <code>KNOWN_ISSUES.md</code> reference and codified operational guardrails (automation triggers DAGs only, never hand-edits production parameters) — preventing recurrence and giving future on-call engineers a documented first-check reference instead of re-diagnosing from scratch.</li>
             <li>Migrated workflows from SAS to MySQL via BigQuery, improving data consistency, accessibility, and refresh reliability.</li>
             <li>Serve as liaison between users and development teams, validating outputs and ensuring analytics solutions meet requirements.</li>
             <li>Lead user acceptance testing for datasets and dashboards, coordinating feedback sessions and iterating on stakeholder input.</li>
           </ul>
           <div class="tags">
-            <span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">MySQL</span><span class="tag">Tableau</span><span class="tag">Qlik</span><span class="tag">Looker</span><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Pillow</span><span class="tag">Google Slides API</span><span class="tag">Google Drive API</span>
+            <span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">MySQL</span><span class="tag">Tableau</span><span class="tag">Qlik</span><span class="tag">Looker</span><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Pillow</span><span class="tag">Google Slides API</span><span class="tag">Google Drive API</span><span class="tag">Apache Airflow</span><span class="tag">Cloud Composer</span>
           </div>
         </div>
       </div>
