@@ -780,6 +780,37 @@
     <div class="project-card reveal">
       <div class="project-top">
         <div>
+          <h3>SVG Scaling Laws</h3>
+          <div class="project-sub">Machine Learning (CS-GY 6923) — New York University</div>
+        </div>
+        <div class="project-year mono">Spring 2026</div>
+      </div>
+      <p>Do scaling laws hold when the training data isn't language? Five decoder-only transformers trained on
+      SVG code — a strict, XML-based grammar whose every output can be rendered and validated — to fit power-law
+      scaling curves and test whether Maximal Update Parameterization (µP) transfers learning rates across widths.</p>
+      <div class="pipeline">
+        <span class="stage">SVG cleaning</span><span class="arrow">→</span>
+        <span class="stage">BPE tokenizer</span><span class="arrow">→</span>
+        <span class="stage">Transformer training</span><span class="arrow">→</span>
+        <span class="stage">Power-law fit</span><span class="arrow">→</span>
+        <span class="stage">SP vs. µP</span><span class="arrow">→</span>
+        <span class="stage">SVG generation</span>
+      </div>
+      <ul>
+        <li>Built a data pipeline that cleaned 84,548 HuggingFace SVGs down to 17,127 (6.3M tokens) using lxml XML validation, CairoSVG render checks, and coordinate normalization, then trained a byte-level BPE tokenizer with leakage-free, file-level train/val/test splits.</li>
+        <li>Trained five nanoGPT-style decoder-only transformers (63K to 3.3M parameters) in PyTorch on an NVIDIA L4 GPU after a 7-point learning-rate sweep, fitting power-law curves to validation loss; the best 841K-parameter model reached 0.51 validation loss (≈1.67 perplexity).</li>
+        <li>Implemented µP with the <span class="mono">mup</span> package (including a MuReadout output head) to test zero-shot learning-rate transfer, and compared it against standard parameterization across model widths.</li>
+        <li>Traced non-monotonic scaling to Chinchilla tokens-per-parameter undertraining of the larger models on a fixed 6.2M-token corpus, showing that more data, not bigger models, was the binding constraint.</li>
+        <li>Generated unconditional and prefix-conditioned SVGs with temperature, top-k, and nucleus sampling, finding that temperature 0.8 with top-p 0.9 best balanced validity and variety.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">PyTorch</span><span class="tag">Transformers</span><span class="tag">Scaling Laws</span><span class="tag">µP</span><span class="tag">BPE Tokenization</span><span class="tag">HuggingFace</span><span class="tag">GPU Training</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
           <h3>ExtendDDG</h3>
           <div class="project-sub">Big Data Engineering — New York University</div>
         </div>
