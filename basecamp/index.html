@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<title>Basecamp · 30 Before 30</title>
+<script>
+  (function(){
+    var theme = 'dark';
+    try { var s = localStorage.getItem('theme'); if (s === 'dark' || s === 'light') theme = s; } catch(e){}
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F7F6; --surface:#FFFFFF; --surface-2:#EEF2F0;
+    --ink:#16211E; --ink-soft:#48564F; --ink-faint:#7C8B84;
+    --accent:#0E7C86; --accent-tint:#E3F1F1;
+    --amber:#C97A2B; --amber-tint:#F7EADA;
+    --line:#DCE3E0;
+    --shadow:0 1px 2px rgba(15,30,26,.04),0 8px 24px rgba(15,30,26,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B1210; --surface:#121B18; --surface-2:#16211D;
+      --ink:#E9EFEC; --ink-soft:#A9BAB3; --ink-faint:#71847C;
+      --accent:#45C7D2; --accent-tint:#163134;
+      --amber:#E3A15C; --amber-tint:#2B2013;
+      --line:#24322C;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1210; --surface:#121B18; --surface-2:#16211D;
+    --ink:#E9EFEC; --ink-soft:#A9BAB3; --ink-faint:#71847C;
+    --accent:#45C7D2; --accent-tint:#163134;
+    --amber:#E3A15C; --amber-tint:#2B2013;
+    --line:#24322C;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+
+  /* top bar */
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+  .bar a{color:var(--ink-soft);text-decoration:none;font-size:.85rem}
+  .bar a:hover{color:var(--accent)}
+  .toggle{background:none;border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:6px 12px;font:inherit;font-size:.8rem;cursor:pointer}
+
+  /* hero */
+  .hero{position:relative;padding:40px 0 24px;overflow:hidden}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(3rem,11vw,7.5rem);line-height:.9;letter-spacing:-.03em;margin:12px 0 18px}
+  h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .lede{max-width:560px;color:var(--ink-soft);font-size:1.05rem;margin:0}
+  .ridge{display:block;width:100%;height:120px;margin-top:28px;color:var(--line)}
+  .ridge .far{fill:var(--surface-2)} .ridge .near{fill:var(--line)}
+  .ridge .path{fill:none;stroke:var(--amber);stroke-width:2;stroke-dasharray:4 6}
+
+  /* elevation progress */
+  .progress{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);margin:-8px 0 32px}
+  .count{font-family:"Fraunces",serif;font-size:3rem;font-weight:800;line-height:1}
+  .count small{font-size:1rem;color:var(--ink-faint);font-weight:400}
+  .track{display:flex;gap:4px;align-items:flex-end;height:44px}
+  .track span{flex:1;background:var(--surface-2);border-radius:3px 3px 0 0;transition:background .2s}
+  .track span.on{background:var(--accent)}
+  .track span.crown{background:var(--amber-tint);outline:1px dashed var(--amber)}
+  .plabel{grid-column:1/-1;display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em}
+
+  /* filters */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .chip{border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:999px;padding:6px 14px;font:500 .82rem "IBM Plex Sans",sans-serif;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+  /* bib cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-bottom:48px}
+  .bib{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px;box-shadow:var(--shadow);overflow:hidden;transition:transform .15s}
+  .bib:hover{transform:translateY(-2px)}
+  .bib::before,.bib::after{content:"";position:absolute;top:12px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+  .bib::before{left:12px}.bib::after{right:12px}
+  .num{font-family:"Fraunces",serif;font-weight:800;font-size:2.6rem;line-height:1;color:var(--surface-2);-webkit-text-stroke:1px var(--ink-faint);letter-spacing:-.02em}
+  .head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin:10px 0 6px}
+  .terrain{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-tint);padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .bib h3{font-family:"Fraunces",serif;font-size:1.35rem;line-height:1.15;font-weight:600;margin:0 0 4px}
+  .real{font-size:.85rem;color:var(--ink-faint);margin:0 0 10px}
+  .line{color:var(--ink-soft);font-size:.95rem;margin:0 0 14px}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--ink-faint);border-top:1px dashed var(--line);padding-top:10px}
+  .meta b{color:var(--ink);font-weight:500}
+
+  .bib.done{border-color:var(--accent)}
+  .bib.done .num{color:var(--accent);-webkit-text-stroke:0}
+  .stamp{display:inline-block;margin-top:14px;transform:rotate(-4deg);border:2px solid var(--accent);color:var(--accent);font:600 .72rem "IBM Plex Mono",monospace;letter-spacing:.14em;padding:4px 8px;border-radius:6px;text-transform:uppercase;opacity:.9;background:var(--surface)}
+
+  .bib.crown{border:1px solid var(--amber);background:linear-gradient(160deg,var(--amber-tint),var(--surface) 60%);grid-column:1/-1}
+  .bib.crown .num{color:var(--amber);-webkit-text-stroke:0}
+  .bib.crown .terrain{color:var(--amber);background:var(--surface)}
+  .bib.crown h3{font-size:1.8rem}
+
+  /* section heads */
+  .sec{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
+  .sec h2{font-family:"Fraunces",serif;font-weight:800;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:-.02em;margin:0}
+  .sec h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .sec p{margin:0;color:var(--ink-faint);font-size:.9rem;max-width:520px}
+
+  /* countdown */
+  .clock{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 28px}
+  .clock div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .clock b{display:block;font-family:"Fraunces",serif;font-size:1.9rem;font-weight:800;line-height:1.1}
+  .clock span{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* timeline */
+  .plan{padding-bottom:40px}
+  .yr-row{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+  .yr-h{position:sticky;top:12px;align-self:start}
+  .yr-h b{display:block;font-family:"Fraunces",serif;font-size:2.2rem;font-weight:800;line-height:1}
+  .yr-h span{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--amber);letter-spacing:.08em;text-transform:uppercase}
+  .yr-h small{display:block;color:var(--ink-faint);font-size:.8rem;margin-top:6px}
+  .stops{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .stop{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+  .stop .mo{font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+  .stop .ti{font-weight:600}
+  .stop .ti small{display:block;font-weight:400;color:var(--ink-faint);font-size:.82rem}
+  .stop .no{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--ink-faint)}
+  .stop.ms{background:transparent;border-style:dashed}
+  .stop.ms .mo,.stop.ms .ti{color:var(--amber)}
+  .stop.done{border-color:var(--accent)}
+  .stop.crown{border-color:var(--amber);background:var(--amber-tint)}
+  .note{color:var(--ink-faint);font-size:.82rem;margin:16px 0 0}
+  .when{color:var(--amber)!important}
+
+  footer{border-top:1px solid var(--line);padding:24px 0 48px;color:var(--ink-faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media (max-width:640px){.yr-row{grid-template-columns:1fr;gap:12px}.yr-h{position:static}.stop{grid-template-columns:44px 1fr auto;padding:10px 12px}.clock b{font-size:1.4rem}}
+  @media (max-width:520px){.progress{grid-template-columns:1fr}.track{height:32px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="bar">
+    <a href="/">← rishikkolli</a>
+    <button class="toggle" id="toggle" type="button">Toggle theme</button>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Basecamp · private log</div>
+    <h1>30 before <em>30</em></h1>
+    <p class="lede">Deserts, glaciers, jungles and a few very long roads. Thirty-one starting lines to toe before the big three-oh — one already crossed.</p>
+    <svg class="ridge" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="far" d="M0 120 L0 80 L90 50 L170 72 L260 28 L340 64 L430 20 L520 58 L600 34 L690 70 L780 14 L870 52 L1000 36 L1000 120 Z"/>
+      <path class="near" d="M0 120 L0 100 L120 78 L220 96 L330 70 L450 92 L560 66 L680 94 L790 62 L900 88 L1000 74 L1000 120 Z"/>
+      <path class="path" d="M10 104 C120 90 200 104 300 84 S480 96 560 74 S720 92 790 66 S940 80 990 70"/>
+    </svg>
+  </header>
+
+  <section class="progress" aria-label="Progress">
+    <div class="count"><span id="done">0</span><small> / <span id="total">0</span></small></div>
+    <div class="track" id="track"></div>
+    <div class="plabel"><span>Start line</span><span id="pct"></span><span>Age 30</span></div>
+  </section>
+
+  <div class="clock" aria-label="Countdown to 30">
+    <div><b id="cd-days">—</b><span>Days to 30</span></div>
+    <div><b>Sep 3 '32</b><span>Cutoff</span></div>
+    <div><b id="cd-left">30</b><span>Goals left</span></div>
+  </div>
+
+  <div class="sec">
+    <h2>The <em>bibs</em></h2>
+    <p>Every goal, with its target window.</p>
+  </div>
+  <div class="filters" id="filters"></div>
+  <main class="grid" id="grid"></main>
+
+  <section class="plan" aria-label="Schedule">
+    <div class="sec">
+      <h2>The <em>route</em>, 2027 → 2032</h2>
+      <p>Tentative. Starts May 2027 and ends before the 30th birthday on Sep 3, 2032. Trips are grouped by season and region to save PTO and flights. The build runs from climbs to marathons, then 100-milers, then Badwater.</p>
+    </div>
+    <div id="plan"></div>
+    <p class="note">Months are each race's usual window. Check every year's calendar and sign up early for lotteries and sell-outs (Leadville, Cocodona, MdS, Comrades). Badwater needs three finished 100-milers, one within the previous 18 months: Leadville '28, Cocodona '29 and The Border '31 cover that.</p>
+  </section>
+
+  <footer>
+    <span>Unlisted page — not linked from the main site.</span>
+    <span class="mono">Last updated Oct 2026</span>
+  </footer>
+</div>
+
+<script>
+const goals = [
+  {when:"2029-05", t:"The Long Way Through Home", r:"Cocodona 250", w:"Black Canyon City → Flagstaff, AZ", k:"Desert", d:"250 mi", line:"Five days, two hundred fifty miles, and the whole of Arizona's backcountry between the saguaros and the pines."},
+  {when:"2030-04", t:"Marathon of the Sands", r:"Marathon des Sables", w:"Sahara, Morocco", k:"Desert", d:"~250 km · 6 stages", line:"Carry everything, ration water, and chase the horizon across Saharan dunes."},
+  {when:"2027-05", prog:"Oct '26 → May '27", t:"Mexico to Utah on Foot", r:"Run the Arizona Trail", w:"Arizona", k:"Mountain", d:"800 mi", line:"Border to border, every sky island in between. The backyard, all of it. Running it now, section by section."},
+  {when:"2031-01", t:"Roof of Africa", r:"Hike Kilimanjaro / Ultra X Tanzania", w:"Tanzania", k:"Mountain", d:"19,341 ft", line:"Pole pole up Uhuru Peak — or run the plains below it."},
+  {when:"2027-10", t:"Down, Up, Down, Up", r:"Rim to Rim to Rim", w:"Grand Canyon, AZ", k:"Desert", d:"~45 mi · 21k ft gain", line:"South Rim to North Rim and back before the canyon realizes what happened."},
+  {when:"2026-10", t:"Joined the Majors", r:"Run 1 World Marathon Major", w:"Chicago, IL", k:"Road", d:"26.2 mi", done:"Chicago Marathon", line:"Twenty-nine neighborhoods, a million people yelling, and a finish on Columbus Drive. ✓"},
+  {when:"2027-09", t:"Swim · Bike · Run", r:"Ironman 70.3", w:"TBD", k:"Road", d:"70.3 mi", line:"1.2 in the water, 56 on the bike, 13.1 on whatever legs are left."},
+  {when:"2031-12", t:"Run the Edge of the Map", r:"Hell Race — The Border (100 mi)", w:"Jaisalmer, Rajasthan", k:"Desert", d:"100 mi · 28h cutoff", line:"Thar Desert dunes on a December night, and nothing but the border line ahead. Doubles as a Badwater qualifier."},
+  {when:"2028-01", t:"City of Dreams, 42K", r:"Mumbai Marathon", w:"Mumbai, India", k:"Road", d:"42.2 km", line:"Sunrise over the Sea Link and the loudest crowds in India."},
+  {when:"2027-12", t:"Unfinished Business", r:"Elephant Mountain Run", w:"Cave Creek, AZ", k:"Mountain", d:"Trail", line:"Go back. Finish it. Top out and look at Phoenix from the other side."},
+  {when:"2027-05", t:"Volcano & the Wildwood", r:"Climb Mt. Hood + run Forest Park", w:"Oregon", k:"Mountain", d:"11,249 ft", line:"Crampons on Hood's summit ridge, then fern-lined miles on Portland's Wildwood Trail."},
+  {when:"2027-07", t:"The Mountain", r:"Climb Mt. Rainier", w:"Washington", k:"Ice", d:"14,410 ft", line:"Glaciers, rope teams, and an alpine start toward Columbia Crest."},
+  {when:"2028-01", t:"Sun, Sand & Suffering", r:"Ironman or ultra in Goa", w:"Goa, India", k:"Road", d:"Ironman / Ultra", line:"Race the coast, then earn the beach."},
+  {when:"2028-03", t:"Born to Run", r:"Run the Copper Canyons", w:"Chihuahua, Mexico", k:"Desert", d:"Ultra Caballo Blanco", line:"Run with the Rarámuri where the legend started."},
+  {when:"2029-07", t:"Steppe by Steppe", r:"Staged ultra in Mongolia", w:"Mongolia", k:"Desert", d:"Multi-stage", line:"Nomad camps, endless grassland, and the Gobi stretching to every edge."},
+  {when:"2029-12", t:"Roots Run", r:"Ultra in Karnataka + visit Nimbapura", w:"Karnataka, India", k:"Mountain", d:"Ultra", line:"Western Ghats miles that end with a visit to Nimbapura."},
+  {when:"2031-06", t:"Sea to Sea, Brit Style", r:"Ultra in England — Coast to Coast / Fan Dance", w:"United Kingdom", k:"Mountain", d:"Ultra", line:"Irish Sea to North Sea, or the infamous Fan Dance over Pen y Fan."},
+  {when:"2030-01", t:"Gulf to Atlantic", r:"Florida Coast to Coast", w:"Florida", k:"Road", d:"~130 mi", line:"Dip a toe in the Gulf, run until you hit the Atlantic."},
+  {when:"2031-01", t:"Home of Champions", r:"Train in Kenya", w:"Iten, Kenya", k:"Road", d:"8,000 ft camp", line:"Red-dirt roads at altitude with the fastest humans on earth."},
+  {when:"2028-08", t:"Race Across the Sky", r:"Leadville 100", w:"Leadville, CO", k:"Mountain", d:"100 mi · 10,200 ft", line:"Hope Pass twice and a big silver buckle at the end."},
+  {when:"2027-08", t:"Montauk or Bust", r:"Run & bike across Long Island", w:"New York", k:"Road", d:"~120 mi", line:"Queens to the lighthouse at the end of the island."},
+  {when:"2030-06", t:"Lungs of the Andes", r:"Train in Peru + Machu Picchu", w:"Cusco, Peru", k:"Mountain", d:"High altitude", line:"Altitude blocks in the Sacred Valley, finishing at the Sun Gate."},
+  {when:"2028-05", t:"5,164 Steps of History", r:"Ultra / marathon on the Great Wall", w:"China", k:"Mountain", d:"Ultra", line:"Watchtower to watchtower along two thousand years of stone."},
+  {when:"2030-08", t:"Fire & Ice", r:"Ultra race in Iceland", w:"Iceland", k:"Ice", d:"Multi-stage", line:"Lava fields, glaciers, and the midnight sun."},
+  {when:"2030-06", t:"Into the Green", r:"Jungle Ultra", w:"Amazon", k:"Jungle", d:"Multi-stage", line:"River crossings, canopy heat, and the loudest silence on the planet."},
+  {when:"2028-11", t:"Base of the World", r:"Everest Trail Race", w:"Khumbu, Nepal", k:"Mountain", d:"~170 km · 6 stages", line:"Prayer flags, suspension bridges, and Everest on the skyline every morning."},
+  {when:"2028-06", t:"The Ultimate Human Race", r:"Run + hike South Africa — Comrades", w:"Durban ↔ Pietermaritzburg", k:"Road", d:"~90 km · 1 day", line:"The world's oldest ultra, done before the 12-hour gun."},
+  {when:"2031-08", t:"Land of a Thousand Hills", r:"Ultra through Rwanda", w:"Rwanda", k:"Jungle", d:"Ultra", line:"Every mile is a climb, and every climb has a view."},
+  {when:"2029-02", t:"Arctic Light", r:"Ice ultra in Sweden", w:"Swedish Lapland", k:"Ice", d:"Multi-stage", line:"Frozen lakes, snowshoes, and the northern lights above camp."},
+  {when:"2032-07", t:"Hottest Race on Earth", r:"Apply to & run Badwater 135", w:"Death Valley → Mt. Whitney, CA", k:"Desert", d:"135 mi", line:"From 282 feet below sea level to the Whitney Portal in July."},
+  {when:"2032-04", t:"The Buddha Trail", r:"Hell Race — The Buddha Trails 65K", w:"Rimbick, North Bengal → Nepal", k:"Crown", d:"65 km · Bonus #31", crown:true, line:"The one circled in red. If only one gets done, it's this."}
+];
+
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fmt = w => MON[+w.slice(5)-1] + " '" + w.slice(2,4);
+const grid = document.getElementById('grid'), track = document.getElementById('track');
+const total = goals.length, doneN = goals.filter(g=>g.done).length;
+document.getElementById('done').textContent = doneN;
+document.getElementById('total').textContent = total;
+document.getElementById('pct').textContent = Math.round(doneN/total*100) + '% summited';
+
+goals.forEach((g,i)=>{
+  const s = document.createElement('span');
+  s.style.height = (30 + ((i*37)%70)) + '%';
+  if (g.done) s.className='on'; else if (g.crown) s.className='crown';
+  s.title = g.t; track.appendChild(s);
+});
+
+function render(filter){
+  grid.innerHTML = '';
+  goals.forEach((g,i)=>{
+    if (filter==='Done' && !g.done) return;
+    if (filter!=='All' && filter!=='Done' && g.k!==filter) return;
+    const el = document.createElement('article');
+    el.className = 'bib' + (g.done?' done':'') + (g.crown?' crown':'');
+    el.innerHTML =
+      `<div class="head"><div class="num">${String(i+1).padStart(2,'0')}</div><span class="terrain">${g.k}</span></div>
+       <h3>${g.t}</h3>
+       <p class="real">${g.r}</p>
+       <p class="line">${g.line}</p>
+       <div class="meta"><span>📍 <b>${g.w}</b></span><span>↗ <b>${g.d}</b></span><span class="when">◷ <b class="when">${fmt(g.when)}</b></span></div>
+       ${g.done?`<div class="stamp">Finished · ${g.done}</div>`:''}
+       ${g.prog?`<div class="stamp" style="border-color:var(--amber);color:var(--amber)">In progress · ${g.prog}</div>`:''}`;
+    grid.appendChild(el);
+  });
+}
+
+const cats = ['All','Done','Desert','Mountain','Ice','Jungle','Road'];
+const fbox = document.getElementById('filters');
+cats.forEach(c=>{
+  const b = document.createElement('button');
+  b.className='chip'; b.type='button'; b.textContent=c;
+  b.setAttribute('aria-pressed', c==='All');
+  b.onclick=()=>{fbox.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');render(c);};
+  fbox.appendChild(b);
+});
+render('All');
+
+// countdown
+(function(){
+  const end = new Date(2032, 8, 3), now = new Date();
+  const d = Math.max(0, Math.ceil((end - now) / 864e5));
+  document.getElementById('cd-days').textContent = d.toLocaleString();
+  document.getElementById('cd-left').textContent = total - doneN;
+})();
+
+// schedule
+(function(){
+  const MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const theme = {
+    2026:['Age 24','The warm-up'],
+    2027:['Age 24 → 25','Climbs & close-to-home'],
+    2028:['Age 25 → 26','Marathons abroad, first 100'],
+    2029:['Age 26 → 27','The 250 & the steppe'],
+    2030:['Age 27 → 28','Deserts, jungles, fire & ice'],
+    2031:['Age 28 → 29','East Africa & the qualifier'],
+    2032:['Age 29 → 30','The finale']
+  };
+  const extra = [
+    {when:'2026-10', t:'Arizona Trail in progress', sub:'Running sections now through May 2027', ms:true},
+    {when:'2027-12', t:'Enter Leadville lottery', sub:'For Aug 2028', ms:true},
+    {when:'2032-02', t:'Submit Badwater 135 application', sub:'Window closes early Feb', ms:true},
+    {when:'2032-09', t:'Turn 30 — Sep 3', sub:'Finish line', ms:true}
+  ];
+  const items = goals.map((g,i)=>({when:g.when, t:g.t, sub:g.r, n:i+1, done:!!g.done, crown:!!g.crown}))
+    .filter(x=>!x.done).concat(extra)
+    .sort((a,b)=>a.when.localeCompare(b.when) || (a.ms?-1:1));
+  const box = document.getElementById('plan');
+  Object.keys(theme).forEach(y=>{
+    const rows = items.filter(x=>x.when.startsWith(y));
+    const row = document.createElement('div'); row.className='yr-row';
+    const n = rows.filter(x=>!x.ms).length;
+    row.innerHTML = `<div class="yr-h"><b>${y}</b><span>${theme[y][0]}</span><small>${theme[y][1]} · ${n} goal${n===1?'':'s'}</small></div>`;
+    const ul = document.createElement('ul'); ul.className='stops';
+    rows.forEach(x=>{
+      const li = document.createElement('li');
+      li.className = 'stop' + (x.ms?' ms':'') + (x.crown?' crown':'');
+      li.innerHTML = `<span class="mo">${MO[+x.when.slice(5)-1]}</span><span class="ti">${x.t}<small>${x.sub}</small></span><span class="no">${x.n?'#'+String(x.n).padStart(2,'0'):'◆'}</span>`;
+      ul.appendChild(li);
+    });
+    row.appendChild(ul); box.appendChild(row);
+  });
+})();
+
+document.getElementById('toggle').onclick=()=>{
+  const r=document.documentElement, n=r.getAttribute('data-theme')==='dark'?'light':'dark';
+  r.setAttribute('data-theme',n); try{localStorage.setItem('theme',n);}catch(e){}
+};
+</script>
+</body>
+</html>
