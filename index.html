@@ -469,6 +469,7 @@
     .reveal.in{ opacity:1; transform:none; }
   }
 </style>
+<link rel="stylesheet" href="assets/enhance.css">
 </head>
 <body>
 
@@ -484,7 +485,10 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+    <div class="nav-tools">
+      <button class="cmdk-btn" id="cmdkOpen" type="button" aria-label="Open command menu" hidden><span>Search</span><kbd>⌘K</kbd></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+    </div>
   </div>
 </header>
 
@@ -493,6 +497,7 @@
 <div class="wrap">
 
   <section class="hero" style="border-top:none;">
+    <div class="hero-fx" aria-hidden="true"></div>
     <p class="eyebrow">Brooklyn, NY · <a class="quiet-link" href="jobs/">Open to new opportunities</a></p>
     <h1>Rishik Kolli</h1>
     <p class="role">
@@ -1268,6 +1273,12 @@
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
   })();
 </script>
+
+<div id="cmdk-root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js" defer></script>
+<script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js" defer></script>
+<script src="assets/enhance.js" defer></script>
 
 </body>
 </html>
