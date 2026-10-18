@@ -1,0 +1,161 @@
+/* Homepage enhancements: spotlight hero, card glow, command palette, skills explorer */
+
+[id]{ scroll-margin-top:84px; }
+
+/* Fixes: the hero paragraph shares the .role class with experience rows, which
+   turned it into a two-column grid; and the hidden "Copied" label took up space. */
+.hero p.role{ display:block; border-top:none; padding:0; }
+.copy-btn{ position:relative; }
+.copy-btn .copy-label{ position:absolute; left:100%; top:50%; transform:translateY(-50%); white-space:nowrap; }
+
+/* ---------- Hero spotlight + dot grid ---------- */
+.hero{ position:relative; isolation:isolate; }
+.hero-fx{
+  position:absolute; inset:-40px -24px 0; z-index:-1; pointer-events:none; overflow:hidden;
+  -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 35%, #000 35%, transparent 100%);
+          mask-image:radial-gradient(ellipse 85% 75% at 50% 35%, #000 35%, transparent 100%);
+}
+.hero-fx::before{
+  content:""; position:absolute; inset:0;
+  background-image:radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--ink) 16%, transparent) 1px, transparent 0);
+  background-size:22px 22px;
+}
+.hero-fx::after{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(440px circle at var(--mx, 72%) var(--my, 28%), color-mix(in srgb, var(--accent) 24%, transparent), transparent 62%);
+}
+@media (prefers-reduced-motion: no-preference){
+  .hero h1{
+    background:linear-gradient(100deg, var(--ink) 42%, var(--accent) 50%, var(--ink) 58%);
+    background-size:300% 100%; background-position:100% 0;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:nameSweep 2.6s ease-out 0.3s 1 forwards;
+  }
+}
+@keyframes nameSweep{ to{ background-position:0 0; } }
+
+/* ---------- Cursor glow on cards ---------- */
+.glow{ position:relative; }
+.glow::before, .glow::after{
+  content:""; position:absolute; border-radius:inherit; pointer-events:none;
+  opacity:0; transition:opacity 0.25s ease;
+}
+.glow::before{
+  inset:-1px; padding:1px;
+  background:radial-gradient(260px circle at var(--gx, 50%) var(--gy, 50%), var(--accent), transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+}
+.glow::after{
+  inset:0;
+  background:radial-gradient(520px circle at var(--gx, 50%) var(--gy, 50%), color-mix(in srgb, var(--accent) 7%, transparent), transparent 55%);
+}
+.glow:hover::before, .glow:hover::after{ opacity:1; }
+
+/* ---------- Active nav link ---------- */
+nav.links a.active{ color:var(--ink); border-bottom-color:var(--accent); }
+
+/* ---------- Jump highlight ---------- */
+.flash{ animation:flash 1.6s ease; border-radius:12px; }
+@keyframes flash{
+  0%, 35%{ box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 55%, transparent); }
+  100%{ box-shadow:0 0 0 3px transparent; }
+}
+
+/* ---------- Command palette button ---------- */
+.cmdk-btn{
+  display:inline-flex; align-items:center; gap:8px; height:34px; padding:0 7px 0 11px; flex:none;
+  border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink-faint);
+  font:500 0.8rem "IBM Plex Mono", monospace; cursor:pointer;
+  transition:border-color 0.15s ease, color 0.15s ease;
+}
+.cmdk-btn[hidden]{ display:none; }
+.cmdk-btn:hover{ border-color:var(--accent); color:var(--ink); }
+.cmdk-btn kbd{
+  font:inherit; font-size:0.7rem; padding:2px 6px; border-radius:5px;
+  background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft);
+}
+.nav-tools{ display:flex; align-items:center; gap:8px; }
+@media (max-width:760px){ .cmdk-btn span{ display:none; } }
+
+/* Phone nav: name + tools on one row, section links scroll sideways below */
+@media (max-width:640px){
+  .nav-inner{ flex-wrap:wrap; row-gap:8px; padding:12px 0 10px; }
+  .nav-mark{ order:1; }
+  .nav-tools{ order:2; margin-left:auto; }
+  nav.links{
+    order:3; width:100%; flex-wrap:nowrap; overflow-x:auto; gap:18px;
+    scrollbar-width:none; -webkit-mask-image:linear-gradient(90deg, #000 85%, transparent);
+            mask-image:linear-gradient(90deg, #000 85%, transparent);
+  }
+  nav.links::-webkit-scrollbar{ display:none; }
+  nav.links a{ white-space:nowrap; }
+  .cmdk-btn span{ display:inline; }
+  .cmdk-btn kbd{ display:none; }
+  .cmdk-btn{ padding:0 11px; }
+  .eyebrow{ flex-wrap:wrap; row-gap:4px; }
+}
+
+/* ---------- Command palette ---------- */
+.cmdk-overlay{
+  position:fixed; inset:0; z-index:120;
+  background:rgba(6,10,9,0.55); backdrop-filter:blur(4px);
+  display:flex; justify-content:center; align-items:flex-start;
+  padding:12vh 16px 16px; animation:cmdkFade 0.15s ease;
+}
+.cmdk{
+  width:min(620px, 100%); background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.35);
+  animation:cmdkPop 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.cmdk input{
+  width:100%; border:0; border-bottom:1px solid var(--line); background:transparent; color:var(--ink);
+  font:400 1rem "IBM Plex Sans", sans-serif; padding:16px 18px; outline:none;
+}
+.cmdk input::placeholder{ color:var(--ink-faint); }
+.cmdk-list{ max-height:min(380px, 55vh); overflow:auto; padding:8px; }
+.cmdk-group{
+  font:500 0.68rem "IBM Plex Mono", monospace; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--ink-faint); padding:10px 10px 4px;
+}
+.cmdk-item{
+  display:flex; justify-content:space-between; align-items:center; gap:12px; width:100%;
+  text-align:left; border:0; background:transparent; color:var(--ink);
+  padding:10px 12px; border-radius:8px; cursor:pointer; font:inherit; font-size:0.92rem;
+}
+.cmdk-item small{ color:var(--ink-faint); font-size:0.78rem; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:48%; }
+.cmdk-item[aria-selected="true"]{ background:var(--accent-tint); color:var(--accent-deep); }
+.cmdk-empty{ padding:24px; text-align:center; color:var(--ink-faint); font-size:0.9rem; }
+.cmdk-foot{
+  display:flex; gap:16px; padding:10px 14px; border-top:1px solid var(--line);
+  font:400 0.7rem "IBM Plex Mono", monospace; color:var(--ink-faint);
+}
+@keyframes cmdkFade{ from{ opacity:0; } }
+@keyframes cmdkPop{ from{ opacity:0; transform:translateY(-8px) scale(0.98); } }
+
+/* ---------- Skills explorer ---------- */
+.sx-hint{ font:400 0.74rem "IBM Plex Mono", monospace; color:var(--ink-faint); margin:0 0 4px; }
+.sx-chip{
+  display:inline-flex; align-items:center; gap:6px; cursor:pointer; line-height:1.4;
+  transition:border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.sx-chip:hover{ border-color:var(--accent); color:var(--ink); transform:translateY(-1px); }
+.sx-chip[aria-pressed="true"]{ background:var(--accent); border-color:var(--accent); color:#F5FCFC; }
+.sx-count{ font-size:0.66rem; padding:0 6px; border-radius:999px; background:var(--accent-tint); color:var(--accent-deep); }
+.sx-chip[aria-pressed="true"] .sx-count{ background:rgba(255,255,255,0.22); color:inherit; }
+.sx-panel{
+  grid-column:1 / -1; border:1px solid var(--line); border-radius:12px; background:var(--surface);
+  padding:16px 18px; box-shadow:var(--shadow); animation:cmdkPop 0.2s ease;
+}
+.sx-panel h4{ margin:0 0 10px; font:600 1rem "Fraunces", serif; }
+.sx-panel ul{ list-style:none; margin:0; padding:0; display:grid; gap:4px; }
+.sx-panel a{
+  display:flex; justify-content:space-between; gap:12px; text-decoration:none;
+  padding:8px 10px; border-radius:8px; border:1px solid transparent; font-size:0.92rem;
+}
+.sx-panel a:hover{ border-color:var(--accent); }
+.sx-panel a .sx-sub{ color:var(--ink-faint); }
+.sx-panel a small{ color:var(--ink-faint); font-family:"IBM Plex Mono", monospace; font-size:0.74rem; white-space:nowrap; }
+.sx-none{ color:var(--ink-faint); font-size:0.88rem; margin:0; }
+@media (max-width:640px){ .sx-panel a{ flex-direction:column; gap:2px; } }
