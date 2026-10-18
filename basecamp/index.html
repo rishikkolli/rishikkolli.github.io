@@ -148,6 +148,17 @@
   .dream .catch span{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-right:6px}
   .dream .pair{display:inline-block;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--accent);background:var(--accent-tint);padding:2px 8px;border-radius:999px}
 
+  /* finish-line photo */
+  .bib.has-photo{cursor:pointer}
+  .photo-btn{display:inline-flex;align-items:center;gap:6px;margin:14px 0 0 10px;font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 10px;cursor:pointer}
+  .photo-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .lb{position:fixed;inset:0;z-index:50;background:rgba(5,8,7,.88);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px 16px}
+  .lb.open{display:flex}
+  .lb figure{margin:0;max-width:min(560px,100%);text-align:center}
+  .lb img{display:block;width:100%;max-height:82vh;object-fit:contain;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .lb figcaption{margin-top:12px;color:#E9EFEC;font:500 .78rem "IBM Plex Mono",monospace;letter-spacing:.06em}
+  .lb-x{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer}
+
   footer{border-top:1px solid var(--line);padding:24px 0 48px;color:var(--ink-faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   @media (max-width:640px){.yr-row{grid-template-columns:1fr;gap:12px}.yr-h{position:static}.stop{grid-template-columns:44px 1fr auto;padding:10px 12px}.clock b{font-size:1.4rem}}
   @media (max-width:520px){.progress{grid-template-columns:1fr}.track{height:32px}.grid{grid-template-columns:1fr}}
@@ -213,6 +224,11 @@
   </footer>
 </div>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo">
+  <button class="lb-x" id="lbx" type="button" aria-label="Close">×</button>
+  <figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption></figure>
+</div>
+
 <script>
 const goals = [
   {when:"2029-05", t:"The Long Way Through Home", r:"Cocodona 250", w:"Black Canyon City → Flagstaff, AZ", k:"Desert", d:"250 mi", line:"Five days, two hundred fifty miles, and the whole of Arizona's backcountry between the saguaros and the pines."},
@@ -220,7 +236,7 @@ const goals = [
   {when:"2027-05", prog:"Oct '26 → May '27", t:"Mexico to Utah on Foot", r:"Run the Arizona Trail", w:"Arizona", k:"Mountain", d:"800 mi", line:"Border to border, every sky island in between. The backyard, all of it. Running it now, section by section."},
   {when:"2031-01", t:"Roof of Africa", r:"Hike Kilimanjaro / Ultra X Tanzania", w:"Tanzania", k:"Mountain", d:"19,341 ft", line:"Pole pole up Uhuru Peak — or run the plains below it."},
   {when:"2027-10", t:"Down, Up, Down, Up", r:"Rim to Rim to Rim", w:"Grand Canyon, AZ", k:"Desert", d:"~45 mi · 21k ft gain", line:"South Rim to North Rim and back before the canyon realizes what happened."},
-  {when:"2026-10", t:"Joined the Majors", r:"Run 1 World Marathon Major", w:"Chicago, IL", k:"Road", d:"26.2 mi", done:"Chicago Marathon", line:"Twenty-nine neighborhoods, a million people yelling, and a finish on Columbus Drive. ✓"},
+  {when:"2026-10", t:"Joined the Majors", r:"Run 1 World Marathon Major", w:"Chicago, IL", k:"Road", d:"26.2 mi", done:"Chicago Marathon", photo:"memories/chicago-2026.webp", photoCap:"Finish stretch · Chicago Marathon · October 2026", line:"Twenty-nine neighborhoods, a million people yelling, and a finish on Columbus Drive. ✓"},
   {when:"2027-09", t:"Swim · Bike · Run", r:"Ironman 70.3", w:"TBD", k:"Road", d:"70.3 mi", line:"1.2 in the water, 56 on the bike, 13.1 on whatever legs are left."},
   {when:"2031-12", t:"Run the Edge of the Map", r:"Hell Race — The Border (100 mi)", w:"Jaisalmer, Rajasthan", k:"Desert", d:"100 mi · 28h cutoff", line:"Thar Desert dunes on a December night, and nothing but the border line ahead. Doubles as a Badwater qualifier."},
   {when:"2028-01", t:"City of Dreams, 42K", r:"Mumbai Marathon", w:"Mumbai, India", k:"Road", d:"42.2 km", line:"Sunrise over the Sea Link and the loudest crowds in India."},
@@ -269,14 +285,15 @@ function render(filter){
     if (filter==='Done' && !g.done) return;
     if (filter!=='All' && filter!=='Done' && g.k!==filter) return;
     const el = document.createElement('article');
-    el.className = 'bib' + (g.done?' done':'') + (g.crown?' crown':'');
+    el.className = 'bib' + (g.done?' done':'') + (g.crown?' crown':'') + (g.photo?' has-photo':'');
+    el.dataset.i = i;
     el.innerHTML =
       `<div class="head"><div class="num">${String(i+1).padStart(2,'0')}</div><span class="terrain">${g.k}</span></div>
        <h3>${g.t}</h3>
        <p class="real">${g.r}</p>
        <p class="line">${g.line}</p>
        <div class="meta"><span>📍 <b>${g.w}</b></span><span>↗ <b>${g.d}</b></span><span class="when">◷ <b class="when">${fmt(g.when)}</b></span></div>
-       ${g.done?`<div class="stamp">Finished · ${g.done}</div>`:''}
+       ${g.done?`<div class="stamp">Finished · ${g.done}</div>`:''}${g.photo?`<button class="photo-btn" type="button">📷 Finish-line photo</button>`:''}
        ${g.prog?`<div class="stamp" style="border-color:var(--amber);color:var(--amber)">In progress · ${g.prog}</div>`:''}`;
     grid.appendChild(el);
   });
@@ -292,6 +309,17 @@ cats.forEach(c=>{
   fbox.appendChild(b);
 });
 render('All');
+
+// finish-line photo lightbox
+(function(){
+  const lb = document.getElementById('lb'), img = document.getElementById('lbimg'), cap = document.getElementById('lbcap');
+  function open(g){ img.src = g.photo; img.alt = g.photoCap || g.t; cap.textContent = g.photoCap || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbx').focus(); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('lbx').onclick = close;
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.tagName === 'FIGURE') close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+  grid.addEventListener('click', e => { const el = e.target.closest('.bib.has-photo'); if (el) open(goals[+el.dataset.i]); });
+})();
 
 // countdown
 (function(){
