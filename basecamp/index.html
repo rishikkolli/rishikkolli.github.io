@@ -351,13 +351,14 @@ render('All');
     {t:"Enchantment Lakes Traverse", w:"Cascade Range, WA", mi:"18", ft:"11,000", c:"Sketchy footing up high", pair:"Pairs with #12"},
     {t:"Paintbrush–Cascade Canyon Loop", w:"Grand Teton NP, WY", mi:"20", ft:"8,000", c:"No shade"},
     {t:"Bigelow Range Traverse", w:"Maine", mi:"17", ft:"10,000", c:"Black flies with attitude"},
-    {t:"Lake Superior State Water Trail", w:"Lake Superior", mi:"150", ft:"—", c:"Sea caves, shipwrecks, open water. Paddle it, don't run it"}
+    {t:"Lake Superior State Water Trail", w:"Lake Superior", mi:"150", ft:"—", c:"Sea caves, shipwrecks, open water. Paddle it, don't run it"},
+    {t:"Mount Temple summit", w:"Banff NP, Alberta", mi:"~10", ft:"~5,400", ftL:"ft gain", c:"Scree, a scramble up high, and a snow cornice on top. Helmet day"}
   ];
   const box = document.getElementById('dreams');
   dreams.forEach(d=>{
     const el = document.createElement('article'); el.className='dream';
     el.innerHTML = `<h4>${d.t}</h4><p class="loc">${d.w}</p>
-      <div class="nums"><div><b>${d.mi}</b>miles</div><div><b>${d.ft}</b>ft change</div></div>
+      <div class="nums"><div><b>${d.mi}</b>miles</div><div><b>${d.ft}</b>${d.ftL||'ft change'}</div></div>
       <p class="catch"><span>The catch</span>${d.c}</p>${d.pair?`<span class="pair">${d.pair}</span>`:''}`;
     box.appendChild(el);
   });
