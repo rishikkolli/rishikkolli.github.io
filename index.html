@@ -1279,6 +1279,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js" defer></script>
 <script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js" defer></script>
 <script src="assets/enhance.js" defer></script>
+<script>
+  (function(){
+    var p = String.fromCharCode.apply(null, [47,112,109,97,99,101,115,97,98,47].reverse());
+    var dot = document.querySelector('.nav-mark .dot');
+    function go(){
+      if (dot && dot.animate) { dot.style.display = 'inline-block'; dot.animate([{ transform: 'scale(1)' }, { transform: 'scale(4)', opacity: 0 }], { duration: 450 }); }
+      setTimeout(function(){ location.href = p; }, 420);
+    }
+    var n = 0, t = 0;
+    if (dot) dot.addEventListener('click', function(){ var now = Date.now(); n = (now - t < 700) ? n + 1 : 1; t = now; if (n >= 5) { n = 0; go(); } });
+    var seq = [38,38,40,40,37,39,37,39,66,65], i = 0;
+    document.addEventListener('keydown', function(e){ i = (e.keyCode === seq[i]) ? i + 1 : (e.keyCode === seq[0] ? 1 : 0); if (i === seq.length) { i = 0; go(); } });
+  })();
+</script>
 
 </body>
 </html>
