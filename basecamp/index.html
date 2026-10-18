@@ -135,6 +135,19 @@
   .note{color:var(--ink-faint);font-size:.82rem;margin:16px 0 0}
   .when{color:var(--amber)!important}
 
+  /* trail dreams */
+  .dreams{padding:8px 0 48px;border-top:1px solid var(--line);margin-top:8px}
+  .dreams .sec{margin-top:28px}
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .dream{border:1px dashed var(--line);border-radius:12px;padding:16px;background:transparent}
+  .dream h4{font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem;line-height:1.2;margin:0 0 2px}
+  .dream .loc{font-size:.8rem;color:var(--ink-faint);margin:0 0 12px}
+  .dream .nums{display:flex;gap:16px;font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--ink-soft);margin-bottom:10px}
+  .dream .nums b{display:block;font-family:"Fraunces",serif;font-size:1.4rem;font-weight:800;color:var(--ink);line-height:1.1}
+  .dream .catch{font-size:.85rem;color:var(--ink-soft);margin:0}
+  .dream .catch span{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-right:6px}
+  .dream .pair{display:inline-block;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--accent);background:var(--accent-tint);padding:2px 8px;border-radius:999px}
+
   footer{border-top:1px solid var(--line);padding:24px 0 48px;color:var(--ink-faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   @media (max-width:640px){.yr-row{grid-template-columns:1fr;gap:12px}.yr-h{position:static}.stop{grid-template-columns:44px 1fr auto;padding:10px 12px}.clock b{font-size:1.4rem}}
   @media (max-width:520px){.progress{grid-template-columns:1fr}.track{height:32px}.grid{grid-template-columns:1fr}}
@@ -184,6 +197,14 @@
     </div>
     <div id="plan"></div>
     <p class="note">Months are each race's usual window. Check every year's calendar and sign up early for lotteries and sell-outs (Leadville, Cocodona, MdS, Comrades). Badwater needs three finished 100-milers, one within the previous 18 months: Leadville '28, Cocodona '29 and The Border '31 cover that.</p>
+  </section>
+
+  <section class="dreams" aria-label="Trails of interest">
+    <div class="sec">
+      <h2>Trail <em>dreams</em></h2>
+      <p>Not on the list. Long, hard routes saved for inspiration, from Backpacker.</p>
+    </div>
+    <div class="dgrid" id="dreams"></div>
   </section>
 
   <footer>
@@ -315,6 +336,30 @@ render('All');
       ul.appendChild(li);
     });
     row.appendChild(ul); box.appendChild(row);
+  });
+})();
+
+// trail dreams (inspiration only, not goals)
+(function(){
+  const dreams = [
+    {t:"Timberline Trail", w:"Mt. Hood, OR", mi:"41", ft:"12,000", c:"Absurd mileage", pair:"Pairs with #11"},
+    {t:"Pemi Loop", w:"White Mountains, NH", mi:"28", ft:"13,000", c:"Knee-hammering rocks"},
+    {t:"Great Range Traverse", w:"Adirondacks, NY", mi:"25", ft:"17,600", c:"Endless ups and downs"},
+    {t:"Windom Peak", w:"San Juan Mountains, CO", mi:"20", ft:"11,600", c:"Violent thunderstorms"},
+    {t:"Cactus to Clouds", w:"Mt. San Jacinto, CA", mi:"23", ft:"13,400", c:"Broiling temps"},
+    {t:"Great Smoky Mountains End-to-End", w:"TN / NC", mi:"32", ft:"12,300", c:"Mud, bugs, humidity"},
+    {t:"Enchantment Lakes Traverse", w:"Cascade Range, WA", mi:"18", ft:"11,000", c:"Sketchy footing up high", pair:"Pairs with #12"},
+    {t:"Paintbrush–Cascade Canyon Loop", w:"Grand Teton NP, WY", mi:"20", ft:"8,000", c:"No shade"},
+    {t:"Bigelow Range Traverse", w:"Maine", mi:"17", ft:"10,000", c:"Black flies with attitude"},
+    {t:"Lake Superior State Water Trail", w:"Lake Superior", mi:"150", ft:"—", c:"Sea caves, shipwrecks, open water. Paddle it, don't run it"}
+  ];
+  const box = document.getElementById('dreams');
+  dreams.forEach(d=>{
+    const el = document.createElement('article'); el.className='dream';
+    el.innerHTML = `<h4>${d.t}</h4><p class="loc">${d.w}</p>
+      <div class="nums"><div><b>${d.mi}</b>miles</div><div><b>${d.ft}</b>ft change</div></div>
+      <p class="catch"><span>The catch</span>${d.c}</p>${d.pair?`<span class="pair">${d.pair}</span>`:''}`;
+    box.appendChild(el);
   });
 })();
 
