@@ -159,6 +159,31 @@
   .lb figcaption{margin-top:12px;color:#E9EFEC;font:500 .78rem "IBM Plex Mono",monospace;letter-spacing:.06em}
   .lb-x{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer}
 
+  /* AZT expedition file */
+  .xp{padding:8px 0 40px}
+  .xp-lede{color:var(--ink-soft);max-width:680px;margin:0 0 16px}
+  .xp-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .xp-meta span{font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--accent-tint);color:var(--accent)}
+  .xp-weeks,.xp-row,.xp-go{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:12px}
+  .xp-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .xp-card h3{font-family:"Fraunces",serif;font-size:1.15rem;margin:0}
+  .xp-card .tot{font:600 .78rem "IBM Plex Mono",monospace;color:var(--amber);margin:2px 0 10px}
+  .xp-card table{width:100%;border-collapse:collapse;font-size:.88rem}
+  .xp-card td{padding:5px 0;border-top:1px dashed var(--line);color:var(--ink-soft);vertical-align:top}
+  .xp-card td:first-child{font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--ink-faint);width:44px}
+  .xp-card .fine{font-size:.8rem;color:var(--ink-faint);margin:10px 0 0}
+  .xp-card ul{margin:0;padding-left:1.1em;color:var(--ink-soft);font-size:.9rem;line-height:1.55}
+  .xp-card li{margin-bottom:6px}
+  .xp-card li::marker{color:var(--accent)}
+  .xp-check label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-top:1px dashed var(--line);font-size:.9rem;color:var(--ink-soft);cursor:pointer}
+  .xp-check input{accent-color:var(--accent);margin-top:4px}
+  .xp-check input:checked + span{text-decoration:line-through;color:var(--ink-faint)}
+  .xp-go .xp-card{border-left:4px solid var(--g)}
+  .xp-go h4{margin:0 0 6px;font:600 .78rem "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+  .xp-go p{margin:0;color:var(--ink-soft);font-size:.9rem;line-height:1.55}
+  .plan-link{display:inline-flex;margin:14px 0 0 10px;font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:5px 10px;text-decoration:none}
+  .plan-link:hover{background:var(--amber-tint)}
+
   footer{border-top:1px solid var(--line);padding:24px 0 48px;color:var(--ink-faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   @media (max-width:640px){.yr-row{grid-template-columns:1fr;gap:12px}.yr-h{position:static}.stop{grid-template-columns:44px 1fr auto;padding:10px 12px}.clock b{font-size:1.4rem}}
   @media (max-width:520px){.progress{grid-template-columns:1fr}.track{height:32px}.grid{grid-template-columns:1fr}}
@@ -201,6 +226,91 @@
   <div class="filters" id="filters"></div>
   <main class="grid" id="grid"></main>
 
+  <section class="xp" id="azt-plan" aria-label="Arizona Trail expedition plan">
+    <div class="sec">
+      <h2>Expedition file: <em>Arizona Trail</em></h2>
+      <p>Planning notes for the AZT push, Oct '26 → May '27.</p>
+    </div>
+    <p class="xp-lede">First push: the Happy Jack section, about 62 miles in 48 hours with crew support. The goal is steady movement over two days, hiking the climbs rather than running all 62 miles. The build starts from 20–30 miles a week and a recent 20–30-mile long run.</p>
+    <div class="xp-meta"><span>62 mi</span><span>48 hr window</span><span>Crew-supported</span><span>3-week build</span></div>
+
+    <div class="xp-weeks">
+      <div class="xp-card"><h3>Week 1 · Build</h3><div class="tot">40–45 mi</div>
+        <table>
+          <tr><td>Mon</td><td>6 mi easy</td></tr>
+          <tr><td>Tue</td><td>7 mi easy</td></tr>
+          <tr><td>Wed</td><td>5 mi easy</td></tr>
+          <tr><td>Thu</td><td>7 mi easy, on trail if possible</td></tr>
+          <tr><td>Fri</td><td>Rest or 3 mi recovery</td></tr>
+          <tr><td>Sat</td><td>12 mi easy with the loaded pack</td></tr>
+          <tr><td>Sun</td><td>3–5 mi very easy, only if recovered</td></tr>
+        </table>
+        <p class="fine">Every run conversational.</p>
+      </div>
+      <div class="xp-card"><h3>Week 2 · Specific endurance</h3><div class="tot">40–45 mi</div>
+        <table>
+          <tr><td>Mon</td><td>5 mi easy</td></tr>
+          <tr><td>Tue</td><td>7 mi easy</td></tr>
+          <tr><td>Wed</td><td>5 mi easy</td></tr>
+          <tr><td>Thu</td><td>6 mi easy</td></tr>
+          <tr><td>Fri</td><td>Rest</td></tr>
+          <tr><td>Sat</td><td>12 mi easy on trail: full gear and fueling rehearsal</td></tr>
+          <tr><td>Sun</td><td>5–10 mi easy, based on recovery</td></tr>
+        </table>
+        <p class="fine">Aim for 40; go toward 45 only if Week 1 left no lingering soreness.</p>
+      </div>
+      <div class="xp-card"><h3>Week 3 · Taper</h3><div class="tot">10–18 mi before the start</div>
+        <table>
+          <tr><td>Mon</td><td>4 mi easy</td></tr>
+          <tr><td>Tue</td><td>4 mi easy</td></tr>
+          <tr><td>Wed</td><td>3 mi easy</td></tr>
+          <tr><td>Thu</td><td>2–3 mi easy or rest</td></tr>
+          <tr><td>Fri</td><td>Rest, organize gear, eat normally, sleep</td></tr>
+          <tr><td>Wknd</td><td>Start the attempt</td></tr>
+        </table>
+        <p class="fine">Keep the last 48 hours especially light.</p>
+      </div>
+    </div>
+
+    <div class="xp-row">
+      <div class="xp-card"><h3>Rules to keep</h3><div class="tot">Non-negotiable</div>
+        <ul>
+          <li>Don't run through pain. Stop if it worsens, changes your stride, or lingers between runs.</li>
+          <li>Rehearse fueling on every run over an hour, with the exact foods you'll carry.</li>
+          <li>No huge back-to-back weekend. The 12-miler is for gear, fueling and time on feet.</li>
+          <li>Don't make up missed miles. If the start moves closer, drop sessions instead of stacking them.</li>
+          <li>Have a bailout plan. If day one leaves worsening pain, a changed stride, or you can't eat and drink, shorten or stop instead of forcing day two.</li>
+        </ul>
+      </div>
+      <div class="xp-card xp-check" id="xp-check"><h3>Pre-trip checklist</h3><div class="tot" id="xp-count">0 of 8</div>
+        <label><input type="checkbox"><span>Run in the exact shoes and socks you'll use</span></label>
+        <label><input type="checkbox"><span>Test the loaded pack and fix any rubbing or bouncing</span></label>
+        <label><input type="checkbox"><span>Practice eating small amounts regularly while running</span></label>
+        <label><input type="checkbox"><span>Test the water filter and backup treatment</span></label>
+        <label><input type="checkbox"><span>Download offline maps and charge the nav device</span></label>
+        <label><input type="checkbox"><span>Test the headlamp; carry a backup light or battery</span></label>
+        <label><input type="checkbox"><span>Pack warm layers, rain gear, and a first-aid and blister kit</span></label>
+        <label><input type="checkbox"><span>Confirm crew meeting points, pickup time and emergency comms</span></label>
+      </div>
+      <div class="xp-card"><h3>Fueling</h3><div class="tot">Start early, stay steady</div>
+        <ul>
+          <li>Eat early, before you feel depleted.</li>
+          <li>Start around 30–60 g of carbs per hour; go higher only if you've practiced it.</li>
+          <li>Stick to familiar foods and sports drinks you've tested.</li>
+          <li>Drink to conditions and thirst, with electrolytes as part of a tested plan.</li>
+          <li>Crew carries spare food, socks, blister supplies and warm layers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-go">
+      <div class="xp-card" style="--g:var(--accent)"><h4>Go, carefully</h4><p>Training done without worsening pain, normal recovery within a day or two, food and fluids sitting well, and access, water, weather and crew confirmed.</p></div>
+      <div class="xp-card" style="--g:var(--amber)"><h4>Shorten or drop the 48 hr goal</h4><p>Persistent soreness, heavy legs, trouble fueling, blisters, or uncertain water. A shorter route with reliable exits beats forcing the distance.</p></div>
+      <div class="xp-card" style="--g:#D9534F"><h4>Postpone</h4><p>New injury, illness, pain that changes your stride, or snow, ice, severe weather or closed roads. Get urgent help for confusion, collapse or chest pain.</p></div>
+    </div>
+    <p class="note">Trail note: Happy Jack is mostly smooth and fairly flat, but water comes from stock tanks and seasonal drainages that must be treated and may be dry. Check the Arizona Trail Association water report right before you go.</p>
+  </section>
+
   <section class="plan" aria-label="Schedule">
     <div class="sec">
       <h2>The <em>route</em>, 2027 → 2032</h2>
@@ -233,7 +343,7 @@
 const goals = [
   {when:"2029-05", t:"The Long Way Through Home", r:"Cocodona 250", w:"Black Canyon City → Flagstaff, AZ", k:"Desert", d:"250 mi", line:"Five days, two hundred fifty miles, and the whole of Arizona's backcountry between the saguaros and the pines."},
   {when:"2030-04", t:"Marathon of the Sands", r:"Marathon des Sables", w:"Sahara, Morocco", k:"Desert", d:"~250 km · 6 stages", line:"Carry everything, ration water, and chase the horizon across Saharan dunes."},
-  {when:"2027-05", prog:"Oct '26 → May '27", t:"Mexico to Utah on Foot", r:"Run the Arizona Trail", w:"Arizona", k:"Mountain", d:"800 mi", line:"Border to border, every sky island in between. The backyard, all of it. Running it now, section by section."},
+  {when:"2027-05", prog:"Oct '26 → May '27", plan:"#azt-plan", t:"Mexico to Utah on Foot", r:"Run the Arizona Trail", w:"Arizona", k:"Mountain", d:"800 mi", line:"Border to border, every sky island in between. The backyard, all of it. Running it now, section by section."},
   {when:"2031-01", t:"Roof of Africa", r:"Hike Kilimanjaro / Ultra X Tanzania", w:"Tanzania", k:"Mountain", d:"19,341 ft", line:"Pole pole up Uhuru Peak — or run the plains below it."},
   {when:"2027-10", t:"Down, Up, Down, Up", r:"Rim to Rim to Rim", w:"Grand Canyon, AZ", k:"Desert", d:"~45 mi · 21k ft gain", line:"South Rim to North Rim and back before the canyon realizes what happened."},
   {when:"2026-10", t:"Joined the Majors", r:"Run 1 World Marathon Major", w:"Chicago, IL", k:"Road", d:"26.2 mi", done:"Chicago Marathon", photo:"memories/chicago-2026.webp", photoCap:"Finish stretch · Chicago Marathon · October 2026", line:"Twenty-nine neighborhoods, a million people yelling, and a finish on Columbus Drive. ✓"},
@@ -294,7 +404,7 @@ function render(filter){
        <p class="line">${g.line}</p>
        <div class="meta"><span>📍 <b>${g.w}</b></span><span>↗ <b>${g.d}</b></span><span class="when">◷ <b class="when">${fmt(g.when)}</b></span></div>
        ${g.done?`<div class="stamp">Finished · ${g.done}</div>`:''}${g.photo?`<button class="photo-btn" type="button">📷 Finish-line photo</button>`:''}
-       ${g.prog?`<div class="stamp" style="border-color:var(--amber);color:var(--amber)">In progress · ${g.prog}</div>`:''}`;
+       ${g.prog?`<div class="stamp" style="border-color:var(--amber);color:var(--amber)">In progress · ${g.prog}</div>`:''}${g.plan?`<a class="plan-link" href="${g.plan}">📋 Expedition plan ↓</a>`:''}`;
     grid.appendChild(el);
   });
 }
@@ -309,6 +419,16 @@ cats.forEach(c=>{
   fbox.appendChild(b);
 });
 render('All');
+
+// AZT pre-trip checklist (remembered in this browser only)
+(function(){
+  const box = document.getElementById('xp-check'); if (!box) return;
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')], out = document.getElementById('xp-count');
+  let saved = []; try { saved = JSON.parse(localStorage.getItem('azt-check') || '[]'); } catch(e){}
+  function sync(){ out.textContent = boxes.filter(b => b.checked).length + ' of ' + boxes.length; try { localStorage.setItem('azt-check', JSON.stringify(boxes.map(b => b.checked))); } catch(e){} }
+  boxes.forEach((b, i) => { b.checked = !!saved[i]; b.addEventListener('change', sync); });
+  sync();
+})();
 
 // finish-line photo lightbox
 (function(){
@@ -380,7 +500,8 @@ render('All');
     {t:"Paintbrush–Cascade Canyon Loop", w:"Grand Teton NP, WY", mi:"20", ft:"8,000", c:"No shade"},
     {t:"Bigelow Range Traverse", w:"Maine", mi:"17", ft:"10,000", c:"Black flies with attitude"},
     {t:"Lake Superior State Water Trail", w:"Lake Superior", mi:"150", ft:"—", c:"Sea caves, shipwrecks, open water. Paddle it, don't run it"},
-    {t:"Mount Temple summit", w:"Banff NP, Alberta", mi:"~10", ft:"~5,400", ftL:"ft gain", c:"Scree, a scramble up high, and a snow cornice on top. Helmet day"}
+    {t:"Mount Temple summit", w:"Banff NP, Alberta", mi:"~10", ft:"~5,400", ftL:"ft gain", c:"Scree, a scramble up high, and a snow cornice on top. Helmet day"},
+    {t:"Sri Chinmoy Self-Transcendence 3,100", w:"Queens, New York City", mi:"3,100", ft:"52", ftL:"day cutoff", c:"5,649 laps of one half-mile city block. The world's longest certified footrace"}
   ];
   const box = document.getElementById('dreams');
   dreams.forEach(d=>{
