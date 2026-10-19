@@ -166,6 +166,10 @@
   .xp-meta span{font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--accent-tint);color:var(--accent)}
   .xp-weeks,.xp-row,.xp-go{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:12px}
   .xp-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .xp-strava{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;align-items:flex-start}
+  .xp-strava-card{flex:0 1 auto;max-width:100%}
+  .xp-strava-card iframe{display:block;max-width:100%;border:0;border-radius:8px;background:#fff}
+  .strava-link{margin:12px 0 0;color:#FC4C02;border-color:#FC4C02}
   .xp-card h3{font-family:"Fraunces",serif;font-size:1.15rem;margin:0}
   .xp-card .tot{font:600 .78rem "IBM Plex Mono",monospace;color:var(--amber);margin:2px 0 10px}
   .xp-card table{width:100%;border-collapse:collapse;font-size:.88rem}
@@ -269,6 +273,17 @@
           <tr><td>Wknd</td><td>Start the attempt</td></tr>
         </table>
         <p class="fine">Keep the last 48 hours especially light.</p>
+      </div>
+    </div>
+
+    <div class="xp-strava" aria-label="Recent runs from Strava">
+      <div class="xp-card xp-strava-card"><h3>Recent runs</h3><div class="tot">Live from Strava</div>
+        <iframe title="Latest runs on Strava" height="454" width="300" frameborder="0" allowtransparency="true" scrolling="no" loading="lazy" src="https://www.strava.com/athletes/122291941/latest-rides/38bc1f41ac59acb877aff5b8bf8d0d19e57c2a24"></iframe>
+      </div>
+      <div class="xp-card xp-strava-card"><h3>This week</h3><div class="tot">Miles against the plan above</div>
+        <iframe title="This week's Strava totals" height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" loading="lazy" src="https://www.strava.com/athletes/122291941/activity-summary/38bc1f41ac59acb877aff5b8bf8d0d19e57c2a24"></iframe>
+        <p class="fine">Week 1 and 2 target: 40–45 mi. Taper: 10–18 mi.</p>
+        <a class="plan-link strava-link" href="https://www.strava.com/athletes/122291941" target="_blank" rel="noopener">View on Strava ↗</a>
       </div>
     </div>
 
