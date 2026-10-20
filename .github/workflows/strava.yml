@@ -2,7 +2,7 @@ name: Sync Strava runs
 
 on:
   schedule:
-    - cron: '23 */2 * * *'   # every 2 hours
+    - cron: '17 4 * * *'   # once a day, 9:17 PM Arizona time
   workflow_dispatch:
 
 permissions:
