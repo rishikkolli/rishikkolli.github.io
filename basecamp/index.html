@@ -185,6 +185,41 @@
   .xp-go .xp-card{border-left:4px solid var(--g)}
   .xp-go h4{margin:0 0 6px;font:600 .78rem "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
   .xp-go p{margin:0;color:var(--ink-soft);font-size:.9rem;line-height:1.55}
+  .xp-sub{margin-top:36px}
+  .xp-table-wrap{overflow-x:auto;margin-bottom:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  .xp-sched{width:100%;min-width:640px;border-collapse:collapse;font-size:.88rem}
+  .xp-sched th{font:600 .7rem "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .xp-sched td{padding:9px 14px;border-top:1px dashed var(--line);color:var(--ink-soft);vertical-align:top}
+  .xp-sched td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+  .xp-sched td:nth-child(3),.xp-sched .r{font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+  .xp-sched .r{text-align:right;font-variant-numeric:tabular-nums}
+  .xp-sched tfoot td{font-weight:600;color:var(--ink);border-top:1px solid var(--line)}
+  .wk-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:0 0 12px;font:500 .74rem "IBM Plex Mono",monospace;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase}
+  .wk-jump{font:inherit;color:var(--accent);background:var(--accent-tint);border:0;border-radius:999px;padding:6px 12px;cursor:pointer}
+  .wk-plan{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+  .wk-month{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .wk-month>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:14px 18px;font-family:"Fraunces",serif;font-size:1.15rem}
+  .wk-month>summary::-webkit-details-marker{display:none}
+  .wk-month>summary span{font:500 .72rem "IBM Plex Mono",monospace;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase}
+  .wk{border-top:1px dashed var(--line);padding:12px 18px}
+  .wk.now{background:var(--accent-tint)}
+  .wk-head{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:8px}
+  .wk-head b{font-weight:600}
+  .wk-tag{font:600 .66rem "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--surface-2);color:var(--ink-soft)}
+  .wk-tag.block{background:var(--amber-tint);color:var(--amber)}
+  .wk-tag.recovery,.wk-tag.travel{color:var(--ink-faint)}
+  .wk-tot{margin-left:auto;font:500 .74rem "IBM Plex Mono",monospace;color:var(--ink-faint)}
+  .wk-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+  .wk-day{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0;text-align:left;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px;cursor:pointer}
+  .wk-day small{font:500 .62rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+  .wk-day span{font-size:.84rem;line-height:1.3;overflow-wrap:anywhere}
+  .wk-day.rest{cursor:default;color:var(--ink-faint)}
+  .wk-day.blk span{color:var(--amber);font-weight:600}
+  .wk-day.done{border-color:#2E9E5B;background:rgba(46,158,91,.12)}
+  .wk-day.done span,.wk-day.done small{color:#2E9E5B}
+  .wk-day.done span::after{content:" ✓"}
+  .wk-note{margin:8px 0 0;font-size:.82rem;color:var(--ink-faint)}
+  @media (max-width:640px){.wk-days{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .plan-link{display:inline-flex;margin:14px 0 0 10px;font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:5px 10px;text-decoration:none}
   .plan-link:hover{background:var(--amber-tint)}
 
@@ -236,45 +271,15 @@
       <p>Planning notes for the AZT push, Oct '26 → May '27.</p>
     </div>
     <p class="xp-lede">First push: the Happy Jack section, about 62 miles in 48 hours with crew support. The goal is steady movement over two days, hiking the climbs rather than running all 62 miles. The build starts from 20–30 miles a week and a recent 20–30-mile long run.</p>
-    <div class="xp-meta"><span>62 mi</span><span>48 hr window</span><span>Crew-supported</span><span>3-week build</span></div>
+    <div class="xp-meta"><span>62 mi</span><span>48 hr window</span><span>Crew-supported</span><span>Oct → May plan</span></div>
 
-    <div class="xp-weeks">
-      <div class="xp-card"><h3>Week 1 · Build</h3><div class="tot">40–45 mi</div>
-        <table>
-          <tr><td>Mon</td><td>6 mi easy</td></tr>
-          <tr><td>Tue</td><td>7 mi easy</td></tr>
-          <tr><td>Wed</td><td>5 mi easy</td></tr>
-          <tr><td>Thu</td><td>7 mi easy, on trail if possible</td></tr>
-          <tr><td>Fri</td><td>Rest or 3 mi recovery</td></tr>
-          <tr><td>Sat</td><td>12 mi easy with the loaded pack</td></tr>
-          <tr><td>Sun</td><td>3–5 mi very easy, only if recovered</td></tr>
-        </table>
-        <p class="fine">Every run conversational.</p>
-      </div>
-      <div class="xp-card"><h3>Week 2 · Specific endurance</h3><div class="tot">40–45 mi</div>
-        <table>
-          <tr><td>Mon</td><td>5 mi easy</td></tr>
-          <tr><td>Tue</td><td>7 mi easy</td></tr>
-          <tr><td>Wed</td><td>5 mi easy</td></tr>
-          <tr><td>Thu</td><td>6 mi easy</td></tr>
-          <tr><td>Fri</td><td>Rest</td></tr>
-          <tr><td>Sat</td><td>12 mi easy on trail: full gear and fueling rehearsal</td></tr>
-          <tr><td>Sun</td><td>5–10 mi easy, based on recovery</td></tr>
-        </table>
-        <p class="fine">Aim for 40; go toward 45 only if Week 1 left no lingering soreness.</p>
-      </div>
-      <div class="xp-card"><h3>Week 3 · Taper</h3><div class="tot">10–18 mi before the start</div>
-        <table>
-          <tr><td>Mon</td><td>4 mi easy</td></tr>
-          <tr><td>Tue</td><td>4 mi easy</td></tr>
-          <tr><td>Wed</td><td>3 mi easy</td></tr>
-          <tr><td>Thu</td><td>2–3 mi easy or rest</td></tr>
-          <tr><td>Fri</td><td>Rest, organize gear, eat normally, sleep</td></tr>
-          <tr><td>Wknd</td><td>Start the attempt</td></tr>
-        </table>
-        <p class="fine">Keep the last 48 hours especially light.</p>
-      </div>
+    <div class="sec xp-sub" id="azt-weeks">
+      <h2>Weekly runs, <em>Oct → May</em></h2>
+      <p>Tap a run when it's done and it turns green. Saved in this browser.</p>
     </div>
+    <p class="xp-lede">Weekday base: Mon 6 · Tue 8 · Wed 6 · Thu 8 · Fri rest. All easy and conversational unless noted. Trail blocks replace the weekend, and the week after each one is for recovery.</p>
+    <div class="wk-bar"><span id="wk-count">0 runs done</span><button type="button" class="wk-jump" id="wk-jump">Jump to this week ↓</button></div>
+    <div id="wk-plan" class="wk-plan"></div>
 
     <div class="xp-strava" aria-label="Recent runs from Strava">
       <div class="xp-card xp-strava-card"><h3>Recent runs</h3><div class="tot">Live from Strava</div>
@@ -324,6 +329,98 @@
       <div class="xp-card" style="--g:#D9534F"><h4>Postpone</h4><p>New injury, illness, pain that changes your stride, or snow, ice, severe weather or closed roads. Get urgent help for confusion, collapse or chest pain.</p></div>
     </div>
     <p class="note">Trail note: Happy Jack is mostly smooth and fairly flat, but water comes from stock tanks and seasonal drainages that must be treated and may be dry. Check the Arizona Trail Association water report right before you go.</p>
+
+    <div class="sec xp-sub" id="azt-sections">
+      <h2>The whole trail, <em>in blocks</em></h2>
+      <p>About 800 miles, Mexico to Utah, in 9 blocks. Parents drop off and pick up each one.</p>
+    </div>
+    <p class="xp-lede">Winter blocks stay in the low southern desert, and the high country waits for fall and late spring. Aim for 25–30 miles a day, so 100–120 per 4-day block. Mileages are approximate, so get the exact numbers and water sources from FarOut before each trip.</p>
+    <div class="xp-table-wrap">
+      <table class="xp-sched">
+        <thead><tr><th>When</th><th>Section</th><th>Passages</th><th class="r">~Mi</th><th>Drop → Pick up</th></tr></thead>
+        <tbody>
+          <tr><td>Early Nov</td><td>Happy Jack, Mormon Lake, into Flagstaff</td><td>29–31, 33</td><td class="r">75</td><td>General Springs (FR 300) → Flagstaff</td></tr>
+          <tr><td>Thanksgiving · 4 days</td><td>Mexico border, Patagonia, Sonoita, Colossal Cave</td><td>1–7</td><td class="r">115</td><td>Montezuma Pass → Colossal Cave Mtn Park</td></tr>
+          <tr><td>Christmas · 4 days</td><td>Oracle, Gila River canyons, Superior</td><td>13–17</td><td class="r">95</td><td>Oracle → Picketpost TH</td></tr>
+          <tr><td>New Year's · 3–4 days</td><td>Superstitions to Roosevelt Lake</td><td>18–19</td><td class="r">60</td><td>Picketpost → Roosevelt Lake</td></tr>
+          <tr><td>March weekends</td><td>Four Peaks, Mazatzals, Pine</td><td>20–26</td><td class="r">100</td><td>Roosevelt → Sunflower → Pine</td></tr>
+          <tr><td>April weekends</td><td>Rincons, Mt. Lemmon, Oracle</td><td>8–12</td><td class="r">95</td><td>Colossal Cave → Summerhaven → Oracle</td></tr>
+          <tr><td>Early May weekend</td><td>Pine up the Rim to General Springs</td><td>27–28</td><td class="r">40</td><td>Pine → General Springs</td></tr>
+          <tr><td>May weekends</td><td>Flagstaff, SF Peaks, Coconino Rim, South Rim</td><td>34–37</td><td class="r">105</td><td>Flagstaff → Tusayan / Grandview</td></tr>
+          <tr><td>Memorial Day · 4 days</td><td>Across the Grand Canyon, Kaibab Plateau, Utah</td><td>38–43</td><td class="r">110</td><td>South Rim → Stateline Campground</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">Total</td><td class="r">≈ 795</td><td></td></tr></tfoot>
+      </table>
+    </div>
+    <div class="xp-row">
+      <div class="xp-card"><h3>Why this order</h3><div class="tot">Season first</div>
+        <ul>
+          <li>The Gila River and Superstition sections are at their best in December and January.</li>
+          <li>The Rincons and Mt. Lemmon climb to 8,000–9,000 ft and hold snow through March, so they wait for April.</li>
+          <li>The North Rim opens May 15, so the Grand Canyon goes last, on Memorial Day.</li>
+        </ul>
+      </div>
+      <div class="xp-card"><h3>Book early</h3><div class="tot">Permits &amp; water</div>
+        <ul>
+          <li>Grand Canyon backcountry permit for camping below the rim. Apply about 4 months ahead, around January.</li>
+          <li>Saguaro National Park permit if you camp in the Rincons (Manning Camp).</li>
+          <li>Water caches on the Christmas and New Year's blocks. Parents drop gallons at road crossings on the drive in.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec xp-sub" id="azt-food">
+      <h2>Trail <em>food</em></h2>
+      <p>Light, calorie-dense, tested on long runs first.</p>
+    </div>
+    <p class="xp-lede">Target 4,000–4,500 calories a day at 125+ calories per ounce. That's 4,500 ÷ 125 = 36 oz, or about 2.25 lb of food a day. Pack salty food for the desert, and eat something every hour.</p>
+    <div class="xp-weeks">
+      <div class="xp-card"><h3>Breakfast</h3><div class="tot">≈ 600–800 cal</div>
+        <ul>
+          <li>Instant oatmeal with powdered whole milk and walnuts</li>
+          <li>Pop-Tarts (eat on the move)</li>
+          <li>Instant coffee packets</li>
+          <li>Cold-soaked granola with powdered milk</li>
+        </ul>
+      </div>
+      <div class="xp-card"><h3>On the move</h3><div class="tot">≈ 2,000–2,500 cal</div>
+        <ul>
+          <li>Tortillas with peanut butter or Nutella</li>
+          <li>Fritos and peanut M&amp;Ms (about 160 and 140 cal/oz)</li>
+          <li>Snickers and ProBars</li>
+          <li>Honey Stinger waffles or gels for climbs</li>
+          <li>Dried mango, trail mix</li>
+          <li>Electrolyte drink mix in every liter</li>
+        </ul>
+      </div>
+      <div class="xp-card"><h3>Dinner</h3><div class="tot">≈ 900–1,200 cal</div>
+        <ul>
+          <li>Ramen with an olive-oil packet (about 240 cal/oz)</li>
+          <li>Knorr Sides with a tuna or chicken pouch</li>
+          <li>Idahoan mashed potatoes with crushed Fritos</li>
+          <li>Cold-soak couscous with pesto and summer sausage</li>
+          <li>One Peak Refuel per block as a morale meal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="xp-row">
+      <div class="xp-card"><h3>Parents at pickup</h3><div class="tot">Real food at the car</div>
+        <ul>
+          <li>Burritos, pizza or a sandwich</li>
+          <li>Broth or soup when it's cold</li>
+          <li>Cold soda and chocolate milk</li>
+          <li>The next block's food bags, already packed</li>
+        </ul>
+      </div>
+      <div class="xp-card"><h3>Packing rules</h3><div class="tot">Keep it simple</div>
+        <ul>
+          <li>One zip bag per day, labeled by day</li>
+          <li>Repackage out of heavy boxes</li>
+          <li>Nothing new on trail; test every food on a long run first</li>
+          <li>A spare 500 cal per day in case a block runs long</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="plan" aria-label="Schedule">
@@ -434,6 +531,86 @@ cats.forEach(c=>{
   fbox.appendChild(b);
 });
 render('All');
+
+// Weekly runs Oct → May. Tap a run to mark it done (green). Remembered in this browser only.
+(function(){
+  const root=document.getElementById('wk-plan'); if(!root) return;
+  const B=t=>'B:'+t;           // trail-block day
+  const R=0;                   // rest
+  const W=[ // [Monday, tag, Mon..Sun, total, note]
+    ['2026-10-19','Build',[6,8,6,8,'Rest or 3',12,'3–5'],'43–48','Saturday: 12 mi with the loaded pack.'],
+    ['2026-10-26','Build',[5,8,6,8,R,12,'5–10'],'49–54','Saturday: full gear and fueling rehearsal on trail. Go toward 54 only if Week 1 left no soreness.'],
+    ['2026-11-02','Taper + block',[4,4,3,'2–3',R,B('Day 1'),B('Day 2')],'≈ 88','Block 1: General Springs → Flagstaff, 75 mi. Keep the 48 hours before light.'],
+    ['2026-11-09','Recovery',[R,'3 walk',4,R,4,6,R],'≈ 17','Easy only. Back off more if anything hurts.'],
+    ['2026-11-16','Build',[6,8,6,8,R,14,5],'≈ 47',''],
+    ['2026-11-23','Block',[5,6,R,B('Day 1'),B('Day 2'),B('Day 3'),B('Day 4')],'≈ 126','Block 2, Thanksgiving: Mexico border → Colossal Cave, 115 mi.'],
+    ['2026-11-30','Recovery',[R,'3 walk',4,R,5,8,R],'≈ 20',''],
+    ['2026-12-07','Build',[6,8,6,8,R,16,5],'≈ 49',''],
+    ['2026-12-14','Build',[6,8,6,8,R,18,6],'≈ 52','Peak week before the holiday blocks.'],
+    ['2026-12-21','Block',[5,6,R,B('Day 1'),B('Day 2'),B('Day 3'),B('Day 4')],'≈ 106','Block 3, Christmas: Oracle → Picketpost, 95 mi.'],
+    ['2026-12-28','Block',[R,'3 walk',R,B('Day 1'),B('Day 2'),B('Day 3'),R],'≈ 63','Block 4, New Year’s: Picketpost → Roosevelt Lake, 60 mi.'],
+    ['2027-01-04','Travel',['Free','30–45 min','Free','30–45 min','Free','Hike','Free'],'—','Central America trip. Keep moving: 3 short runs or long walking days a week.'],
+    ['2027-01-11','Travel',['Free','30–45 min','Free','30–45 min','Free','Hike','Free'],'—',''],
+    ['2027-01-18','Travel',['Free','30–45 min','Free','30–45 min','Free','Hike','Free'],'—',''],
+    ['2027-01-25','Return',[R,R,4,5,R,6,4],'≈ 19','Ease back in.'],
+    ['2027-02-01','Rebuild',[5,6,5,6,R,10,4],'≈ 36',''],
+    ['2027-02-08','Build',[6,8,6,8,R,13,5],'≈ 46',''],
+    ['2027-02-15','Build',[6,8,6,8,R,16,6],'≈ 50',''],
+    ['2027-02-22','Down week',[5,6,5,6,R,10,4],'≈ 36',''],
+    ['2027-03-01','Build',[6,8,6,8,R,16,8],'≈ 52','First back-to-back weekend.'],
+    ['2027-03-08','Block',[5,8,6,5,R,B('Day 1'),B('Day 2')],'≈ 74','Block 5a: Roosevelt Lake → Sunflower, ~50 mi.'],
+    ['2027-03-15','Recovery',[R,5,6,6,R,12,5],'≈ 34',''],
+    ['2027-03-22','Block',[5,8,6,5,R,B('Day 1'),B('Day 2')],'≈ 74','Block 5b: Sunflower → Pine, ~50 mi.'],
+    ['2027-03-29','Recovery',[R,5,6,6,R,12,5],'≈ 34',''],
+    ['2027-04-05','Block',[5,8,6,5,R,B('Day 1'),B('Day 2')],'≈ 74','Block 6a: Colossal Cave → Summerhaven, ~50 mi with the Rincons and Mt. Lemmon climbs.'],
+    ['2027-04-12','Recovery',[R,5,6,6,R,12,5],'≈ 34',''],
+    ['2027-04-19','Block',[5,8,6,5,R,B('Day 1'),B('Day 2')],'≈ 69','Block 6b: Summerhaven → Oracle, ~45 mi.'],
+    ['2027-04-26','Block',[R,5,6,6,R,B('Day 1'),B('Day 2')],'≈ 57','Block 7: Pine → General Springs, ~40 mi.'],
+    ['2027-05-03','Block',[R,6,6,5,R,B('Day 1'),B('Day 2')],'≈ 69','Block 8a: Flagstaff → Coconino Rim, ~52 mi.'],
+    ['2027-05-10','Block',[R,6,6,5,R,B('Day 1'),B('Day 2')],'≈ 70','Block 8b: Coconino Rim → South Rim, ~53 mi.'],
+    ['2027-05-17','Recovery',[R,5,6,6,R,10,5],'≈ 32',''],
+    ['2027-05-24','Block',[5,4,3,R,B('Day 1'),B('Day 2'),B('Day 3')],'≈ 122','Block 9, Memorial Day (Fri–Mon): Grand Canyon → Utah border, 110 mi. Day 4 is Mon May 31.'],
+  ];
+  const DOW=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const KEY='azt-runs'; let done={}; try{done=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}};
+  const iso=d=>d.toISOString().slice(0,10);
+  const addDays=(s,n)=>{const d=new Date(s+'T12:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d;};
+  const fmt=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+  const today=iso(new Date(Date.now()-7*3600e3));
+  const months={}; let nowEl=null;
+  W.forEach(([mon,tag,days,tot,note])=>{
+    const start=addDays(mon,0), end=addDays(mon,6);
+    const mKey=start.toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
+    if(!months[mKey]){const d=document.createElement('details'); d.className='wk-month'; d.innerHTML=`<summary>${mKey}<span></span></summary>`; root.appendChild(d); months[mKey]=d;}
+    const wk=document.createElement('div'); wk.className='wk';
+    const isNow=today>=mon && today<=iso(end); if(isNow){wk.classList.add('now'); nowEl=wk; months[mKey].open=true;}
+    const cls=tag.toLowerCase().includes('block')?'block':tag.toLowerCase();
+    wk.innerHTML=`<div class="wk-head"><b>${fmt(start)} – ${fmt(end)}</b><span class="wk-tag ${cls}">${tag}</span><span class="wk-tot">${tot==='—'?'':tot+' mi'}</span></div><div class="wk-days"></div>${note?`<p class="wk-note">${note}</p>`:''}`;
+    const grid=wk.querySelector('.wk-days');
+    days.forEach((v,i)=>{
+      const date=iso(addDays(mon,i)); const b=document.createElement('button'); b.type='button'; b.className='wk-day';
+      let label;
+      if(v===0){label='Rest'; b.classList.add('rest'); b.disabled=true;}
+      else if(typeof v==='string'&&v.startsWith('B:')){label='Trail · '+v.slice(2); b.classList.add('blk');}
+      else label=(typeof v==='number')?v+' mi':v;
+      if(v==='Free'){b.classList.add('rest'); b.disabled=true;}
+      b.innerHTML=`<small>${DOW[i]} ${fmt(addDays(mon,i)).split(' ')[1]}</small><span>${label}</span>`;
+      if(done[date]) b.classList.add('done');
+      b.setAttribute('aria-pressed',!!done[date]);
+      b.addEventListener('click',()=>{ if(b.disabled) return; done[date]=!done[date]; if(!done[date]) delete done[date]; b.classList.toggle('done',!!done[date]); b.setAttribute('aria-pressed',!!done[date]); save(); count(); });
+      grid.appendChild(b);
+    });
+    months[mKey].appendChild(wk);
+  });
+  function count(){
+    const n=Object.keys(done).length; document.getElementById('wk-count').textContent=n+(n===1?' run':' runs')+' done';
+    Object.values(months).forEach(m=>{const t=m.querySelectorAll('.wk-day:not(.rest)').length, d=m.querySelectorAll('.wk-day.done').length; m.querySelector('summary span').textContent=d+' of '+t+' done';});
+  }
+  count();
+  if(!nowEl){const first=root.querySelector('.wk-month'); if(first) first.open=true;}
+  document.getElementById('wk-jump').addEventListener('click',()=>{const t=nowEl||root; t.scrollIntoView({behavior:'smooth',block:'center'});});
+})();
 
 // AZT pre-trip checklist (remembered in this browser only)
 (function(){
