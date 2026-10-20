@@ -218,6 +218,7 @@
   .wk-day.done{border-color:#2E9E5B;background:rgba(46,158,91,.12)}
   .wk-day.done span,.wk-day.done small{color:#2E9E5B}
   .wk-day.done span::after{content:" ✓"}
+  .wk-day.strava small::after{content:" · Strava"}
   .wk-note{margin:8px 0 0;font-size:.82rem;color:var(--ink-faint)}
   @media (max-width:640px){.wk-days{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .plan-link{display:inline-flex;margin:14px 0 0 10px;font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:5px 10px;text-decoration:none}
@@ -275,10 +276,10 @@
 
     <div class="sec xp-sub" id="azt-weeks">
       <h2>Weekly runs, <em>Oct → May</em></h2>
-      <p>Tap a run when it's done and it turns green. Saved in this browser.</p>
+      <p>Runs logged on Strava turn green automatically.</p>
     </div>
     <p class="xp-lede">Weekday base: Mon 6 · Tue 8 · Wed 6 · Thu 8 · Fri rest. All easy and conversational unless noted. Trail blocks replace the weekend, and the week after each one is for recovery.</p>
-    <div class="wk-bar"><span id="wk-count">0 runs done</span><button type="button" class="wk-jump" id="wk-jump">Jump to this week ↓</button></div>
+    <div class="wk-bar"><span id="wk-count">0 runs done</span><span id="wk-sync">Strava sync: waiting for first run</span><button type="button" class="wk-jump" id="wk-jump">Jump to this week ↓</button></div>
     <div id="wk-plan" class="wk-plan"></div>
 
     <div class="xp-strava" aria-label="Recent runs from Strava">
@@ -578,7 +579,7 @@ render('All');
   const addDays=(s,n)=>{const d=new Date(s+'T12:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d;};
   const fmt=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
   const today=iso(new Date(Date.now()-7*3600e3));
-  const months={}; let nowEl=null;
+  const months={}; let nowEl=null; const btns={};
   W.forEach(([mon,tag,days,tot,note])=>{
     const start=addDays(mon,0), end=addDays(mon,6);
     const mKey=start.toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
@@ -589,7 +590,7 @@ render('All');
     wk.innerHTML=`<div class="wk-head"><b>${fmt(start)} – ${fmt(end)}</b><span class="wk-tag ${cls}">${tag}</span><span class="wk-tot">${tot==='—'?'':tot+' mi'}</span></div><div class="wk-days"></div>${note?`<p class="wk-note">${note}</p>`:''}`;
     const grid=wk.querySelector('.wk-days');
     days.forEach((v,i)=>{
-      const date=iso(addDays(mon,i)); const b=document.createElement('button'); b.type='button'; b.className='wk-day';
+      const date=iso(addDays(mon,i)); const b=document.createElement('button'); b.type='button'; b.className='wk-day'; btns[date]=b;
       let label;
       if(v===0){label='Rest'; b.classList.add('rest'); b.disabled=true;}
       else if(typeof v==='string'&&v.startsWith('B:')){label='Trail · '+v.slice(2); b.classList.add('blk');}
@@ -604,10 +605,24 @@ render('All');
     months[mKey].appendChild(wk);
   });
   function count(){
-    const n=Object.keys(done).length; document.getElementById('wk-count').textContent=n+(n===1?' run':' runs')+' done';
+    const n=root.querySelectorAll('.wk-day.done').length; document.getElementById('wk-count').textContent=n+(n===1?' run':' runs')+' done';
     Object.values(months).forEach(m=>{const t=m.querySelectorAll('.wk-day:not(.rest)').length, d=m.querySelectorAll('.wk-day.done').length; m.querySelector('summary span').textContent=d+' of '+t+' done';});
   }
   count();
+  // Strava: a GitHub Action writes strava.json every 2 hours; any run, hike or walk that day turns it green.
+  fetch('strava.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d||!d.days) return;
+    Object.entries(d.days).forEach(([date,v])=>{
+      const b=btns[date]; if(!b) return;
+      b.disabled=false; b.classList.remove('rest'); b.classList.add('done','strava');
+      b.setAttribute('aria-pressed','true'); b.title='Strava: '+v.mi+' mi';
+      const sp=b.querySelector('span'); if(sp) sp.textContent=v.mi+' mi';
+    });
+    const n=Object.keys(d.days).filter(k=>btns[k]).length;
+    const ago=d.updated?new Date(d.updated).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'';
+    document.getElementById('wk-sync').textContent='Strava sync · '+ago;
+    count(n);
+  }).catch(()=>{});
   if(!nowEl){const first=root.querySelector('.wk-month'); if(first) first.open=true;}
   document.getElementById('wk-jump').addEventListener('click',()=>{const t=nowEl||root; t.scrollIntoView({behavior:'smooth',block:'center'});});
 })();
