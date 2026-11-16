@@ -162,6 +162,47 @@
   .plan-link{display:inline-flex;margin:14px 0 0 10px;font:500 .72rem "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:5px 10px;text-decoration:none}
   .plan-link:hover{background:var(--amber-tint)}
 
+  /* next race block */
+  .race{background:var(--surface);border:1px solid var(--amber);border-radius:18px;box-shadow:var(--shadow);padding:22px;margin:0 0 36px;position:relative;overflow:hidden}
+  .race::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:repeating-linear-gradient(90deg,var(--amber) 0 18px,transparent 18px 26px)}
+  .race-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .race h2{font-family:"Fraunces",serif;font-weight:800;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:-.02em;margin:6px 0 4px;line-height:1}
+  .race h2 em{font-style:italic;font-weight:400;color:var(--amber)}
+  .race .sub{color:var(--ink-soft);margin:0;font-size:.95rem}
+  .tminus{text-align:right}
+  .tminus b{display:block;font-family:"Fraunces",serif;font-size:3rem;font-weight:800;line-height:1;color:var(--amber)}
+  .tminus span{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .targets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .targets div{background:var(--surface-2);border-radius:12px;padding:10px 12px}
+  .targets b{display:block;font-family:"IBM Plex Mono",monospace;font-size:1.05rem;font-weight:500;color:var(--ink)}
+  .targets span{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+  .sstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:6px 0 18px}
+  .sstats div{border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .sstats b{display:block;font-family:"Fraunces",serif;font-size:1.6rem;font-weight:800;line-height:1.1}
+  .sstats span{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+  .weeks{display:flex;gap:6px;align-items:flex-end;height:70px;margin:4px 0 4px}
+  .weeks div{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+  .weeks i{display:block;width:100%;background:var(--accent);border-radius:4px 4px 0 0;min-height:2px}
+  .weeks small{font-family:"IBM Plex Mono",monospace;font-size:.6rem;color:var(--ink-faint)}
+  .sline{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-faint);margin:0 0 14px}
+  .days{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  .rday{display:grid;grid-template-columns:78px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--bg)}
+  .rday .dd{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+  .rday .dd small{display:block;color:var(--ink-faint)}
+  .rday .w{font-weight:600}
+  .rday .w small{display:block;font-weight:400;color:var(--ink-soft);font-size:.85rem}
+  .rday .mi{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-faint);text-align:right;white-space:nowrap}
+  .rday.today{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+  .rday.hit{border-color:var(--accent);background:var(--accent-tint)}
+  .rday.hit .mi{color:var(--accent)}
+  .rday.rest .w{color:var(--ink-faint)}
+  .rday.raceday{border-color:var(--amber);background:var(--amber-tint)}
+  .rday.raceday .dd,.rday.raceday .w{color:var(--amber)}
+  .rnotes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+  .rnotes div{border:1px dashed var(--line);border-radius:12px;padding:12px;font-size:.88rem;color:var(--ink-soft)}
+  .rnotes b{display:block;font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+  @media (max-width:640px){.targets,.sstats{grid-template-columns:repeat(2,1fr)}.rnotes{grid-template-columns:1fr}.rday{grid-template-columns:58px 1fr;}.rday .mi{grid-column:2;text-align:left}.tminus{text-align:left}}
+
   footer{border-top:1px solid var(--line);padding:24px 0 48px;color:var(--ink-faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   @media (max-width:640px){.yr-row{grid-template-columns:1fr;gap:12px}.yr-h{position:static}.stop{grid-template-columns:44px 1fr auto;padding:10px 12px}.clock b{font-size:1.4rem}}
   @media (max-width:520px){.progress{grid-template-columns:1fr}.track{height:32px}.grid{grid-template-columns:1fr}}
@@ -197,6 +238,33 @@
     <div><b id="cd-left">30</b><span>Goals left</span></div>
   </div>
 
+  <section class="race" id="race" aria-label="Next start line">
+    <div class="race-top">
+      <div>
+        <div class="eyebrow">Next start line · Thu Nov 26, 2026</div>
+        <h2>Turkey Day <em>5K</em></h2>
+        <p class="sub" id="race-sub">Thanksgiving morning. 11 days of sharpening from Chicago marathon legs to 5K speed.</p>
+      </div>
+      <div class="tminus"><b id="race-days">—</b><span id="race-days-l">days to go</span></div>
+    </div>
+
+    <div class="targets" id="targets"></div>
+
+    <div class="eyebrow" style="color:var(--accent)">From Strava</div>
+    <div class="sstats" id="sstats"></div>
+    <div class="weeks" id="weeks" aria-label="Weekly miles"></div>
+    <p class="sline" id="sline"></p>
+
+    <div class="eyebrow" style="margin-bottom:8px">The 11-day block</div>
+    <ul class="days" id="rdays"></ul>
+
+    <div class="rnotes">
+      <div><b>Race plan</b>Mile 1 right on goal pace and no faster, even with the crowd. Mile 2: hold it, it's the one that hurts. Last 1.1: hit the gas at the final turn.</div>
+      <div><b>Race morning</b>Up 2.5 h before the gun. Light breakfast you've had before. 15 min jog, drills, 4 strides, on the line 5 min early.</div>
+      <div><b>Recover after</b>Easy mile cool-down, eat the turkey. Two easy days after, then the Elephant Mountain build.</div>
+    </div>
+  </section>
+
   <div class="sec">
     <h2>The <em>bibs</em></h2>
     <p>Every goal, with its target window.</p>
@@ -223,7 +291,7 @@
 
   <footer>
     <span>Unlisted page — not linked from the main site.</span>
-    <span class="mono">Last updated Oct 2026</span>
+    <span class="mono">Last updated Nov 2026</span>
   </footer>
 </div>
 
@@ -345,7 +413,7 @@ render('All');
     2032:['Age 29 → 30','The finale']
   };
   const extra = [
-    {when:'2026-10', t:'Arizona Trail in progress', sub:'Running sections now through May 2027', ms:true},
+    {when:'2026-11', t:'Turkey Day 5K', sub:'Thanksgiving, Nov 26 · 11-day sharpening block', ms:true},
     {when:'2027-12', t:'Enter Leadville lottery', sub:'For Aug 2028', ms:true},
     {when:'2032-02', t:'Submit Badwater 135 application', sub:'Window closes early Feb', ms:true},
     {when:'2032-09', t:'Turn 30 — Sep 3', sub:'Finish line', ms:true}
@@ -368,6 +436,86 @@ render('All');
     });
     row.appendChild(ul); box.appendChild(row);
   });
+})();
+
+// next race: Thanksgiving 5K block + Strava stats
+(function(){
+  const RACE = { date:'2026-11-26', name:'Turkey Day 5K', goalSec: 19*60+55 }; // goal from the 3:12 marathon PR (Riegel ≈ 20:00)
+  // Snapshot read from Strava on Nov 15, 2026; replaced by strava.json once the nightly sync has secrets.
+  const SNAP = null;
+  const MI = 3.10686;
+  const mmss = s => { s = Math.round(s); return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); };
+  const gp = RACE.goalSec / MI; // sec per mile
+  document.getElementById('targets').innerHTML = [
+    [mmss(RACE.goalSec), 'Goal time'], [mmss(gp)+'/mi', '5K pace'],
+    [mmss(gp+22)+'/mi', 'Tempo pace'], [mmss(gp+105)+'–'+mmss(gp+135), 'Easy /mi']
+  ].map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+
+  const P = n => mmss(gp + n);
+  const plan = [
+    ['2026-11-16','Easy + strides', `4 mi easy, then 6 × 20 s strides`, 4.5],
+    ['2026-11-17','Speed: 5 × 1 km', `2 mi warm-up · 5 × 1 km at ${P(0)}/mi, 2 min jog · 1.5 mi cool-down`, 7],
+    ['2026-11-18','Easy', `5 mi conversational`, 5],
+    ['2026-11-19','Easy + strides', `4 mi easy + 6 × 20 s strides`, 4.5],
+    ['2026-11-20','Rest', `Off, or 30 min easy bike / mobility`, 0],
+    ['2026-11-21','Tempo', `2 mi warm-up · 20 min at ${P(22)}/mi · 1.5 mi cool-down`, 6.5],
+    ['2026-11-22','Long easy', `7–8 mi easy, last mile steady`, 7.5],
+    ['2026-11-23','Rest', `Off. Sleep, hydrate`, 0],
+    ['2026-11-24','Sharpener', `2 mi warm-up · 4 × 400 m at ${P(-10)}/mi, 400 jog · 2 × 200 m quick · 1.5 mi cool-down`, 5],
+    ['2026-11-25','Shakeout', `3 mi very easy + 4 strides. Lay out kit and bib`, 3.5],
+    ['2026-11-26','🦃 Race day', `15 min warm-up + 4 strides · 5K at ${P(0)}/mi · 1 mi cool-down`, 5.1]
+  ];
+
+  const pad = n=>String(n).padStart(2,'0');
+  const iso = d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  const today = iso(new Date());
+  const WD = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const toD = s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
+  const left = Math.round((toD(RACE.date) - toD(today)) / 864e5);
+  document.getElementById('race-days').textContent = left > 0 ? left : (left === 0 ? 'Today' : '✓');
+  document.getElementById('race-days-l').textContent = left > 0 ? (left===1?'day to go':'days to go') : (left===0?'race day':'raced');
+
+  function draw(days){
+    days = days || {};
+    document.getElementById('rdays').innerHTML = plan.map(p=>{
+      const d = toD(p[0]), got = days[p[0]], rest = !p[3], race = p[0]===RACE.date;
+      const cls = 'rday' + (p[0]===today?' today':'') + (got?' hit':'') + (rest?' rest':'') + (race?' raceday':'');
+      const mi = got ? `✓ ${got.mi} mi` : (rest ? '—' : `${p[3]} mi`);
+      return `<li class="${cls}"><span class="dd">${WD[d.getDay()]}<small>Nov ${d.getDate()}</small></span><span class="w">${p[1]}<small>${p[2]}</small></span><span class="mi">${mi}</span></li>`;
+    }).join('');
+  }
+
+  function stats(data){
+    const days = data.days || {};
+    const keys = Object.keys(days).sort();
+    const sum = (from,to) => keys.filter(k=>k>=from&&k<=to).reduce((a,k)=>a+days[k].mi,0);
+    const runs = (from,to) => keys.filter(k=>k>=from&&k<=to).reduce((a,k)=>a+days[k].n,0);
+    const back = n => { const d = toD(today); d.setDate(d.getDate()-n); return iso(d); };
+    const monStart = s => { const d = toD(s); d.setDate(d.getDate() - ((d.getDay()+6)%7)); return iso(d); };
+    const longest = keys.filter(k=>k>=back(27)).reduce((m,k)=>Math.max(m,days[k].mi),0);
+    const last7 = sum(back(6), today), last28 = sum(back(27), today);
+    document.getElementById('sstats').innerHTML = [
+      [last7.toFixed(1), 'Miles · last 7 d'], [last28.toFixed(1), 'Miles · last 28 d'],
+      [runs(back(27), today), 'Runs · last 28 d'], [longest.toFixed(1), 'Longest · 28 d']
+    ].map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+    const w0 = monStart(today), wk = [];
+    for (let i = 7; i >= 0; i--) { const s = toD(w0); s.setDate(s.getDate() - 7*i); const a = iso(s); const e = new Date(s); e.setDate(e.getDate()+6); wk.push([a, sum(a, iso(e))]); }
+    const max = Math.max(10, ...wk.map(w=>w[1]));
+    document.getElementById('weeks').innerHTML = wk.map(w=>{const d=toD(w[0]);return `<div title="Week of ${w[0]}: ${w[1].toFixed(1)} mi"><i style="height:${Math.round(w[1]/max*100)}%"></i><small>${d.getMonth()+1}/${d.getDate()}</small></div>`}).join('');
+    const up = data.updated ? new Date(data.updated) : null;
+    document.getElementById('sline').textContent = 'Weekly miles, last 8 weeks' + (up ? ' · synced ' + up.toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '') + (data.note ? ' · ' + data.note : '');
+    draw(days);
+  }
+
+  draw();
+  fetch('strava.json', {cache:'no-store'}).then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(stats)
+    .catch(()=>{
+      if (SNAP) return stats(SNAP);
+      document.getElementById('sstats').innerHTML = '';
+      document.getElementById('weeks').style.display = 'none';
+      document.getElementById('sline').textContent = 'Strava sync not connected yet. Days turn green here once runs sync.';
+    });
 })();
 
 // trail dreams (inspiration only, not goals)
