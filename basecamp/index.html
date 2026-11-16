@@ -250,11 +250,6 @@
 
     <div class="targets" id="targets"></div>
 
-    <div class="eyebrow" style="color:var(--accent)">From Strava</div>
-    <div class="sstats" id="sstats"></div>
-    <div class="weeks" id="weeks" aria-label="Weekly miles"></div>
-    <p class="sline" id="sline"></p>
-
     <div class="eyebrow" style="margin-bottom:8px">The 11-day block</div>
     <ul class="days" id="rdays"></ul>
 
@@ -438,11 +433,9 @@ render('All');
   });
 })();
 
-// next race: Thanksgiving 5K block + Strava stats
+// next race: Thanksgiving 5K block
 (function(){
   const RACE = { date:'2026-11-26', name:'Turkey Day 5K', goalSec: 19*60+55 }; // goal from the 3:12 marathon PR (Riegel ≈ 20:00)
-  // Snapshot read from Strava on Nov 15, 2026; replaced by strava.json once the nightly sync has secrets.
-  const SNAP = null;
   const MI = 3.10686;
   const mmss = s => { s = Math.round(s); return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); };
   const gp = RACE.goalSec / MI; // sec per mile
@@ -485,37 +478,7 @@ render('All');
     }).join('');
   }
 
-  function stats(data){
-    const days = data.days || {};
-    const keys = Object.keys(days).sort();
-    const sum = (from,to) => keys.filter(k=>k>=from&&k<=to).reduce((a,k)=>a+days[k].mi,0);
-    const runs = (from,to) => keys.filter(k=>k>=from&&k<=to).reduce((a,k)=>a+days[k].n,0);
-    const back = n => { const d = toD(today); d.setDate(d.getDate()-n); return iso(d); };
-    const monStart = s => { const d = toD(s); d.setDate(d.getDate() - ((d.getDay()+6)%7)); return iso(d); };
-    const longest = keys.filter(k=>k>=back(27)).reduce((m,k)=>Math.max(m,days[k].mi),0);
-    const last7 = sum(back(6), today), last28 = sum(back(27), today);
-    document.getElementById('sstats').innerHTML = [
-      [last7.toFixed(1), 'Miles · last 7 d'], [last28.toFixed(1), 'Miles · last 28 d'],
-      [runs(back(27), today), 'Runs · last 28 d'], [longest.toFixed(1), 'Longest · 28 d']
-    ].map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
-    const w0 = monStart(today), wk = [];
-    for (let i = 7; i >= 0; i--) { const s = toD(w0); s.setDate(s.getDate() - 7*i); const a = iso(s); const e = new Date(s); e.setDate(e.getDate()+6); wk.push([a, sum(a, iso(e))]); }
-    const max = Math.max(10, ...wk.map(w=>w[1]));
-    document.getElementById('weeks').innerHTML = wk.map(w=>{const d=toD(w[0]);return `<div title="Week of ${w[0]}: ${w[1].toFixed(1)} mi"><i style="height:${Math.round(w[1]/max*100)}%"></i><small>${d.getMonth()+1}/${d.getDate()}</small></div>`}).join('');
-    const up = data.updated ? new Date(data.updated) : null;
-    document.getElementById('sline').textContent = 'Weekly miles, last 8 weeks' + (up ? ' · synced ' + up.toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '') + (data.note ? ' · ' + data.note : '');
-    draw(days);
-  }
-
   draw();
-  fetch('strava.json', {cache:'no-store'}).then(r=>{ if(!r.ok) throw 0; return r.json(); })
-    .then(stats)
-    .catch(()=>{
-      if (SNAP) return stats(SNAP);
-      document.getElementById('sstats').innerHTML = '';
-      document.getElementById('weeks').style.display = 'none';
-      document.getElementById('sline').textContent = 'Strava sync not connected yet. Days turn green here once runs sync.';
-    });
 })();
 
 // trail dreams (inspiration only, not goals)
