@@ -990,6 +990,35 @@
     <div class="project-card reveal" style="margin-top:24px;">
       <div class="project-top">
         <div>
+          <h3>Spotify Charts Explorer</h3>
+          <div class="project-sub">Database Management (CSE 412) — Arizona State University</div>
+        </div>
+        <div class="project-year mono">Aug – Dec 2022</div>
+      </div>
+      <p>A database-backed web dashboard for exploring Spotify chart songs from 2017–2021 across seven
+      regions, answering questions like each region's top songs, an artist's total streams, and each year's
+      biggest hits. Rebuilt in 2026 as a single interactive dashboard on a cleaner, more secure data layer.</p>
+      <div class="pipeline">
+        <span class="stage">Chart data (CSV)</span><span class="arrow">→</span>
+        <span class="stage">Relational schema</span><span class="arrow">→</span>
+        <span class="stage">Parameterized SQL</span><span class="arrow">→</span>
+        <span class="stage">JSON API</span><span class="arrow">→</span>
+        <span class="stage">Interactive dashboard</span>
+      </div>
+      <ul>
+        <li>Modeled daily chart rows for 70 songs by 65 artists across 7 regions in an indexed relational schema that runs on both MySQL/MariaDB and SQLite.</li>
+        <li>Wrote aggregate SQL that reduces repeated daily rows to one entry per song and region before ranking, so totals and top-song lists no longer double-count songs that charted for several days.</li>
+        <li>Built a PHP/PDO JSON API that uses only parameterized queries, replacing string-built SQL and closing SQL-injection and cross-site scripting gaps.</li>
+        <li>Designed a single-page dashboard with region, artist and year filters, KPI tiles, a top-songs podium, click-to-filter bar charts, a searchable, sortable table with CSV export, shareable URLs, and light/dark themes.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">Data Visualization</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="margin-top:24px;">
+      <div class="project-top">
+        <div>
           <h3>iGEM — Wiki &amp; Filter Prototyping</h3>
           <div class="project-sub">International Genetically Engineered Machine, Arizona State University</div>
         </div>
